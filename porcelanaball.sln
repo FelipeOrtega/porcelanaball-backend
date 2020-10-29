@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "infraEstruturaPorcelanaball", "infraEstruturaPorcelanaball\infraEstruturaPorcelanaball.csproj", "{CC06AB89-7D8F-4EF5-A12F-96801A519E25}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplicationAluno", "WebApplicationAluno\WebApplicationAluno.csproj", "{77C914E0-A9CE-4FF5-96A7-582BDDF0955B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplicationPorcelanaball", "WebApplicationAluno\WebApplicationPorcelanaball.csproj", "{77C914E0-A9CE-4FF5-96A7-582BDDF0955B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

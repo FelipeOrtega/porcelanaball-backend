@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace infraEstruturaPorcelanaball
+namespace infraEstruturaPorcelanaball.model
 {
-    public class Class1
+    
+    class Aluno
     {
+
     }
 }

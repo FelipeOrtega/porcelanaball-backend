@@ -10,6 +10,8 @@ namespace WebApplicationAluno.Controllers.Aluno
     public class AlunoController : ApiController
     {
 
+        private 
+
         // GET api/Prodtuo
         public IEnumerable<Object> Get()
         {
