@@ -5,13 +5,21 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="DAO\" />
-    <Folder Include="Model\" />
+    <Compile Remove="DAO\**" />
+    <Compile Remove="Model\**" />
+    <EmbeddedResource Remove="DAO\**" />
+    <EmbeddedResource Remove="Model\**" />
+    <None Remove="DAO\**" />
+    <None Remove="Model\**" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\PB.Domain\PB.Domain.csproj" />
     <ProjectReference Include="..\PB.Utils\PB.Utils.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.2.3" />
   </ItemGroup>
 
 </Project>

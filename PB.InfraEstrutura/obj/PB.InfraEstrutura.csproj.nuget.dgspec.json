@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\RepositoryGit\\porcelanaball\\projetos\\porcelanaball\\PB.InfraEstrutura\\PB.InfraEstrutura.csproj": {}
+    "D:\\Projetos_Externos\\porcelanaball\\projetos\\porcelanaball\\PB.InfraEstrutura\\PB.InfraEstrutura.csproj": {}
   },
   "projects": {
-    "E:\\RepositoryGit\\porcelanaball\\projetos\\porcelanaball\\PB.Domain\\PB.Domain.csproj": {
+    "D:\\Projetos_Externos\\porcelanaball\\projetos\\porcelanaball\\PB.Domain\\PB.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\RepositoryGit\\porcelanaball\\projetos\\porcelanaball\\PB.Domain\\PB.Domain.csproj",
+        "projectUniqueName": "D:\\Projetos_Externos\\porcelanaball\\projetos\\porcelanaball\\PB.Domain\\PB.Domain.csproj",
         "projectName": "PB.Domain",
-        "projectPath": "E:\\RepositoryGit\\porcelanaball\\projetos\\porcelanaball\\PB.Domain\\PB.Domain.csproj",
-        "packagesPath": "C:\\Users\\komyh\\.nuget\\packages\\",
-        "outputPath": "E:\\RepositoryGit\\porcelanaball\\projetos\\porcelanaball\\PB.Domain\\obj\\",
+        "projectPath": "D:\\Projetos_Externos\\porcelanaball\\projetos\\porcelanaball\\PB.Domain\\PB.Domain.csproj",
+        "packagesPath": "C:\\Users\\Felipe\\.nuget\\packages\\",
+        "outputPath": "D:\\Projetos_Externos\\porcelanaball\\projetos\\porcelanaball\\PB.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\komyh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Felipe\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -52,21 +52,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\RepositoryGit\\porcelanaball\\projetos\\porcelanaball\\PB.InfraEstrutura\\PB.InfraEstrutura.csproj": {
+    "D:\\Projetos_Externos\\porcelanaball\\projetos\\porcelanaball\\PB.InfraEstrutura\\PB.InfraEstrutura.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\RepositoryGit\\porcelanaball\\projetos\\porcelanaball\\PB.InfraEstrutura\\PB.InfraEstrutura.csproj",
+        "projectUniqueName": "D:\\Projetos_Externos\\porcelanaball\\projetos\\porcelanaball\\PB.InfraEstrutura\\PB.InfraEstrutura.csproj",
         "projectName": "PB.InfraEstrutura",
-        "projectPath": "E:\\RepositoryGit\\porcelanaball\\projetos\\porcelanaball\\PB.InfraEstrutura\\PB.InfraEstrutura.csproj",
-        "packagesPath": "C:\\Users\\komyh\\.nuget\\packages\\",
-        "outputPath": "E:\\RepositoryGit\\porcelanaball\\projetos\\porcelanaball\\PB.InfraEstrutura\\obj\\",
+        "projectPath": "D:\\Projetos_Externos\\porcelanaball\\projetos\\porcelanaball\\PB.InfraEstrutura\\PB.InfraEstrutura.csproj",
+        "packagesPath": "C:\\Users\\Felipe\\.nuget\\packages\\",
+        "outputPath": "D:\\Projetos_Externos\\porcelanaball\\projetos\\porcelanaball\\PB.InfraEstrutura\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\komyh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Felipe\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -79,11 +79,11 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "E:\\RepositoryGit\\porcelanaball\\projetos\\porcelanaball\\PB.Domain\\PB.Domain.csproj": {
-                "projectPath": "E:\\RepositoryGit\\porcelanaball\\projetos\\porcelanaball\\PB.Domain\\PB.Domain.csproj"
+              "D:\\Projetos_Externos\\porcelanaball\\projetos\\porcelanaball\\PB.Domain\\PB.Domain.csproj": {
+                "projectPath": "D:\\Projetos_Externos\\porcelanaball\\projetos\\porcelanaball\\PB.Domain\\PB.Domain.csproj"
               },
-              "E:\\RepositoryGit\\porcelanaball\\projetos\\porcelanaball\\PB.Utils\\PB.Utils.csproj": {
-                "projectPath": "E:\\RepositoryGit\\porcelanaball\\projetos\\porcelanaball\\PB.Utils\\PB.Utils.csproj"
+              "D:\\Projetos_Externos\\porcelanaball\\projetos\\porcelanaball\\PB.Utils\\PB.Utils.csproj": {
+                "projectPath": "D:\\Projetos_Externos\\porcelanaball\\projetos\\porcelanaball\\PB.Utils\\PB.Utils.csproj"
               }
             }
           }
@@ -96,6 +96,12 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "dependencies": {
+            "Pomelo.EntityFrameworkCore.MySql": {
+              "target": "Package",
+              "version": "[3.2.3, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -111,21 +117,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\RepositoryGit\\porcelanaball\\projetos\\porcelanaball\\PB.Utils\\PB.Utils.csproj": {
+    "D:\\Projetos_Externos\\porcelanaball\\projetos\\porcelanaball\\PB.Utils\\PB.Utils.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\RepositoryGit\\porcelanaball\\projetos\\porcelanaball\\PB.Utils\\PB.Utils.csproj",
+        "projectUniqueName": "D:\\Projetos_Externos\\porcelanaball\\projetos\\porcelanaball\\PB.Utils\\PB.Utils.csproj",
         "projectName": "PB.Utils",
-        "projectPath": "E:\\RepositoryGit\\porcelanaball\\projetos\\porcelanaball\\PB.Utils\\PB.Utils.csproj",
-        "packagesPath": "C:\\Users\\komyh\\.nuget\\packages\\",
-        "outputPath": "E:\\RepositoryGit\\porcelanaball\\projetos\\porcelanaball\\PB.Utils\\obj\\",
+        "projectPath": "D:\\Projetos_Externos\\porcelanaball\\projetos\\porcelanaball\\PB.Utils\\PB.Utils.csproj",
+        "packagesPath": "C:\\Users\\Felipe\\.nuget\\packages\\",
+        "outputPath": "D:\\Projetos_Externos\\porcelanaball\\projetos\\porcelanaball\\PB.Utils\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\komyh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Felipe\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -163,7 +169,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
         }
       }
     }
