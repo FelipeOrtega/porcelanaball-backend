@@ -1,0 +1,8 @@
+E:\RepositoryGit\porcelanaball\projetos\porcelanaball\PB.Domain\bin\Debug\netcoreapp3.1\PB.Domain.deps.json
+E:\RepositoryGit\porcelanaball\projetos\porcelanaball\PB.Domain\bin\Debug\netcoreapp3.1\PB.Domain.dll
+E:\RepositoryGit\porcelanaball\projetos\porcelanaball\PB.Domain\bin\Debug\netcoreapp3.1\PB.Domain.pdb
+E:\RepositoryGit\porcelanaball\projetos\porcelanaball\PB.Domain\obj\Debug\netcoreapp3.1\PB.Domain.AssemblyInfoInputs.cache
+E:\RepositoryGit\porcelanaball\projetos\porcelanaball\PB.Domain\obj\Debug\netcoreapp3.1\PB.Domain.AssemblyInfo.cs
+E:\RepositoryGit\porcelanaball\projetos\porcelanaball\PB.Domain\obj\Debug\netcoreapp3.1\PB.Domain.csproj.CoreCompileInputs.cache
+E:\RepositoryGit\porcelanaball\projetos\porcelanaball\PB.Domain\obj\Debug\netcoreapp3.1\PB.Domain.dll
+E:\RepositoryGit\porcelanaball\projetos\porcelanaball\PB.Domain\obj\Debug\netcoreapp3.1\PB.Domain.pdb

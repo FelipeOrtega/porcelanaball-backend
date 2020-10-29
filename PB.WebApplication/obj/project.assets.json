@@ -1,0 +1,149 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "PB.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/PB.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PB.Domain.dll": {}
+        }
+      },
+      "PB.InfraEstrutura/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "PB.Domain": "1.0.0",
+          "PB.Utils": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/PB.InfraEstrutura.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PB.InfraEstrutura.dll": {}
+        }
+      },
+      "PB.Service/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "PB.Domain": "1.0.0",
+          "PB.InfraEstrutura": "1.0.0",
+          "PB.Utils": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/PB.Service.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PB.Service.dll": {}
+        }
+      },
+      "PB.Utils/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/PB.Utils.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PB.Utils.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "PB.Domain/1.0.0": {
+      "type": "project",
+      "path": "../PB.Domain/PB.Domain.csproj",
+      "msbuildProject": "../PB.Domain/PB.Domain.csproj"
+    },
+    "PB.InfraEstrutura/1.0.0": {
+      "type": "project",
+      "path": "../PB.InfraEstrutura/PB.InfraEstrutura.csproj",
+      "msbuildProject": "../PB.InfraEstrutura/PB.InfraEstrutura.csproj"
+    },
+    "PB.Service/1.0.0": {
+      "type": "project",
+      "path": "../PB.Service/PB.Service.csproj",
+      "msbuildProject": "../PB.Service/PB.Service.csproj"
+    },
+    "PB.Utils/1.0.0": {
+      "type": "project",
+      "path": "../PB.Utils/PB.Utils.csproj",
+      "msbuildProject": "../PB.Utils/PB.Utils.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    ".NETCoreApp,Version=v3.1": [
+      "PB.Domain >= 1.0.0",
+      "PB.Service >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\komyh\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "E:\\RepositoryGit\\porcelanaball\\projetos\\porcelanaball\\PB.WebApplication\\PB.WebApplication.csproj",
+      "projectName": "PB.WebApplication",
+      "projectPath": "E:\\RepositoryGit\\porcelanaball\\projetos\\porcelanaball\\PB.WebApplication\\PB.WebApplication.csproj",
+      "packagesPath": "C:\\Users\\komyh\\.nuget\\packages\\",
+      "outputPath": "E:\\RepositoryGit\\porcelanaball\\projetos\\porcelanaball\\PB.WebApplication\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\komyh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "netcoreapp3.1"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "projectReferences": {
+            "E:\\RepositoryGit\\porcelanaball\\projetos\\porcelanaball\\PB.Domain\\PB.Domain.csproj": {
+              "projectPath": "E:\\RepositoryGit\\porcelanaball\\projetos\\porcelanaball\\PB.Domain\\PB.Domain.csproj"
+            },
+            "E:\\RepositoryGit\\porcelanaball\\projetos\\porcelanaball\\PB.Service\\PB.Service.csproj": {
+              "projectPath": "E:\\RepositoryGit\\porcelanaball\\projetos\\porcelanaball\\PB.Service\\PB.Service.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "netcoreapp3.1": {
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.AspNetCore.App": {
+            "privateAssets": "none"
+          },
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

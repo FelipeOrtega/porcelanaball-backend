@@ -1,0 +1,9 @@
+E:\RepositoryGit\porcelanaball\projetos\porcelanaball\PB.InfraEstrutura.CrossCutting\bin\Debug\netcoreapp3.1\PB.InfraEstrutura.CrossCutting.deps.json
+E:\RepositoryGit\porcelanaball\projetos\porcelanaball\PB.InfraEstrutura.CrossCutting\bin\Debug\netcoreapp3.1\PB.InfraEstrutura.CrossCutting.dll
+E:\RepositoryGit\porcelanaball\projetos\porcelanaball\PB.InfraEstrutura.CrossCutting\bin\Debug\netcoreapp3.1\PB.InfraEstrutura.CrossCutting.pdb
+E:\RepositoryGit\porcelanaball\projetos\porcelanaball\PB.InfraEstrutura.CrossCutting\obj\Debug\netcoreapp3.1\PB.InfraEstrutura.CrossCutting.AssemblyInfoInputs.cache
+E:\RepositoryGit\porcelanaball\projetos\porcelanaball\PB.InfraEstrutura.CrossCutting\obj\Debug\netcoreapp3.1\PB.InfraEstrutura.CrossCutting.AssemblyInfo.cs
+E:\RepositoryGit\porcelanaball\projetos\porcelanaball\PB.InfraEstrutura.CrossCutting\obj\Debug\netcoreapp3.1\PB.InfraEstrutura.CrossCutting.csproj.CoreCompileInputs.cache
+E:\RepositoryGit\porcelanaball\projetos\porcelanaball\PB.InfraEstrutura.CrossCutting\obj\Debug\netcoreapp3.1\PB.InfraEstrutura.CrossCutting.dll
+E:\RepositoryGit\porcelanaball\projetos\porcelanaball\PB.InfraEstrutura.CrossCutting\obj\Debug\netcoreapp3.1\PB.InfraEstrutura.CrossCutting.pdb
+E:\RepositoryGit\porcelanaball\projetos\porcelanaball\PB.InfraEstrutura.CrossCutting\obj\Debug\netcoreapp3.1\PB.InfraEstrutura.CrossCutting.csprojAssemblyReference.cache
