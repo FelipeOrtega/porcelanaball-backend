@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Projetos_Externos\\porcelanaball\\projetos\\porcelanaball\\PB.InfraEstrutura.CrossCutting\\PB.InfraEstrutura.CrossCutting.csproj": {}
+    "C:\\Users\\komyh\\Documents\\RepositoryGit\\porcelanaoff\\projetos\\porcelanaball\\PB.InfraEstrutura.CrossCutting\\PB.InfraEstrutura.CrossCutting.csproj": {}
   },
   "projects": {
-    "D:\\Projetos_Externos\\porcelanaball\\projetos\\porcelanaball\\PB.InfraEstrutura.CrossCutting\\PB.InfraEstrutura.CrossCutting.csproj": {
+    "C:\\Users\\komyh\\Documents\\RepositoryGit\\porcelanaoff\\projetos\\porcelanaball\\PB.InfraEstrutura.CrossCutting\\PB.InfraEstrutura.CrossCutting.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Projetos_Externos\\porcelanaball\\projetos\\porcelanaball\\PB.InfraEstrutura.CrossCutting\\PB.InfraEstrutura.CrossCutting.csproj",
+        "projectUniqueName": "C:\\Users\\komyh\\Documents\\RepositoryGit\\porcelanaoff\\projetos\\porcelanaball\\PB.InfraEstrutura.CrossCutting\\PB.InfraEstrutura.CrossCutting.csproj",
         "projectName": "PB.InfraEstrutura.CrossCutting",
-        "projectPath": "D:\\Projetos_Externos\\porcelanaball\\projetos\\porcelanaball\\PB.InfraEstrutura.CrossCutting\\PB.InfraEstrutura.CrossCutting.csproj",
-        "packagesPath": "C:\\Users\\Felipe\\.nuget\\packages\\",
-        "outputPath": "D:\\Projetos_Externos\\porcelanaball\\projetos\\porcelanaball\\PB.InfraEstrutura.CrossCutting\\obj\\",
+        "projectPath": "C:\\Users\\komyh\\Documents\\RepositoryGit\\porcelanaoff\\projetos\\porcelanaball\\PB.InfraEstrutura.CrossCutting\\PB.InfraEstrutura.CrossCutting.csproj",
+        "packagesPath": "C:\\Users\\komyh\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\komyh\\Documents\\RepositoryGit\\porcelanaoff\\projetos\\porcelanaball\\PB.InfraEstrutura.CrossCutting\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Felipe\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\komyh\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -37,6 +37,12 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[3.1.9, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -52,7 +58,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
         }
       }
     }

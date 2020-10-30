@@ -6,3 +6,12 @@ E:\RepositoryGit\porcelanaball\projetos\porcelanaball\PB.InfraEstrutura.CrossCut
 E:\RepositoryGit\porcelanaball\projetos\porcelanaball\PB.InfraEstrutura.CrossCutting\obj\Debug\netcoreapp3.1\PB.InfraEstrutura.CrossCutting.csproj.CoreCompileInputs.cache
 E:\RepositoryGit\porcelanaball\projetos\porcelanaball\PB.InfraEstrutura.CrossCutting\obj\Debug\netcoreapp3.1\PB.InfraEstrutura.CrossCutting.dll
 E:\RepositoryGit\porcelanaball\projetos\porcelanaball\PB.InfraEstrutura.CrossCutting\obj\Debug\netcoreapp3.1\PB.InfraEstrutura.CrossCutting.pdb
+C:\Users\komyh\Documents\RepositoryGit\porcelanaoff\projetos\porcelanaball\PB.InfraEstrutura.CrossCutting\bin\Debug\netcoreapp3.1\PB.InfraEstrutura.CrossCutting.deps.json
+C:\Users\komyh\Documents\RepositoryGit\porcelanaoff\projetos\porcelanaball\PB.InfraEstrutura.CrossCutting\bin\Debug\netcoreapp3.1\PB.InfraEstrutura.CrossCutting.dll
+C:\Users\komyh\Documents\RepositoryGit\porcelanaoff\projetos\porcelanaball\PB.InfraEstrutura.CrossCutting\bin\Debug\netcoreapp3.1\PB.InfraEstrutura.CrossCutting.pdb
+C:\Users\komyh\Documents\RepositoryGit\porcelanaoff\projetos\porcelanaball\PB.InfraEstrutura.CrossCutting\obj\Debug\netcoreapp3.1\PB.InfraEstrutura.CrossCutting.csprojAssemblyReference.cache
+C:\Users\komyh\Documents\RepositoryGit\porcelanaoff\projetos\porcelanaball\PB.InfraEstrutura.CrossCutting\obj\Debug\netcoreapp3.1\PB.InfraEstrutura.CrossCutting.AssemblyInfoInputs.cache
+C:\Users\komyh\Documents\RepositoryGit\porcelanaoff\projetos\porcelanaball\PB.InfraEstrutura.CrossCutting\obj\Debug\netcoreapp3.1\PB.InfraEstrutura.CrossCutting.AssemblyInfo.cs
+C:\Users\komyh\Documents\RepositoryGit\porcelanaoff\projetos\porcelanaball\PB.InfraEstrutura.CrossCutting\obj\Debug\netcoreapp3.1\PB.InfraEstrutura.CrossCutting.csproj.CoreCompileInputs.cache
+C:\Users\komyh\Documents\RepositoryGit\porcelanaoff\projetos\porcelanaball\PB.InfraEstrutura.CrossCutting\obj\Debug\netcoreapp3.1\PB.InfraEstrutura.CrossCutting.dll
+C:\Users\komyh\Documents\RepositoryGit\porcelanaoff\projetos\porcelanaball\PB.InfraEstrutura.CrossCutting\obj\Debug\netcoreapp3.1\PB.InfraEstrutura.CrossCutting.pdb
