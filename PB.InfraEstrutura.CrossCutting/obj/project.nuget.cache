@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7jWWhq0usCGhsquRyZ25dDQJDV2MGAaDwSys5odhwVr8f6rK0LuAMRI9oJ86SZ3q02DE6DGNe3JzVN4uN/6PFg==",
+  "dgSpecHash": "AgxkcQY5ZKRySOaZSt7l6OVrHIfGXneLme+s3mXEY6BJy0wL7X8wVM6K2QlVzCt1V08+r7JX+zg3KDtWkSYIfw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\komyh\\Documents\\RepositoryGit\\porcelanaoff\\projetos\\porcelanaball\\PB.InfraEstrutura.CrossCutting\\PB.InfraEstrutura.CrossCutting.csproj",
+  "projectFilePath": "C:\\Users\\komyh\\Documents\\RepositoryGit\\porcelanaball\\projetos\\porcelanaball\\PB.InfraEstrutura.CrossCutting\\PB.InfraEstrutura.CrossCutting.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\komyh\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\3.1.9\\microsoft.extensions.dependencyinjection.abstractions.3.1.9.nupkg.sha512"
   ],

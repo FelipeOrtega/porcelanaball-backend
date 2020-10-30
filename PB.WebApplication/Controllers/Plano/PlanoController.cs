@@ -4,10 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace PB.WebApplication.Controllers.Aluno
+namespace PB.WebApplication.Controllers.Plano
 {
-    [Route("Aluno")]
-    public class AlunoController : Controller
+    [Route("Plano")]
+    public class PlanoController : Controller
     {
         [HttpGet]
         public IActionResult Get()
@@ -19,7 +19,6 @@ namespace PB.WebApplication.Controllers.Aluno
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-
             return Ok(null);
         }
 
@@ -38,7 +37,6 @@ namespace PB.WebApplication.Controllers.Aluno
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-
             return Ok(null);
         }
     }

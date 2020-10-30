@@ -4,22 +4,20 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace PB.WebApplication.Controllers.Aluno
+namespace PB.WebApplication.Controllers.Autenticacao
 {
-    [Route("Aluno")]
-    public class AlunoController : Controller
+    [Route("Autenticacao")]
+    public class AutenticacaoController : Controller
     {
         [HttpGet]
         public IActionResult Get()
         {
-
             return Ok(null);
         }
 
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-
             return Ok(null);
         }
 
@@ -38,7 +36,6 @@ namespace PB.WebApplication.Controllers.Aluno
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-
             return Ok(null);
         }
     }

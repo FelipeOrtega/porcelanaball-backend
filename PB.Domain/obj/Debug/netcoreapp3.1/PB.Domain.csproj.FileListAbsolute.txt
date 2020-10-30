@@ -16,3 +16,12 @@ C:\Users\komyh\Documents\RepositoryGit\porcelanaoff\projetos\porcelanaball\PB.Do
 C:\Users\komyh\Documents\RepositoryGit\porcelanaoff\projetos\porcelanaball\PB.Domain\obj\Debug\netcoreapp3.1\PB.Domain.csproj.CoreCompileInputs.cache
 C:\Users\komyh\Documents\RepositoryGit\porcelanaoff\projetos\porcelanaball\PB.Domain\obj\Debug\netcoreapp3.1\PB.Domain.dll
 C:\Users\komyh\Documents\RepositoryGit\porcelanaoff\projetos\porcelanaball\PB.Domain\obj\Debug\netcoreapp3.1\PB.Domain.pdb
+C:\Users\komyh\Documents\RepositoryGit\porcelanaball\projetos\porcelanaball\PB.Domain\bin\Debug\netcoreapp3.1\PB.Domain.deps.json
+C:\Users\komyh\Documents\RepositoryGit\porcelanaball\projetos\porcelanaball\PB.Domain\bin\Debug\netcoreapp3.1\PB.Domain.dll
+C:\Users\komyh\Documents\RepositoryGit\porcelanaball\projetos\porcelanaball\PB.Domain\bin\Debug\netcoreapp3.1\PB.Domain.pdb
+C:\Users\komyh\Documents\RepositoryGit\porcelanaball\projetos\porcelanaball\PB.Domain\obj\Debug\netcoreapp3.1\PB.Domain.csprojAssemblyReference.cache
+C:\Users\komyh\Documents\RepositoryGit\porcelanaball\projetos\porcelanaball\PB.Domain\obj\Debug\netcoreapp3.1\PB.Domain.AssemblyInfoInputs.cache
+C:\Users\komyh\Documents\RepositoryGit\porcelanaball\projetos\porcelanaball\PB.Domain\obj\Debug\netcoreapp3.1\PB.Domain.AssemblyInfo.cs
+C:\Users\komyh\Documents\RepositoryGit\porcelanaball\projetos\porcelanaball\PB.Domain\obj\Debug\netcoreapp3.1\PB.Domain.csproj.CoreCompileInputs.cache
+C:\Users\komyh\Documents\RepositoryGit\porcelanaball\projetos\porcelanaball\PB.Domain\obj\Debug\netcoreapp3.1\PB.Domain.dll
+C:\Users\komyh\Documents\RepositoryGit\porcelanaball\projetos\porcelanaball\PB.Domain\obj\Debug\netcoreapp3.1\PB.Domain.pdb

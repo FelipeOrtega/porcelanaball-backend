@@ -4,10 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace PB.WebApplication.Controllers.Aluno
+namespace PB.WebApplication.Controllers.Funcionario
 {
-    [Route("Aluno")]
-    public class AlunoController : Controller
+    [Route("Funcionario")]
+    public class FuncionarioController : Controller
     {
         [HttpGet]
         public IActionResult Get()
@@ -19,7 +19,6 @@ namespace PB.WebApplication.Controllers.Aluno
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-
             return Ok(null);
         }
 
@@ -38,7 +37,6 @@ namespace PB.WebApplication.Controllers.Aluno
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-
             return Ok(null);
         }
     }

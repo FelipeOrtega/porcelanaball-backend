@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "VRJAmLxsQQFpbZhcg/AzGcfqdNBJU0UQ+72itn+9rQwdamqp+vFWarYsLdXPucYd6Bs9Da/1B9b5oK08DfJkCQ==",
+  "dgSpecHash": "Ea1wJbInnzDUt0DrOaUpHx1i2eqfq3bB6AMuugWiOVkG3N8SBl7H/nvata/WYqG0xGHn7zQ5HRmhMaTDtNdtqQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\komyh\\Documents\\RepositoryGit\\porcelanaoff\\projetos\\porcelanaball\\PB.WebApplication\\PB.WebApplication.csproj",
+  "projectFilePath": "C:\\Users\\komyh\\Documents\\RepositoryGit\\porcelanaball\\projetos\\porcelanaball\\PB.WebApplication\\PB.WebApplication.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\komyh\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\komyh\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",

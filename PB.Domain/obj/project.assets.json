@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\komyh\\Documents\\RepositoryGit\\porcelanaoff\\projetos\\porcelanaball\\PB.Domain\\PB.Domain.csproj",
+      "projectUniqueName": "C:\\Users\\komyh\\Documents\\RepositoryGit\\porcelanaball\\projetos\\porcelanaball\\PB.Domain\\PB.Domain.csproj",
       "projectName": "PB.Domain",
-      "projectPath": "C:\\Users\\komyh\\Documents\\RepositoryGit\\porcelanaoff\\projetos\\porcelanaball\\PB.Domain\\PB.Domain.csproj",
+      "projectPath": "C:\\Users\\komyh\\Documents\\RepositoryGit\\porcelanaball\\projetos\\porcelanaball\\PB.Domain\\PB.Domain.csproj",
       "packagesPath": "C:\\Users\\komyh\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\komyh\\Documents\\RepositoryGit\\porcelanaoff\\projetos\\porcelanaball\\PB.Domain\\obj\\",
+      "outputPath": "C:\\Users\\komyh\\Documents\\RepositoryGit\\porcelanaball\\projetos\\porcelanaball\\PB.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\komyh\\AppData\\Roaming\\NuGet\\NuGet.Config",

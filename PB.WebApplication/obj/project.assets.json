@@ -944,11 +944,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\komyh\\Documents\\RepositoryGit\\porcelanaoff\\projetos\\porcelanaball\\PB.WebApplication\\PB.WebApplication.csproj",
+      "projectUniqueName": "C:\\Users\\komyh\\Documents\\RepositoryGit\\porcelanaball\\projetos\\porcelanaball\\PB.WebApplication\\PB.WebApplication.csproj",
       "projectName": "PB.WebApplication",
-      "projectPath": "C:\\Users\\komyh\\Documents\\RepositoryGit\\porcelanaoff\\projetos\\porcelanaball\\PB.WebApplication\\PB.WebApplication.csproj",
+      "projectPath": "C:\\Users\\komyh\\Documents\\RepositoryGit\\porcelanaball\\projetos\\porcelanaball\\PB.WebApplication\\PB.WebApplication.csproj",
       "packagesPath": "C:\\Users\\komyh\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\komyh\\Documents\\RepositoryGit\\porcelanaoff\\projetos\\porcelanaball\\PB.WebApplication\\obj\\",
+      "outputPath": "C:\\Users\\komyh\\Documents\\RepositoryGit\\porcelanaball\\projetos\\porcelanaball\\PB.WebApplication\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\komyh\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -964,11 +964,11 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\komyh\\Documents\\RepositoryGit\\porcelanaoff\\projetos\\porcelanaball\\PB.Domain\\PB.Domain.csproj": {
-              "projectPath": "C:\\Users\\komyh\\Documents\\RepositoryGit\\porcelanaoff\\projetos\\porcelanaball\\PB.Domain\\PB.Domain.csproj"
+            "C:\\Users\\komyh\\Documents\\RepositoryGit\\porcelanaball\\projetos\\porcelanaball\\PB.Domain\\PB.Domain.csproj": {
+              "projectPath": "C:\\Users\\komyh\\Documents\\RepositoryGit\\porcelanaball\\projetos\\porcelanaball\\PB.Domain\\PB.Domain.csproj"
             },
-            "C:\\Users\\komyh\\Documents\\RepositoryGit\\porcelanaoff\\projetos\\porcelanaball\\PB.Service\\PB.Service.csproj": {
-              "projectPath": "C:\\Users\\komyh\\Documents\\RepositoryGit\\porcelanaoff\\projetos\\porcelanaball\\PB.Service\\PB.Service.csproj"
+            "C:\\Users\\komyh\\Documents\\RepositoryGit\\porcelanaball\\projetos\\porcelanaball\\PB.Service\\PB.Service.csproj": {
+              "projectPath": "C:\\Users\\komyh\\Documents\\RepositoryGit\\porcelanaball\\projetos\\porcelanaball\\PB.Service\\PB.Service.csproj"
             }
           }
         }
