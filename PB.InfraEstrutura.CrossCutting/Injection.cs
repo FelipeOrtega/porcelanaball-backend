@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using PB.Domain.Notifications;
 
 namespace PB.InfraEstrutura.CrossCutting
 {
@@ -14,6 +15,8 @@ namespace PB.InfraEstrutura.CrossCutting
             // Repository
             //services.AddScoped(typeof(IRepositoryBase<>), typeof(RepositoryBase<>));
             //services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+
+            services.AddScoped<NotificationContext>();
         }
     }
 }

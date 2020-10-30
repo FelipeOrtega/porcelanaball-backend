@@ -1,19 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using PB.Domain.Notifications;
+using PB.WebApplication.Core;
 
 namespace PB.WebApplication.Controllers.Aluno
 {
     [Route("Aluno")]
-    public class AlunoController : Controller
+    public class AlunoController : ApiBase
     {
-        [HttpGet]
-        public IActionResult Get()
+        public AlunoController(NotificationContext notificationContext)
         {
+            _notificationContext = notificationContext;
+        }
 
-            return Ok(null);
+        [HttpGet]
+        public async Task<JsonReturn> Get()
+        {
+            _notificationContext.AddNotification("notificação falha exemplo");
+            return RetornaJson("ok");
         }
 
         [HttpGet("{id}")]

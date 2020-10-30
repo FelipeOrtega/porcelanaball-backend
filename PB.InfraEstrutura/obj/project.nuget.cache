@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "3w4oBXn2uq2HuZtWDu64f+nOlkpzmMnfWQtpJm7Lzg6dFO7LjiVKA6x3YZDvCUZhMcTw0/pH/Kgk0bBBmtvexA==",
+  "dgSpecHash": "6MOyR/AAfy+89aKo2vGYkErkCWsqUavBCMZFo9VBNGbZ7zs6X7rlAdKylyBpL8PR60OtyJnsbak5/EQP6bun1w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\komyh\\Documents\\RepositoryGit\\porcelanaball\\projetos\\porcelanaball\\PB.InfraEstrutura\\PB.InfraEstrutura.csproj",
+  "projectFilePath": "C:\\Users\\komyh\\Documents\\RepositoryGit\\porcelanaoff\\projetos\\porcelanaball\\PB.InfraEstrutura\\PB.InfraEstrutura.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\komyh\\.nuget\\packages\\fluentvalidation\\9.2.2\\fluentvalidation.9.2.2.nupkg.sha512",
     "C:\\Users\\komyh\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\komyh\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",
     "C:\\Users\\komyh\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",

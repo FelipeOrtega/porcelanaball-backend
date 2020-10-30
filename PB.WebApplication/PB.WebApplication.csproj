@@ -5,7 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Core\teste.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\PB.Domain\PB.Domain.csproj" />
+    <ProjectReference Include="..\PB.InfraEstrutura.CrossCutting\PB.InfraEstrutura.CrossCutting.csproj" />
     <ProjectReference Include="..\PB.Service\PB.Service.csproj" />
   </ItemGroup>
 

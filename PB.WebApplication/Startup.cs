@@ -13,6 +13,7 @@ using Microsoft.Extensions.Logging;
 using PB.InfraEstrutura.db.config;
 using Microsoft.EntityFrameworkCore;
 using Pomelo.EntityFrameworkCore.MySql;
+using PB.InfraEstrutura.CrossCutting;
 
 namespace PB.WebApplication
 {
@@ -32,6 +33,8 @@ namespace PB.WebApplication
             services.AddDbContext<ApplicationDBContext>(options => options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddControllers();
+
+            Injection.Configure(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
