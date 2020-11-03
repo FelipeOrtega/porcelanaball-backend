@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using PB.Domain.Core;
+using System;
 
 namespace PB.Domain
 {
-    public class Produto
+    public class Produto : EntityBase
     {
-        public int codigo { get; set; }
         public String descricao { get; set; }
         public decimal precoVenda { get; set; }
         public decimal precoCompra { get; set; }

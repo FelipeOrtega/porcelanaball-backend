@@ -3,17 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PB.InfraEstrutura", "PB.InfraEstrutura\PB.InfraEstrutura.csproj", "{DEFD34B1-B36C-4955-B086-37BBAC44029A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PB.InfraEstrutura", "PB.InfraEstrutura\PB.InfraEstrutura.csproj", "{DEFD34B1-B36C-4955-B086-37BBAC44029A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PB.Service", "PB.Service\PB.Service.csproj", "{65CAE2F5-9E27-477E-85C8-9A865CCD20FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PB.Service", "PB.Service\PB.Service.csproj", "{65CAE2F5-9E27-477E-85C8-9A865CCD20FF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PB.WebApplication", "PB.WebApplication\PB.WebApplication.csproj", "{95D6A90D-F0F1-45D0-9E13-260A951F7359}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PB.WebApplication", "PB.WebApplication\PB.WebApplication.csproj", "{95D6A90D-F0F1-45D0-9E13-260A951F7359}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PB.Domain", "PB.Domain\PB.Domain.csproj", "{EE8A2A81-CADF-41D2-BD84-9CF2C03EE4EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PB.Domain", "PB.Domain\PB.Domain.csproj", "{EE8A2A81-CADF-41D2-BD84-9CF2C03EE4EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PB.InfraEstrutura.CrossCutting", "PB.InfraEstrutura.CrossCutting\PB.InfraEstrutura.CrossCutting.csproj", "{29F420FB-4D31-483F-8718-3D1112DD7F56}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PB.InfraEstrutura.CrossCutting", "PB.InfraEstrutura.CrossCutting\PB.InfraEstrutura.CrossCutting.csproj", "{29F420FB-4D31-483F-8718-3D1112DD7F56}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PB.Utils", "PB.Utils\PB.Utils.csproj", "{9758B7FA-1748-4BFB-AA5D-0E1843922A22}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PB.Utils", "PB.Utils\PB.Utils.csproj", "{9758B7FA-1748-4BFB-AA5D-0E1843922A22}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02 - Application", "02 - Application", "{8AC67335-AC25-4AA1-A72A-C6D11FAE8549}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03 - Service", "03 - Service", "{8B2B97D7-3C14-42A0-B2E9-11198C73CE6D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04 - Domain", "04 - Domain", "{C914E652-DD9E-451B-BFF5-C97A190FC792}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "05 - Infra", "05 - Infra", "{27E63B51-CA51-4DEB-970C-EE1316FA4429}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -48,6 +56,14 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DEFD34B1-B36C-4955-B086-37BBAC44029A} = {27E63B51-CA51-4DEB-970C-EE1316FA4429}
+		{65CAE2F5-9E27-477E-85C8-9A865CCD20FF} = {8B2B97D7-3C14-42A0-B2E9-11198C73CE6D}
+		{95D6A90D-F0F1-45D0-9E13-260A951F7359} = {8AC67335-AC25-4AA1-A72A-C6D11FAE8549}
+		{EE8A2A81-CADF-41D2-BD84-9CF2C03EE4EC} = {C914E652-DD9E-451B-BFF5-C97A190FC792}
+		{29F420FB-4D31-483F-8718-3D1112DD7F56} = {27E63B51-CA51-4DEB-970C-EE1316FA4429}
+		{9758B7FA-1748-4BFB-AA5D-0E1843922A22} = {27E63B51-CA51-4DEB-970C-EE1316FA4429}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A675DB14-31AE-4DAF-90E4-A7486BF948AE}

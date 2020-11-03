@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using PB.Domain.Core;
+using System;
 
 namespace PB.Domain
 {
-    public abstract class Pessoa
+    public abstract class Pessoa : EntityBase
     {
-        public String codigo { get; set; }
         public String nome { get; set; }
         public DateTime dataNascimento { get; set; }
         public String telefoneResidencial { get; set; }
