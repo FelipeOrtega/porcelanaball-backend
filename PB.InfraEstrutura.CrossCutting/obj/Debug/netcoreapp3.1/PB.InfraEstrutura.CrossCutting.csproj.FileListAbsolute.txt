@@ -15,3 +15,12 @@ C:\Users\komyh\Documents\RepositoryGit\porcelanaoff\projetos\porcelanaball\PB.In
 C:\Users\komyh\Documents\RepositoryGit\porcelanaoff\projetos\porcelanaball\PB.InfraEstrutura.CrossCutting\obj\Debug\netcoreapp3.1\PB.InfraEstrutura.CrossCutting.csproj.CoreCompileInputs.cache
 C:\Users\komyh\Documents\RepositoryGit\porcelanaoff\projetos\porcelanaball\PB.InfraEstrutura.CrossCutting\obj\Debug\netcoreapp3.1\PB.InfraEstrutura.CrossCutting.dll
 C:\Users\komyh\Documents\RepositoryGit\porcelanaoff\projetos\porcelanaball\PB.InfraEstrutura.CrossCutting\obj\Debug\netcoreapp3.1\PB.InfraEstrutura.CrossCutting.pdb
+C:\Users\komyh\Documents\RepositoryGit\porcelanaoff\projetos\porcelanaball\PB.InfraEstrutura.CrossCutting\bin\Debug\netcoreapp3.1\PB.Domain.dll
+C:\Users\komyh\Documents\RepositoryGit\porcelanaoff\projetos\porcelanaball\PB.InfraEstrutura.CrossCutting\bin\Debug\netcoreapp3.1\PB.InfraEstrutura.dll
+C:\Users\komyh\Documents\RepositoryGit\porcelanaoff\projetos\porcelanaball\PB.InfraEstrutura.CrossCutting\bin\Debug\netcoreapp3.1\PB.Utils.dll
+C:\Users\komyh\Documents\RepositoryGit\porcelanaoff\projetos\porcelanaball\PB.InfraEstrutura.CrossCutting\bin\Debug\netcoreapp3.1\PB.Domain.pdb
+C:\Users\komyh\Documents\RepositoryGit\porcelanaoff\projetos\porcelanaball\PB.InfraEstrutura.CrossCutting\bin\Debug\netcoreapp3.1\PB.InfraEstrutura.pdb
+C:\Users\komyh\Documents\RepositoryGit\porcelanaoff\projetos\porcelanaball\PB.InfraEstrutura.CrossCutting\bin\Debug\netcoreapp3.1\PB.Utils.pdb
+C:\Users\komyh\Documents\RepositoryGit\porcelanaoff\projetos\porcelanaball\PB.InfraEstrutura.CrossCutting\obj\Debug\netcoreapp3.1\PB.InfraEstrutura.CrossCutting.csproj.CopyComplete
+C:\Users\komyh\Documents\RepositoryGit\porcelanaoff\projetos\porcelanaball\PB.InfraEstrutura.CrossCutting\bin\Debug\netcoreapp3.1\PB.Service.dll
+C:\Users\komyh\Documents\RepositoryGit\porcelanaoff\projetos\porcelanaball\PB.InfraEstrutura.CrossCutting\bin\Debug\netcoreapp3.1\PB.Service.pdb

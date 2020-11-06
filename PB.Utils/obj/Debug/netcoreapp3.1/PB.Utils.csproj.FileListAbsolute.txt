@@ -15,3 +15,4 @@ C:\Users\komyh\Documents\RepositoryGit\porcelanaoff\projetos\porcelanaball\PB.Ut
 C:\Users\komyh\Documents\RepositoryGit\porcelanaoff\projetos\porcelanaball\PB.Utils\obj\Debug\netcoreapp3.1\PB.Utils.csproj.CoreCompileInputs.cache
 C:\Users\komyh\Documents\RepositoryGit\porcelanaoff\projetos\porcelanaball\PB.Utils\obj\Debug\netcoreapp3.1\PB.Utils.dll
 C:\Users\komyh\Documents\RepositoryGit\porcelanaoff\projetos\porcelanaball\PB.Utils\obj\Debug\netcoreapp3.1\PB.Utils.pdb
+C:\Users\komyh\Documents\RepositoryGit\porcelanaoff\projetos\porcelanaball\PB.Utils\obj\Debug\netcoreapp3.1\PB.Utils.csprojAssemblyReference.cache

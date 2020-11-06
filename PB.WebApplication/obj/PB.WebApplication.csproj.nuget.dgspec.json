@@ -87,6 +87,12 @@
             "projectReferences": {
               "C:\\Users\\komyh\\Documents\\RepositoryGit\\porcelanaoff\\projetos\\porcelanaball\\PB.Domain\\PB.Domain.csproj": {
                 "projectPath": "C:\\Users\\komyh\\Documents\\RepositoryGit\\porcelanaoff\\projetos\\porcelanaball\\PB.Domain\\PB.Domain.csproj"
+              },
+              "C:\\Users\\komyh\\Documents\\RepositoryGit\\porcelanaoff\\projetos\\porcelanaball\\PB.InfraEstrutura\\PB.InfraEstrutura.csproj": {
+                "projectPath": "C:\\Users\\komyh\\Documents\\RepositoryGit\\porcelanaoff\\projetos\\porcelanaball\\PB.InfraEstrutura\\PB.InfraEstrutura.csproj"
+              },
+              "C:\\Users\\komyh\\Documents\\RepositoryGit\\porcelanaoff\\projetos\\porcelanaball\\PB.Service\\PB.Service.csproj": {
+                "projectPath": "C:\\Users\\komyh\\Documents\\RepositoryGit\\porcelanaoff\\projetos\\porcelanaball\\PB.Service\\PB.Service.csproj"
               }
             }
           }

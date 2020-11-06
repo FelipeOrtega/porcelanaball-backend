@@ -2,29 +2,32 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using PB.Domain.Notifications;
+using PB.Service.Interface;
 using PB.WebApplication.Core;
 
 namespace PB.WebApplication.Controllers.Aluno
 {
-    [Route("Aluno")]
+    [Route("Aluno")]    
     public class AlunoController : ApiBase
     {
-        public AlunoController(NotificationContext notificationContext)
+        private readonly IAlunoService _service;
+
+        public AlunoController(NotificationContext notificationContext, IAlunoService service)
         {
             _notificationContext = notificationContext;
+            _service = service;
         }
 
         [HttpGet]
         public async Task<JsonReturn> Get()
         {
-            _notificationContext.AddNotification("notificação falha exemplo");
-            return RetornaJson("ok");
+            return RetornaJson(_service.Get());
         }
 
         [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        public IActionResult Get(String codigo)
         {
-
+            _notificationContext.AddNotification("notificação falha exemplo");
             return Ok(null);
         }
 

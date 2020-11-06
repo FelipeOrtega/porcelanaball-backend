@@ -1,5 +1,6 @@
 ﻿using PB.Domain.Core;
 using System;
+using System.Collections.Generic;
 
 namespace PB.Domain.Interface.Repository
 {
@@ -8,6 +9,7 @@ namespace PB.Domain.Interface.Repository
         int Inserir(TEntity entity);
         void Excluir(TEntity entity);
         void Alterar(TEntity entity);
-        TEntity SelecionarPorId(String codigo);
+        List<TEntity> Consultar();
+        TEntity SelecionarPorId(int codigo);
     }
 }

@@ -3,14 +3,16 @@ using PB.Domain.Core;
 using PB.Domain.Interface.Repository;
 using PB.InfraEstrutura.db.config;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace PB.InfraEstrutura.Repository
 {
     public class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where TEntity : EntityBase
     {
         protected readonly ApplicationDBContext context;
-        public RepositoryBase(ApplicationDBContext context)
-            : base()
+
+        public RepositoryBase(ApplicationDBContext context) : base()
         {
             this.context = context;
         }
@@ -30,7 +32,7 @@ namespace PB.InfraEstrutura.Repository
             context.SendChanges();
         }
 
-        public String Inserir(TEntity entity)
+        public int Inserir(TEntity entity)
         {
             context.InitTransacao();
             var id = context.Set<TEntity>().Add(entity).Entity.codigo;
@@ -38,7 +40,12 @@ namespace PB.InfraEstrutura.Repository
             return id;
         }
 
-        public TEntity SelecionarPorId(String codigo)
+        public List<TEntity> Consultar()
+        {
+            return context.Set<TEntity>().ToList();
+        }
+
+        public TEntity SelecionarPorId(int codigo)
         {
             return context.Set<TEntity>().Find(codigo);
         }

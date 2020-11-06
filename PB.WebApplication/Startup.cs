@@ -30,7 +30,8 @@ namespace PB.WebApplication
         public void ConfigureServices(IServiceCollection services)
         {
             //instanciar a conexao com o banco de dados mysql
-            services.AddDbContext<ApplicationDBContext>(options => options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
+            String connection = Configuration.GetConnectionString("DefaultConnection");
+            services.AddDbContext<ApplicationDBContext>(options => options.UseMySql(connection));
 
             services.AddControllers();
 

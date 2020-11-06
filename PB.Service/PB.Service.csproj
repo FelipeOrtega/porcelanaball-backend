@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Interface\" />
+    <Compile Remove="Class1.cs" />
   </ItemGroup>
 
   <ItemGroup>

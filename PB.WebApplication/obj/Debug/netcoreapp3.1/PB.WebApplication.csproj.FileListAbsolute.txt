@@ -78,3 +78,6 @@ C:\Users\komyh\Documents\RepositoryGit\porcelanaoff\projetos\porcelanaball\PB.We
 C:\Users\komyh\Documents\RepositoryGit\porcelanaoff\projetos\porcelanaball\PB.WebApplication\obj\Debug\netcoreapp3.1\PB.WebApplication.dll
 C:\Users\komyh\Documents\RepositoryGit\porcelanaoff\projetos\porcelanaball\PB.WebApplication\obj\Debug\netcoreapp3.1\PB.WebApplication.pdb
 C:\Users\komyh\Documents\RepositoryGit\porcelanaoff\projetos\porcelanaball\PB.WebApplication\obj\Debug\netcoreapp3.1\PB.WebApplication.genruntimeconfig.cache
+C:\Users\komyh\Documents\RepositoryGit\porcelanaoff\projetos\porcelanaball\PB.WebApplication\bin\Debug\netcoreapp3.1\FluentValidation.dll
+C:\Users\komyh\Documents\RepositoryGit\porcelanaoff\projetos\porcelanaball\PB.WebApplication\bin\Debug\netcoreapp3.1\PB.InfraEstrutura.CrossCutting.dll
+C:\Users\komyh\Documents\RepositoryGit\porcelanaoff\projetos\porcelanaball\PB.WebApplication\bin\Debug\netcoreapp3.1\PB.InfraEstrutura.CrossCutting.pdb

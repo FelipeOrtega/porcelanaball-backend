@@ -324,7 +324,9 @@
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection.Abstractions": "3.1.9",
-          "PB.Domain": "1.0.0"
+          "PB.Domain": "1.0.0",
+          "PB.InfraEstrutura": "1.0.0",
+          "PB.Service": "1.0.0"
         },
         "compile": {
           "bin/placeholder/PB.InfraEstrutura.CrossCutting.dll": {}
