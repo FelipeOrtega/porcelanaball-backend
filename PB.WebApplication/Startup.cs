@@ -29,13 +29,22 @@ namespace PB.WebApplication
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //instanciar a conexao com o banco de dados mysql
-            String connection = Configuration.GetConnectionString("DefaultConnection");
-            services.AddDbContext<ApplicationDBContext>(options => options.UseMySql(connection));
 
-            services.AddControllers();
+            try
+            {
+                //instanciar a conexao com o banco de dados mysql
+                String connection = Configuration.GetConnectionString("DefaultConnection");
+                services.AddDbContext<ApplicationDBContext>(options => options.UseMySql(connection));
 
-            Injection.Configure(services);
+                services.AddControllers();
+
+                Injection.Configure(services);
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

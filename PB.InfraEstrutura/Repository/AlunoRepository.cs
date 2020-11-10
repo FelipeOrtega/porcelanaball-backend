@@ -9,5 +9,6 @@ namespace PB.InfraEstrutura.Repository
         public AlunoRepository(ApplicationDBContext context) : base(context)
         {
         }
+
     }
 }

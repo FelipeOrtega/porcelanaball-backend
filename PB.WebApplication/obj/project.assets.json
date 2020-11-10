@@ -237,6 +237,33 @@
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
       },
+      "NWebsec.AspNetCore.Core/3.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp3.1/NWebsec.AspNetCore.Core.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/NWebsec.AspNetCore.Core.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
+      "NWebsec.AspNetCore.Middleware/3.0.0": {
+        "type": "package",
+        "dependencies": {
+          "NWebsec.AspNetCore.Core": "3.0.0"
+        },
+        "compile": {
+          "lib/netcoreapp3.1/NWebsec.AspNetCore.Middleware.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/NWebsec.AspNetCore.Middleware.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
       "Pomelo.EntityFrameworkCore.MySql/3.2.3": {
         "type": "package",
         "dependencies": {
@@ -788,6 +815,32 @@
         "newtonsoft.json.nuspec"
       ]
     },
+    "NWebsec.AspNetCore.Core/3.0.0": {
+      "sha512": "dvrs4Lvc7k98KKaMxKPHeOn0kONEIQpVrzweji9SLl9XEn1+XWVJe5f7mNvXoKPKjjcNuBIwVXr3K+g+DzZHEw==",
+      "type": "package",
+      "path": "nwebsec.aspnetcore.core/3.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netcoreapp3.1/NWebsec.AspNetCore.Core.dll",
+        "lib/netcoreapp3.1/NWebsec.AspNetCore.Core.xml",
+        "nwebsec.aspnetcore.core.3.0.0.nupkg.sha512",
+        "nwebsec.aspnetcore.core.nuspec"
+      ]
+    },
+    "NWebsec.AspNetCore.Middleware/3.0.0": {
+      "sha512": "sQJUG6zk/96UaAcFaf3fQuzjAS9rsf2fXyks1YlG4E3QOWl0h6nIO9fMzfKoskRA+abs01rV+6Kc5P7xccXlzw==",
+      "type": "package",
+      "path": "nwebsec.aspnetcore.middleware/3.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netcoreapp3.1/NWebsec.AspNetCore.Middleware.dll",
+        "lib/netcoreapp3.1/NWebsec.AspNetCore.Middleware.xml",
+        "nwebsec.aspnetcore.middleware.3.0.0.nupkg.sha512",
+        "nwebsec.aspnetcore.middleware.nuspec"
+      ]
+    },
     "Pomelo.EntityFrameworkCore.MySql/3.2.3": {
       "sha512": "1K2qyZ9F+d5oJCKNBapB86/7QnoCk3DvS8dGc7wmMwrv5034x2bqNE9j0uNoc9u4tfGeLNTo9fSOTTTy69UxOw==",
       "type": "package",
@@ -982,25 +1035,26 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "NWebsec.AspNetCore.Middleware >= 3.0.0",
       "PB.Domain >= 1.0.0",
       "PB.InfraEstrutura.CrossCutting >= 1.0.0",
       "PB.Service >= 1.0.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\komyh\\.nuget\\packages\\": {}
+    "C:\\Users\\Felipe\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\komyh\\Documents\\RepositoryGit\\porcelanaoff\\projetos\\porcelanaball\\PB.WebApplication\\PB.WebApplication.csproj",
+      "projectUniqueName": "D:\\Projetos_Externos\\porcelanaball\\projetos\\porcelanaball\\PB.WebApplication\\PB.WebApplication.csproj",
       "projectName": "PB.WebApplication",
-      "projectPath": "C:\\Users\\komyh\\Documents\\RepositoryGit\\porcelanaoff\\projetos\\porcelanaball\\PB.WebApplication\\PB.WebApplication.csproj",
-      "packagesPath": "C:\\Users\\komyh\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\komyh\\Documents\\RepositoryGit\\porcelanaoff\\projetos\\porcelanaball\\PB.WebApplication\\obj\\",
+      "projectPath": "D:\\Projetos_Externos\\porcelanaball\\projetos\\porcelanaball\\PB.WebApplication\\PB.WebApplication.csproj",
+      "packagesPath": "C:\\Users\\Felipe\\.nuget\\packages\\",
+      "outputPath": "D:\\Projetos_Externos\\porcelanaball\\projetos\\porcelanaball\\PB.WebApplication\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\komyh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Felipe\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1013,14 +1067,14 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\komyh\\Documents\\RepositoryGit\\porcelanaoff\\projetos\\porcelanaball\\PB.Domain\\PB.Domain.csproj": {
-              "projectPath": "C:\\Users\\komyh\\Documents\\RepositoryGit\\porcelanaoff\\projetos\\porcelanaball\\PB.Domain\\PB.Domain.csproj"
+            "D:\\Projetos_Externos\\porcelanaball\\projetos\\porcelanaball\\PB.Domain\\PB.Domain.csproj": {
+              "projectPath": "D:\\Projetos_Externos\\porcelanaball\\projetos\\porcelanaball\\PB.Domain\\PB.Domain.csproj"
             },
-            "C:\\Users\\komyh\\Documents\\RepositoryGit\\porcelanaoff\\projetos\\porcelanaball\\PB.InfraEstrutura.CrossCutting\\PB.InfraEstrutura.CrossCutting.csproj": {
-              "projectPath": "C:\\Users\\komyh\\Documents\\RepositoryGit\\porcelanaoff\\projetos\\porcelanaball\\PB.InfraEstrutura.CrossCutting\\PB.InfraEstrutura.CrossCutting.csproj"
+            "D:\\Projetos_Externos\\porcelanaball\\projetos\\porcelanaball\\PB.InfraEstrutura.CrossCutting\\PB.InfraEstrutura.CrossCutting.csproj": {
+              "projectPath": "D:\\Projetos_Externos\\porcelanaball\\projetos\\porcelanaball\\PB.InfraEstrutura.CrossCutting\\PB.InfraEstrutura.CrossCutting.csproj"
             },
-            "C:\\Users\\komyh\\Documents\\RepositoryGit\\porcelanaoff\\projetos\\porcelanaball\\PB.Service\\PB.Service.csproj": {
-              "projectPath": "C:\\Users\\komyh\\Documents\\RepositoryGit\\porcelanaoff\\projetos\\porcelanaball\\PB.Service\\PB.Service.csproj"
+            "D:\\Projetos_Externos\\porcelanaball\\projetos\\porcelanaball\\PB.Service\\PB.Service.csproj": {
+              "projectPath": "D:\\Projetos_Externos\\porcelanaball\\projetos\\porcelanaball\\PB.Service\\PB.Service.csproj"
             }
           }
         }
@@ -1033,6 +1087,12 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
+        "dependencies": {
+          "NWebsec.AspNetCore.Middleware": {
+            "target": "Package",
+            "version": "[3.0.0, )"
+          }
+        },
         "imports": [
           "net461",
           "net462",
@@ -1051,7 +1111,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
       }
     }
   }
