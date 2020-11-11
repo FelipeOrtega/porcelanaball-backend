@@ -11,6 +11,7 @@ namespace PB.InfraEstrutura.Data.Mapping
             builder.HasKey(c => c.codigo);
 
             builder.Property(c => c.codigo).IsRequired();
+
         }
     }
 }
