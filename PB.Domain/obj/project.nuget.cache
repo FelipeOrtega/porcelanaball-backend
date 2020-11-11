@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "tDCQLLcHAhsqTJ6vjsQHnhwQBkGNqmY/huESK/KAyVydPcTC2Kx5pq9SPlzPJNPG/puPW67WwmYeYanD8tKmlA==",
+  "dgSpecHash": "p5pLTgp3pt7FkgORkqNF83nSvrP+FKDqy2ZOCkrSSvqKwbGDO1wHXV6b6ACzwHtMrfI1yXu1Dpkwg2rbHGFY+Q==",
   "success": true,
-  "projectFilePath": "D:\\Projetos_Externos\\porcelanaball\\projetos\\porcelanaball\\PB.Domain\\PB.Domain.csproj",
+  "projectFilePath": "C:\\Users\\komyh\\Documents\\RepositoryGit\\porcelanaoff\\projetos\\porcelanaball\\PB.Domain\\PB.Domain.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Felipe\\.nuget\\packages\\fluentvalidation\\9.2.2\\fluentvalidation.9.2.2.nupkg.sha512"
+    "C:\\Users\\komyh\\.nuget\\packages\\fluentvalidation\\9.2.2\\fluentvalidation.9.2.2.nupkg.sha512"
   ],
   "logs": []
 }

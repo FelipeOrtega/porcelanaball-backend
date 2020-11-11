@@ -2,7 +2,6 @@
 using PB.Domain.Interface.Repository;
 using PB.Domain.Notifications;
 using PB.Service.Interface;
-using System;
 using System.Collections.Generic;
 
 namespace PB.Service
@@ -20,16 +19,9 @@ namespace PB.Service
 
         public List<Aluno> Get()
         {
-            try
-            {
-                List<Aluno> alunos = _repository.Consultar();
-
-                return alunos;
-            }
-            catch (Exception ex) {
-                _notificationContext.AddNotification("Nao foi possivel obter os alunos");
-            }
-            return null;
+            List<Aluno> alunos = _repository.Consultar();
+            return alunos;
         }
+
     }
 }

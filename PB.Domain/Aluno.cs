@@ -3,7 +3,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PB.Domain
 {
-    [Table("aluno")]
     public class Aluno : Pessoa
     {
         public Decimal peso { get; set; }

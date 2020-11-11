@@ -2,7 +2,6 @@
 
 namespace PB.Domain
 {
-   
     public class Funcionario : Pessoa
     {
         public String rua { get; set; }

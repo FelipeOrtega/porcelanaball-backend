@@ -11,7 +11,6 @@ namespace PB.WebApplication.Controllers.Aluno
     public class AlunoController : ApiBase
     {
         private readonly IAlunoService _service;
-
         public AlunoController(NotificationContext notificationContext, IAlunoService service)
         {
             _notificationContext = notificationContext;

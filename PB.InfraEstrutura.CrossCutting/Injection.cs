@@ -16,7 +16,6 @@ namespace PB.InfraEstrutura.CrossCutting
 
             // Repository
             services.AddScoped(typeof(IRepositoryBase<>), typeof(RepositoryBase<>));
-
             services.AddScoped<IAlunoRepository, AlunoRepository>();
 
             services.AddScoped<NotificationContext>();
