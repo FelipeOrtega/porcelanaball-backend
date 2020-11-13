@@ -11,6 +11,7 @@ namespace PB.WebApplication.Controllers.Aluno
     public class AlunoController : ApiBase
     {
         private readonly IAlunoService _service;
+
         public AlunoController(NotificationContext notificationContext, IAlunoService service)
         {
             _notificationContext = notificationContext;
@@ -18,35 +19,42 @@ namespace PB.WebApplication.Controllers.Aluno
         }
 
         [HttpGet]
-        public async Task<JsonReturn> Get()
+        public JsonReturn Get()
         {
             return RetornaJson(_service.Get());
         }
 
         [HttpGet("{id}")]
-        public IActionResult Get(String codigo)
+        public JsonReturn Get(int codigo)
         {
-            _notificationContext.AddNotification("notificação falha exemplo");
-            return Ok(null);
+
+            return RetornaJson(_service.Get(codigo));
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] Object inputModel)
+        public JsonReturn Post([FromBody] Object inputModel)
         {
-            return Ok(inputModel);
+     
+           PB.Domain.Aluno aluno = (PB.Domain.Aluno) inputModel;
+
+           return RetornaJson(_service.Insert(aluno));
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update(int id, [FromBody] Object inputModel)
+        public JsonReturn Put([FromBody] Object inputModel)
         {
-            return Ok(inputModel);
+            PB.Domain.Aluno aluno = (PB.Domain.Aluno)inputModel;
+
+            return RetornaJson(_service.Update(aluno));
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public JsonReturn Delete([FromBody] Object inputModel)
         {
 
-            return Ok(null);
+            PB.Domain.Aluno aluno = (PB.Domain.Aluno)inputModel;
+
+            return RetornaJson(_service.Delete(aluno));
         }
     }
 }

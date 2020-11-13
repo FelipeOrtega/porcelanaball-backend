@@ -1,18 +1,17 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PB.Domain.Core;
 using PB.Domain.Interface.Repository;
-using PB.InfraEstrutura.db.config;
-using System;
+using PB.InfraEstrutura.Data.db.config;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace PB.InfraEstrutura.Repository
+namespace PB.InfraEstrutura.Data.Repository
 {
     public class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where TEntity : EntityBase
     {
         protected readonly ApplicationDBContext context;
-        public RepositoryBase(ApplicationDBContext context)
-            : base()
+
+        public RepositoryBase(ApplicationDBContext context) : base()
         {
             this.context = context;
         }
@@ -42,15 +41,7 @@ namespace PB.InfraEstrutura.Repository
 
         public List<TEntity> Consultar()
         {
-            try
-            {
-                var teste = context.Set<TEntity>().ToList();
-                return teste;
-            }
-            catch (Exception e) { 
-            
-            }
-            return null;
+            return context.Set<TEntity>().ToList();
         }
 
         public TEntity SelecionarPorId(int codigo)

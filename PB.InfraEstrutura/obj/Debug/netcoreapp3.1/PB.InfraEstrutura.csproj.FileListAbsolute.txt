@@ -40,3 +40,17 @@ D:\Projetos_Externos\porcelanaball\projetos\porcelanaball\PB.InfraEstrutura\bin\
 D:\Projetos_Externos\porcelanaball\projetos\porcelanaball\PB.InfraEstrutura\bin\Debug\netcoreapp3.1\PB.Domain.pdb
 D:\Projetos_Externos\porcelanaball\projetos\porcelanaball\PB.InfraEstrutura\bin\Debug\netcoreapp3.1\PB.Utils.pdb
 D:\Projetos_Externos\porcelanaball\projetos\porcelanaball\PB.InfraEstrutura\obj\Debug\netcoreapp3.1\PB.InfraEstrutura.csproj.CopyComplete
+C:\Users\komyh\Documents\RepositoryGit\porcelanaball\projetos\porcelanaball\PB.InfraEstrutura\bin\Debug\netcoreapp3.1\PB.InfraEstrutura.deps.json
+C:\Users\komyh\Documents\RepositoryGit\porcelanaball\projetos\porcelanaball\PB.InfraEstrutura\bin\Debug\netcoreapp3.1\PB.InfraEstrutura.dll
+C:\Users\komyh\Documents\RepositoryGit\porcelanaball\projetos\porcelanaball\PB.InfraEstrutura\bin\Debug\netcoreapp3.1\PB.InfraEstrutura.pdb
+C:\Users\komyh\Documents\RepositoryGit\porcelanaball\projetos\porcelanaball\PB.InfraEstrutura\bin\Debug\netcoreapp3.1\PB.Domain.dll
+C:\Users\komyh\Documents\RepositoryGit\porcelanaball\projetos\porcelanaball\PB.InfraEstrutura\bin\Debug\netcoreapp3.1\PB.Utils.dll
+C:\Users\komyh\Documents\RepositoryGit\porcelanaball\projetos\porcelanaball\PB.InfraEstrutura\bin\Debug\netcoreapp3.1\PB.Domain.pdb
+C:\Users\komyh\Documents\RepositoryGit\porcelanaball\projetos\porcelanaball\PB.InfraEstrutura\bin\Debug\netcoreapp3.1\PB.Utils.pdb
+C:\Users\komyh\Documents\RepositoryGit\porcelanaball\projetos\porcelanaball\PB.InfraEstrutura\obj\Debug\netcoreapp3.1\PB.InfraEstrutura.csprojAssemblyReference.cache
+C:\Users\komyh\Documents\RepositoryGit\porcelanaball\projetos\porcelanaball\PB.InfraEstrutura\obj\Debug\netcoreapp3.1\PB.InfraEstrutura.AssemblyInfoInputs.cache
+C:\Users\komyh\Documents\RepositoryGit\porcelanaball\projetos\porcelanaball\PB.InfraEstrutura\obj\Debug\netcoreapp3.1\PB.InfraEstrutura.AssemblyInfo.cs
+C:\Users\komyh\Documents\RepositoryGit\porcelanaball\projetos\porcelanaball\PB.InfraEstrutura\obj\Debug\netcoreapp3.1\PB.InfraEstrutura.csproj.CoreCompileInputs.cache
+C:\Users\komyh\Documents\RepositoryGit\porcelanaball\projetos\porcelanaball\PB.InfraEstrutura\obj\Debug\netcoreapp3.1\PB.InfraEstrutura.csproj.CopyComplete
+C:\Users\komyh\Documents\RepositoryGit\porcelanaball\projetos\porcelanaball\PB.InfraEstrutura\obj\Debug\netcoreapp3.1\PB.InfraEstrutura.dll
+C:\Users\komyh\Documents\RepositoryGit\porcelanaball\projetos\porcelanaball\PB.InfraEstrutura\obj\Debug\netcoreapp3.1\PB.InfraEstrutura.pdb

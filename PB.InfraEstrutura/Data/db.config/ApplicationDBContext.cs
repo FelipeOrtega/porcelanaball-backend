@@ -3,10 +3,9 @@ using Microsoft.EntityFrameworkCore.Storage;
 using PB.Domain;
 using PB.InfraEstrutura.Data.Mapping;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace PB.InfraEstrutura.db.config
+
+namespace PB.InfraEstrutura.Data.db.config
 {
     public class ApplicationDBContext : DbContext
     {
