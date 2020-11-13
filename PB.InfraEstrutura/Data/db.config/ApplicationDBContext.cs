@@ -63,9 +63,10 @@ namespace PB.InfraEstrutura.Data.db.config
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.ApplyConfiguration(new AlunoMap()).
-                         ApplyConfiguration(new ProdutoMap());
-       
-            
+                         ApplyConfiguration(new ProdutoMap()).
+                         ApplyConfiguration(new FuncionarioMap());
+
+
         }
     }
 }
