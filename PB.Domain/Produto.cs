@@ -6,12 +6,12 @@ namespace PB.Domain
     public class Produto : EntityBase
     {
         public String descricao { get; set; }
-        public decimal precoVenda { get; set; }
-        public decimal precoCompra { get; set; }
+        public decimal preco_venda { get; set; }
+        public decimal preco_compra { get; set; }
         public DateTime validade { get; set; }
-        public DateTime dataCadastro { get; set; } 
-        public int LoteCodio { get; set; }
-        public int CodigoProdutoCategoria { get; set; }
+        public DateTime data_cadastro { get; set; } 
+        public int lote_codigo { get; set; }
+        public int produto_categoria_codigo { get; set; }
         public bool ativo;
     }
 }
