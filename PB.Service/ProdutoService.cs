@@ -20,72 +20,72 @@ namespace PB.Service
 
         public List<Produto> Get()
         {
-        /*    try
+            try
             {
-                List<Aluno> alunos = _repository.Consultar();
-                return alunos;
+                List<Produto> produtos = _repository.Consultar();
+                return produtos;
             }
             catch (Exception)
             {
 
-            }*/
+            }
 
             return null;
         }
 
         public Produto Get(int codigo)
         {
-          /*  try
+            try
             {
-                Aluno aluno = _repository.SelecionarPorId(codigo);
-                return aluno;
+                Produto produto = _repository.SelecionarPorId(codigo);
+                return produto;
             }
             catch (Exception)
             {
 
-            }*/
+            }
 
             return null;
         }
 
-        public int Insert(Produto aluno)
+        public int Insert(Produto produto)
         {
-           /* try
+            try
             {
-                int codigoAlunoInserido = _repository.Inserir(aluno);
-                return codigoAlunoInserido;
+                int codigoProdutoInserido = _repository.Inserir(produto);
+                return codigoProdutoInserido;
             }
             catch (Exception)
             {
 
-            }*/
+            }
             return 0;
         }
 
-        public int Update(Produto aluno)
+        public int Update(Produto produto)
         {
-          /*  try
+            try
             {
-                _repository.Alterar(aluno);
+                _repository.Alterar(produto);
             }
             catch (Exception)
             {
 
-            }*/
+            }
 
             return 0;
         }
 
-        public int Delete(Produto aluno)
+        public int Delete(Produto produto)
         {
-           /* try
+            try
             {
-                _repository.Excluir(aluno);
+                _repository.Excluir(produto);
             }
             catch (Exception)
             {
 
-            }*/
+            }
 
             return 0;
         }
