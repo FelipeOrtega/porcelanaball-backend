@@ -25,7 +25,7 @@ namespace PB.Service
                 List<Aluno> alunos = _repository.Consultar();
                 return alunos;
             }
-            catch (Exception) {
+            catch (Exception ex) {
              
             }
 

@@ -33,3 +33,4 @@ C:\Users\komyh\Documents\RepositoryGit\porcelanaball\projetos\porcelanaball\PB.D
 C:\Users\komyh\Documents\RepositoryGit\porcelanaball\projetos\porcelanaball\PB.Domain\obj\Debug\netcoreapp3.1\PB.Domain.csproj.CoreCompileInputs.cache
 C:\Users\komyh\Documents\RepositoryGit\porcelanaball\projetos\porcelanaball\PB.Domain\obj\Debug\netcoreapp3.1\PB.Domain.dll
 C:\Users\komyh\Documents\RepositoryGit\porcelanaball\projetos\porcelanaball\PB.Domain\obj\Debug\netcoreapp3.1\PB.Domain.pdb
+C:\Users\komyh\Documents\RepositoryGit\porcelanaball\projetos\porcelanaball\PB.Domain\obj\Debug\netcoreapp3.1\PB.Domain.csprojAssemblyReference.cache
