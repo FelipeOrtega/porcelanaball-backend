@@ -14,11 +14,15 @@ namespace PB.InfraEstrutura.CrossCutting
             // Service
             services.AddScoped<IAlunoService, AlunoService>();
             services.AddScoped<IProdutoService, ProdutoService>();
+            services.AddScoped<IProdutoLoteService, ProdutoLoteService>();
+            services.AddScoped<IFuncionarioService, FuncionarioService>();
 
             // Repository
             services.AddScoped(typeof(IRepositoryBase<>), typeof(RepositoryBase<>));
             services.AddScoped<IAlunoRepository, AlunoRepository>();
             services.AddScoped<IProdutoRepository, ProdutoRepository>();
+            services.AddScoped<IProdutoLoteRepository,ProdutoLoteRepository>();
+            services.AddScoped<IFuncionarioRepository, FuncionarioRepository>();
 
             services.AddScoped<NotificationContext>();
         }

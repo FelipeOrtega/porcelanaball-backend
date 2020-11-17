@@ -4,11 +4,10 @@ using PB.Domain;
 
 namespace PB.InfraEstrutura.Data.Mapping
 {
-    class ProdutoMap : MapBase<Produto>
+    class ProdutoLoteMap : MapBase<ProdutoLote>
     {
-        public override void Configure(EntityTypeBuilder<Produto> builder)
+        public override void Configure(EntityTypeBuilder<ProdutoLote> builder)
         {
-            builder.HasOne(pl => pl.produtoLote).WithMany();
             base.Configure(builder);
         }
     }

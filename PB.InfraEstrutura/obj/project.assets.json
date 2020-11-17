@@ -927,19 +927,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\komyh\\.nuget\\packages\\": {}
+    "C:\\Users\\Felipe\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\komyh\\Documents\\RepositoryGit\\porcelanaball\\projetos\\porcelanaball\\PB.InfraEstrutura\\PB.InfraEstrutura.csproj",
+      "projectUniqueName": "D:\\Projetos_Externos\\porcelanaball\\projetos\\porcelanaball\\PB.InfraEstrutura\\PB.InfraEstrutura.csproj",
       "projectName": "PB.InfraEstrutura",
-      "projectPath": "C:\\Users\\komyh\\Documents\\RepositoryGit\\porcelanaball\\projetos\\porcelanaball\\PB.InfraEstrutura\\PB.InfraEstrutura.csproj",
-      "packagesPath": "C:\\Users\\komyh\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\komyh\\Documents\\RepositoryGit\\porcelanaball\\projetos\\porcelanaball\\PB.InfraEstrutura\\obj\\",
+      "projectPath": "D:\\Projetos_Externos\\porcelanaball\\projetos\\porcelanaball\\PB.InfraEstrutura\\PB.InfraEstrutura.csproj",
+      "packagesPath": "C:\\Users\\Felipe\\.nuget\\packages\\",
+      "outputPath": "D:\\Projetos_Externos\\porcelanaball\\projetos\\porcelanaball\\PB.InfraEstrutura\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\komyh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Felipe\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -952,11 +952,11 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\komyh\\Documents\\RepositoryGit\\porcelanaball\\projetos\\porcelanaball\\PB.Domain\\PB.Domain.csproj": {
-              "projectPath": "C:\\Users\\komyh\\Documents\\RepositoryGit\\porcelanaball\\projetos\\porcelanaball\\PB.Domain\\PB.Domain.csproj"
+            "D:\\Projetos_Externos\\porcelanaball\\projetos\\porcelanaball\\PB.Domain\\PB.Domain.csproj": {
+              "projectPath": "D:\\Projetos_Externos\\porcelanaball\\projetos\\porcelanaball\\PB.Domain\\PB.Domain.csproj"
             },
-            "C:\\Users\\komyh\\Documents\\RepositoryGit\\porcelanaball\\projetos\\porcelanaball\\PB.Utils\\PB.Utils.csproj": {
-              "projectPath": "C:\\Users\\komyh\\Documents\\RepositoryGit\\porcelanaball\\projetos\\porcelanaball\\PB.Utils\\PB.Utils.csproj"
+            "D:\\Projetos_Externos\\porcelanaball\\projetos\\porcelanaball\\PB.Utils\\PB.Utils.csproj": {
+              "projectPath": "D:\\Projetos_Externos\\porcelanaball\\projetos\\porcelanaball\\PB.Utils\\PB.Utils.csproj"
             }
           }
         }
@@ -990,7 +990,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
       }
     }
   }
