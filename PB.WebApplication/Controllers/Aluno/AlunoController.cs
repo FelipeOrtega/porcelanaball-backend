@@ -7,7 +7,7 @@ using PB.WebApplication.Core;
 
 namespace PB.WebApplication.Controllers.Aluno
 {
-    [Route("Aluno")]    
+    [Route("Aluno")]
     public class AlunoController : ApiBase
     {
         private readonly IAlunoService _service;
@@ -25,10 +25,10 @@ namespace PB.WebApplication.Controllers.Aluno
         }
 
         [HttpGet("{id}")]
-        public JsonReturn Get(int codigo)
+        public JsonReturn Get(int id)
         {
 
-            return RetornaJson(_service.Get(codigo));
+            return RetornaJson(_service.Get(id));
         }
 
         [HttpPost]

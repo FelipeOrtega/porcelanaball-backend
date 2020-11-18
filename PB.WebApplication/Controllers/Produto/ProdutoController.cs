@@ -27,10 +27,10 @@ namespace PB.WebApplication.Controllers.Produto
         }
 
         [HttpGet("{id}")]
-        public JsonReturn Get(int codigo)
+        public JsonReturn Get(int id)
         {
 
-            return RetornaJson(_service.Get(codigo));
+            return RetornaJson(_service.Get(id));
         }
 
         [HttpPost]

@@ -4,28 +4,28 @@ using PB.Domain.Notifications;
 using PB.Service.Interface;
 using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace PB.Service
 {
-    public class AlunoService : IAlunoService
+    public class PlanoService : IPlanoService
     {
-        private readonly IAlunoRepository _repository;
+        private readonly IPlanoRepository _repository;
         private readonly NotificationContext _notificationContext;
 
-        public AlunoService(IAlunoRepository repository, NotificationContext notificationContext)
+        public PlanoService(IPlanoRepository repository, NotificationContext notificationContext)
         {
             _repository = repository;
             _notificationContext = notificationContext;
         }
-
-        public List<Aluno> Get()
+        public List<Plano> Get()
         {
             try
             {
-                List<Aluno> alunos = _repository.Consultar();
-                return alunos;
+                List<Plano> planos = _repository.Consultar();
+                return planos;
             }
-            catch (Exception ex) 
+            catch (Exception e)
             {
                 _notificationContext.AddNotification("Não foi possivel capturar as informações.");
             }
@@ -33,12 +33,12 @@ namespace PB.Service
             return null;
         }
 
-        public Aluno Get(int codigo)
-        { 
+        public Plano Get(int codigo)
+        {
             try
             {
-                Aluno aluno = _repository.SelecionarPorId(codigo);
-                return aluno;
+                Plano plano = _repository.SelecionarPorId(codigo);
+                return plano;
             }
             catch (Exception)
             {
@@ -48,12 +48,12 @@ namespace PB.Service
             return null;
         }
 
-        public int Insert(Aluno aluno)
+        public int Insert(Plano plano)
         {
             try
             {
-                int codigoAlunoInserido = _repository.Inserir(aluno);
-                return codigoAlunoInserido;
+                int codigoPlanoInserido = _repository.Inserir(plano);
+                return codigoPlanoInserido;
             }
             catch (Exception)
             {
@@ -62,11 +62,11 @@ namespace PB.Service
             return 0;
         }
 
-        public int Update(Aluno aluno)
+        public int Update(Plano plano)
         {
             try
             {
-                _repository.Alterar(aluno);
+                _repository.Alterar(plano);
             }
             catch (Exception)
             {
@@ -76,11 +76,12 @@ namespace PB.Service
             return 0;
         }
 
-        public int Delete(Aluno aluno)
+        public int Delete(int codigo)
         {
             try
             {
-                _repository.Excluir(aluno);
+                Plano plano = _repository.SelecionarPorId(codigo);
+                _repository.Excluir(plano);
             }
             catch (Exception)
             {

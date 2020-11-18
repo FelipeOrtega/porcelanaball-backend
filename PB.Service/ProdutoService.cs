@@ -27,7 +27,7 @@ namespace PB.Service
             }
             catch (Exception)
             {
-
+                _notificationContext.AddNotification("Não foi possivel capturar as informações.");
             }
 
             return null;
@@ -42,7 +42,7 @@ namespace PB.Service
             }
             catch (Exception)
             {
-
+                _notificationContext.AddNotification("Não foi possivel capturar as informações.");
             }
 
             return null;
@@ -57,7 +57,7 @@ namespace PB.Service
             }
             catch (Exception)
             {
-
+                _notificationContext.AddNotification("Não foi possivel inserir.");
             }
             return 0;
         }
@@ -70,7 +70,7 @@ namespace PB.Service
             }
             catch (Exception)
             {
-
+                _notificationContext.AddNotification("Não foi possivel alterar.");
             }
 
             return 0;
@@ -84,7 +84,7 @@ namespace PB.Service
             }
             catch (Exception)
             {
-
+                _notificationContext.AddNotification("Não foi possivel deletar.");
             }
 
             return 0;

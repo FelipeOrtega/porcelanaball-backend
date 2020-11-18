@@ -24,27 +24,27 @@ namespace PB.WebApplication.Controllers
         }
 
         [HttpGet("{id}")]
-        public JsonReturn Get(int codigo)
+        public JsonReturn Get(int id)
         {
-            return RetornaJson(_service.Get(codigo));
+            return RetornaJson(_service.Get(id));
         }
 
         [HttpPost]
-        public JsonReturn Create([FromBody]PB.Domain.Funcionario funcionario)
+        public JsonReturn Create([FromBody]Funcionario funcionario)
         {
             return RetornaJson(_service.Insert(funcionario));
         }
 
         [HttpPut]
-        public JsonReturn Update([FromBody]PB.Domain.Funcionario funcionario)
+        public JsonReturn Update([FromBody]Funcionario funcionario)
         {
             return RetornaJson(_service.Update(funcionario));
         }
 
         [HttpDelete("{id}")]
-        public JsonReturn Delete(int codigo)
+        public JsonReturn Delete(int id)
         {
-            return RetornaJson(_service.Delete(codigo));
+            return RetornaJson(_service.Delete(id));
         }
     }
 }

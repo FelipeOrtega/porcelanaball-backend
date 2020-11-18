@@ -25,8 +25,9 @@ namespace PB.Service
                 List<ProdutoLote> ProdutoLotes = _repository.Consultar();
                 return ProdutoLotes;
             }
-            catch (Exception ex) {
-             
+            catch (Exception ex)
+            {
+                _notificationContext.AddNotification("Não foi possivel capturar as informações.");
             }
 
             return null;
@@ -41,7 +42,7 @@ namespace PB.Service
             }
             catch (Exception)
             {
-
+                _notificationContext.AddNotification("Não foi possivel capturar as informações.");
             }
 
             return null;
@@ -54,8 +55,9 @@ namespace PB.Service
                 int codigoProdutoLoteInserido = _repository.Inserir(ProdutoLote);
                 return codigoProdutoLoteInserido;
             }
-            catch (Exception) { 
-            
+            catch (Exception)
+            {
+                _notificationContext.AddNotification("Não foi possivel inserir.");
             }
             return 0;
         }
@@ -66,8 +68,9 @@ namespace PB.Service
             {
                 _repository.Alterar(ProdutoLote);
             }
-            catch (Exception) { 
-            
+            catch (Exception)
+            {
+                _notificationContext.AddNotification("Não foi possivel alterar.");
             }
 
             return 0;
@@ -80,8 +83,8 @@ namespace PB.Service
                 _repository.Excluir(ProdutoLote);
             }
             catch (Exception)
-            { 
-            
+            {
+                _notificationContext.AddNotification("Não foi possivel deletar.");
             }
 
             return 0;
