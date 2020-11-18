@@ -26,9 +26,7 @@ namespace PB.Service
             }
             catch(Exception e)
             {
-
             }
-
             return null;
         }
 
@@ -41,7 +39,6 @@ namespace PB.Service
             }
             catch (Exception)
             {
-
             }
 
             return null;
