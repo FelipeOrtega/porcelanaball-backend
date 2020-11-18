@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using PB.Domain;
 using PB.Domain.Notifications;
 using PB.Service.Interface;
 using PB.WebApplication.Core;
 
-namespace PB.WebApplication.Controllers.Funcionario
+namespace PB.WebApplication.Controllers
 {
     [Route("Funcionario")]
     public class FuncionarioController : ApiBase
     {
-
         private readonly IFuncionarioService _service;
 
         public FuncionarioController(NotificationContext notificationContext, IFuncionarioService service)
@@ -22,33 +18,33 @@ namespace PB.WebApplication.Controllers.Funcionario
         }
 
         [HttpGet]
-        public async Task<JsonReturn> Get()
+        public JsonReturn Get()
         {
             return RetornaJson(_service.Get());
         }
 
         [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        public JsonReturn Get(int codigo)
         {
-            return Ok(null);
+            return RetornaJson(_service.Get(codigo));
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] Object inputModel)
+        public JsonReturn Create([FromBody]PB.Domain.Funcionario funcionario)
         {
-            return Ok(inputModel);
+            return RetornaJson(_service.Insert(funcionario));
         }
 
-        [HttpPut("{id}")]
-        public IActionResult Update(int id, [FromBody] Object inputModel)
+        [HttpPut]
+        public JsonReturn Update([FromBody]PB.Domain.Funcionario funcionario)
         {
-            return Ok(inputModel);
+            return RetornaJson(_service.Update(funcionario));
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public JsonReturn Delete(int codigo)
         {
-            return Ok(null);
+            return RetornaJson(_service.Delete(codigo));
         }
     }
 }

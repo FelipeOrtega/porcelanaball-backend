@@ -24,7 +24,6 @@ C:\Users\komyh\Documents\RepositoryGit\porcelanaball\projetos\porcelanaball\PB.U
 C:\Users\komyh\Documents\RepositoryGit\porcelanaball\projetos\porcelanaball\PB.Utils\obj\Debug\netcoreapp3.1\PB.Utils.csproj.CoreCompileInputs.cache
 C:\Users\komyh\Documents\RepositoryGit\porcelanaball\projetos\porcelanaball\PB.Utils\obj\Debug\netcoreapp3.1\PB.Utils.dll
 C:\Users\komyh\Documents\RepositoryGit\porcelanaball\projetos\porcelanaball\PB.Utils\obj\Debug\netcoreapp3.1\PB.Utils.pdb
-C:\Users\komyh\Documents\RepositoryGit\porcelanaball\projetos\porcelanaball\PB.Utils\obj\Debug\netcoreapp3.1\PB.Utils.csprojAssemblyReference.cache
 D:\Projetos_Externos\porcelanaball\projetos\porcelanaball\PB.Utils\bin\Debug\netcoreapp3.1\PB.Utils.deps.json
 D:\Projetos_Externos\porcelanaball\projetos\porcelanaball\PB.Utils\bin\Debug\netcoreapp3.1\PB.Utils.dll
 D:\Projetos_Externos\porcelanaball\projetos\porcelanaball\PB.Utils\bin\Debug\netcoreapp3.1\PB.Utils.pdb
