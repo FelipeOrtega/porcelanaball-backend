@@ -68,7 +68,7 @@ namespace PB.Service
             {
                 _repository.Alterar(aluno);
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 _notificationContext.AddNotification("Não foi possivel alterar.");
             }

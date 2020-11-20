@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using PB.Domain.Notifications;
 using PB.Service.Interface;
 using PB.WebApplication.Core;
@@ -34,10 +36,10 @@ namespace PB.WebApplication.Controllers.Aluno
         [HttpPost]
         public JsonReturn Post([FromBody] Object inputModel)
         {
-     
-           PB.Domain.Aluno aluno = (PB.Domain.Aluno) inputModel;
-
-           return RetornaJson(_service.Insert(aluno));
+            JsonElement element = (JsonElement) inputModel;
+            var json = element.GetRawText();
+            PB.Domain.Aluno aluno = System.Text.Json.JsonSerializer.Deserialize<PB.Domain.Aluno>(json);
+            return RetornaJson(_service.Insert(aluno));
         }
 
         [HttpPut("{id}")]
