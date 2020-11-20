@@ -3,7 +3,7 @@ using System;
 
 namespace PB.Domain
 {
-    public class FuncionarioPossuiPlano
+    public class FuncionarioPossuiPlano : EntityBase
     {
         public int aluno_codigo { get; set; }
         public int plano_codigo { get; set; }

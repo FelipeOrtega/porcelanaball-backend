@@ -14,7 +14,6 @@ namespace PB.InfraEstrutura.CrossCutting
             // Service
             services.AddScoped<IAlunoService, AlunoService>();
             services.AddScoped<IProdutoService, ProdutoService>();
-            services.AddScoped<IProdutoLoteService, ProdutoLoteService>();
             services.AddScoped<IFuncionarioService, FuncionarioService>();
             services.AddScoped<IPlanoService, PlanoService>();
 
@@ -22,7 +21,6 @@ namespace PB.InfraEstrutura.CrossCutting
             services.AddScoped(typeof(IRepositoryBase<>), typeof(RepositoryBase<>));
             services.AddScoped<IAlunoRepository, AlunoRepository>();
             services.AddScoped<IProdutoRepository, ProdutoRepository>();
-            services.AddScoped<IProdutoLoteRepository,ProdutoLoteRepository>();
             services.AddScoped<IFuncionarioRepository, FuncionarioRepository>();
             services.AddScoped<IPlanoRepository, PlanoRepository>();
 

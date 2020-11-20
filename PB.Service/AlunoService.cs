@@ -50,16 +50,19 @@ namespace PB.Service
 
         public int Insert(Aluno aluno)
         {
+            int codigoAlunoInserido = 0;
             try
             {
-                int codigoAlunoInserido = _repository.Inserir(aluno);
-                return codigoAlunoInserido;
+                if (_repository.SelecionarPorCpf(aluno) == null)
+                {
+                    codigoAlunoInserido = _repository.Inserir(aluno);
+                }
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 _notificationContext.AddNotification("Não foi possivel inserir.");
             }
-            return 0;
+            return codigoAlunoInserido;
         }
 
         public int Update(Aluno aluno)
