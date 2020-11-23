@@ -9,12 +9,10 @@ namespace PB.InfraEstrutura.Data.db.config
 {
     public class ApplicationDBContext : DbContext
     {
-
         public IDbContextTransaction Transaction { get; private set; }
 
         public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options) : base(options)
         {}
-
 
         public IDbContextTransaction InitTransacao()
         {
@@ -67,9 +65,13 @@ namespace PB.InfraEstrutura.Data.db.config
             modelBuilder.ApplyConfiguration(new AlunoMap()).
                          ApplyConfiguration(new ProdutoMap()).
                          ApplyConfiguration(new FuncionarioMap()).
-                         ApplyConfiguration(new PlanoMap());
-
-
+                         ApplyConfiguration(new ProdutoLoteMap()).
+                         ApplyConfiguration(new PlanoMap()).
+                         ApplyConfiguration(new ModalidadeMap()).
+                         ApplyConfiguration(new ProdutoCategoriaMap()).
+                         ApplyConfiguration(new LancamentoMap()).
+                         ApplyConfiguration(new ModalidadeFuncionarioMap()).
+                         ApplyConfiguration(new ProdutoCategoriaMap());
         }
     }
 }
