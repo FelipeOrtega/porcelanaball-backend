@@ -66,9 +66,12 @@ namespace PB.InfraEstrutura.Data.db.config
                          ApplyConfiguration(new ProdutoMap()).
                          ApplyConfiguration(new FuncionarioMap()).
                          ApplyConfiguration(new ProdutoLoteMap()).
-                         ApplyConfiguration(new PlanoMap());
-
-
+                         ApplyConfiguration(new PlanoMap()).
+                         ApplyConfiguration(new ModalidadeMap()).
+                         ApplyConfiguration(new ProdutoCategoriaMap()).
+                         ApplyConfiguration(new LancamentoMap()).
+                         ApplyConfiguration(new ModalidadeFuncionarioMap()).
+                         ApplyConfiguration(new ProdutoCategoriaMap());
         }
     }
 }

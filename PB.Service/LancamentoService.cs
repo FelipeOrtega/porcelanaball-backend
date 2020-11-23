@@ -7,25 +7,25 @@ using System.Collections.Generic;
 
 namespace PB.Service
 {
-    public class AlunoService : IAlunoService
+    public class LancamentoService : ILancamentoService
     {
-        private readonly IAlunoRepository _repository;
+        private readonly ILancamentoRepository _repository;
         private readonly NotificationContext _notificationContext;
 
-        public AlunoService(IAlunoRepository repository, NotificationContext notificationContext)
+        public LancamentoService(ILancamentoRepository repository, NotificationContext notificationContext)
         {
             _repository = repository;
             _notificationContext = notificationContext;
         }
 
-        public List<Aluno> Get()
+        public List<Lancamento> Get()
         {
             try
             {
-                List<Aluno> alunos = _repository.Consultar();
-                return alunos;
+                List<Lancamento> lancamentos = _repository.Consultar();
+                return lancamentos;
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 _notificationContext.AddNotification("Não foi possivel capturar as informações.");
             }
@@ -33,12 +33,12 @@ namespace PB.Service
             return null;
         }
 
-        public Aluno Get(int codigo)
-        { 
+        public Lancamento Get(int codigo)
+        {
             try
             {
-                Aluno aluno = _repository.SelecionarPorId(codigo);
-                return aluno;
+                Lancamento lancamento = _repository.SelecionarPorId(codigo);
+                return lancamento;
             }
             catch (Exception)
             {
@@ -48,12 +48,12 @@ namespace PB.Service
             return null;
         }
 
-        public int Insert(Aluno aluno)
+        public int Insert(Lancamento lancamento)
         {
             try
             {
-                int codigoAlunoInserido = _repository.Inserir(aluno);
-                return codigoAlunoInserido;
+                int codigoLancamentoInserido = _repository.Inserir(lancamento);
+                return codigoLancamentoInserido;
             }
             catch (Exception)
             {
@@ -62,11 +62,11 @@ namespace PB.Service
             return 0;
         }
 
-        public int Update(Aluno aluno)
+        public int Update(Lancamento lancamento)
         {
             try
             {
-                _repository.Alterar(aluno);
+                _repository.Alterar(lancamento);
             }
             catch (Exception)
             {
@@ -76,11 +76,11 @@ namespace PB.Service
             return 0;
         }
 
-        public int Delete(Aluno aluno)
+        public int Delete(Lancamento lancamento)
         {
             try
             {
-                _repository.Excluir(aluno);
+                _repository.Excluir(lancamento);
             }
             catch (Exception)
             {

@@ -7,25 +7,25 @@ using System.Collections.Generic;
 
 namespace PB.Service
 {
-    public class AlunoService : IAlunoService
+    public class ModalidadeService : IModalidadeService
     {
-        private readonly IAlunoRepository _repository;
+        private readonly IModalidadeRepository _repository;
         private readonly NotificationContext _notificationContext;
 
-        public AlunoService(IAlunoRepository repository, NotificationContext notificationContext)
+        public ModalidadeService(IModalidadeRepository repository, NotificationContext notificationContext)
         {
             _repository = repository;
             _notificationContext = notificationContext;
         }
 
-        public List<Aluno> Get()
+        public List<Modalidade> Get()
         {
             try
             {
-                List<Aluno> alunos = _repository.Consultar();
-                return alunos;
+                List<Modalidade> modalidades = _repository.Consultar();
+                return modalidades;
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 _notificationContext.AddNotification("Não foi possivel capturar as informações.");
             }
@@ -33,12 +33,12 @@ namespace PB.Service
             return null;
         }
 
-        public Aluno Get(int codigo)
-        { 
+        public Modalidade Get(int codigo)
+        {
             try
             {
-                Aluno aluno = _repository.SelecionarPorId(codigo);
-                return aluno;
+                Modalidade modalidade = _repository.SelecionarPorId(codigo);
+                return modalidade;
             }
             catch (Exception)
             {
@@ -48,12 +48,12 @@ namespace PB.Service
             return null;
         }
 
-        public int Insert(Aluno aluno)
+        public int Insert(Modalidade modalidade)
         {
             try
             {
-                int codigoAlunoInserido = _repository.Inserir(aluno);
-                return codigoAlunoInserido;
+                int codigoModalidadeInserido = _repository.Inserir(modalidade);
+                return codigoModalidadeInserido;
             }
             catch (Exception)
             {
@@ -62,11 +62,11 @@ namespace PB.Service
             return 0;
         }
 
-        public int Update(Aluno aluno)
+        public int Update(Modalidade modalidade)
         {
             try
             {
-                _repository.Alterar(aluno);
+                _repository.Alterar(modalidade);
             }
             catch (Exception)
             {
@@ -76,11 +76,11 @@ namespace PB.Service
             return 0;
         }
 
-        public int Delete(Aluno aluno)
+        public int Delete(Modalidade modalidade)
         {
             try
             {
-                _repository.Excluir(aluno);
+                _repository.Excluir(modalidade);
             }
             catch (Exception)
             {

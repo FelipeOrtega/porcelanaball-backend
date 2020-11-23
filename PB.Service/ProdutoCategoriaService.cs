@@ -7,25 +7,25 @@ using System.Collections.Generic;
 
 namespace PB.Service
 {
-    public class AlunoService : IAlunoService
+    public class ProdutoCategoriaService : IProdutoCategoriaService
     {
-        private readonly IAlunoRepository _repository;
+        private readonly IProdutoCategoriaRepository _repository;
         private readonly NotificationContext _notificationContext;
 
-        public AlunoService(IAlunoRepository repository, NotificationContext notificationContext)
+        public ProdutoCategoriaService(IProdutoCategoriaRepository repository, NotificationContext notificationContext)
         {
             _repository = repository;
             _notificationContext = notificationContext;
         }
 
-        public List<Aluno> Get()
+        public List<ProdutoCategoria> Get()
         {
             try
             {
-                List<Aluno> alunos = _repository.Consultar();
-                return alunos;
+                List<ProdutoCategoria> produtosCategoria = _repository.Consultar();
+                return produtosCategoria;
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 _notificationContext.AddNotification("Não foi possivel capturar as informações.");
             }
@@ -33,12 +33,12 @@ namespace PB.Service
             return null;
         }
 
-        public Aluno Get(int codigo)
-        { 
+        public ProdutoCategoria Get(int codigo)
+        {
             try
             {
-                Aluno aluno = _repository.SelecionarPorId(codigo);
-                return aluno;
+                ProdutoCategoria produtoCategoria = _repository.SelecionarPorId(codigo);
+                return produtoCategoria;
             }
             catch (Exception)
             {
@@ -48,12 +48,12 @@ namespace PB.Service
             return null;
         }
 
-        public int Insert(Aluno aluno)
+        public int Insert(ProdutoCategoria produtoCategoria)
         {
             try
             {
-                int codigoAlunoInserido = _repository.Inserir(aluno);
-                return codigoAlunoInserido;
+                int codigoProdutoCategoriaInserido = _repository.Inserir(produtoCategoria);
+                return codigoProdutoCategoriaInserido;
             }
             catch (Exception)
             {
@@ -62,11 +62,11 @@ namespace PB.Service
             return 0;
         }
 
-        public int Update(Aluno aluno)
+        public int Update(ProdutoCategoria produtoCategoria)
         {
             try
             {
-                _repository.Alterar(aluno);
+                _repository.Alterar(produtoCategoria);
             }
             catch (Exception)
             {
@@ -76,11 +76,11 @@ namespace PB.Service
             return 0;
         }
 
-        public int Delete(Aluno aluno)
+        public int Delete(ProdutoCategoria produtoCategoria)
         {
             try
             {
-                _repository.Excluir(aluno);
+                _repository.Excluir(produtoCategoria);
             }
             catch (Exception)
             {
