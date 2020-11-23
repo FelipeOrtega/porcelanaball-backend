@@ -6,6 +6,8 @@ namespace PB.Domain
     public class AlunoTreino : EntityBase
     {
         public String descricao { get; set; }
+        public String treino { get; set; }
+        public Aluno aluno { get; set; }
         public int aluno_codigo { get; set; }
     }
 }

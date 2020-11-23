@@ -8,5 +8,6 @@ namespace PB.Domain
     {
         public Decimal peso { get; set; }
         public Decimal altura { get; set; }
+        public List<AlunoTreino> alunoTreinos { get; set; }
     }
 }
