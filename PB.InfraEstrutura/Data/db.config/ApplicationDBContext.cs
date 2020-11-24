@@ -66,6 +66,7 @@ namespace PB.InfraEstrutura.Data.db.config
                          ApplyConfiguration(new AlunoTreinoMap()).
                          ApplyConfiguration(new ProdutoMap()).
                          ApplyConfiguration(new FuncionarioMap()).
+                         ApplyConfiguration(new ProdutoLoteMap()).
                          ApplyConfiguration(new PlanoMap()).
                          ApplyConfiguration(new ModalidadeMap()).
                          ApplyConfiguration(new ProdutoCategoriaMap()).

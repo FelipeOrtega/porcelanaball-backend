@@ -7,25 +7,25 @@ using System.Collections.Generic;
 
 namespace PB.Service
 {
-    public class AlunoService : IAlunoService
+    public class ProdutoLoteService : IProdutoLoteService
     {
-        private readonly IAlunoRepository _repository;
+        private readonly IProdutoLoteRepository _repository;
         private readonly NotificationContext _notificationContext;
 
-        public AlunoService(IAlunoRepository repository, NotificationContext notificationContext)
+        public ProdutoLoteService(IProdutoLoteRepository repository, NotificationContext notificationContext)
         {
             _repository = repository;
             _notificationContext = notificationContext;
         }
 
-        public List<Aluno> Get()
+        public List<ProdutoLote> Get()
         {
             try
             {
-                List<Aluno> alunos = _repository.Consultar();
-                return alunos;
+                List<ProdutoLote> ProdutoLotes = _repository.Consultar();
+                return ProdutoLotes;
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 _notificationContext.AddNotification("Não foi possivel capturar as informações.");
             }
@@ -33,12 +33,12 @@ namespace PB.Service
             return null;
         }
 
-        public Aluno Get(int codigo)
+        public ProdutoLote Get(int codigo)
         { 
             try
             {
-                Aluno aluno = _repository.SelecionarPorId(codigo);
-                return aluno;
+                ProdutoLote ProdutoLote = _repository.SelecionarPorId(codigo);
+                return ProdutoLote;
             }
             catch (Exception)
             {
@@ -48,22 +48,12 @@ namespace PB.Service
             return null;
         }
 
-        public int Insert(Aluno aluno)
+        public int Insert(ProdutoLote ProdutoLote)
         {
             try
             {
-                Aluno alunoExiste = _repository.ConsultaCpf(aluno.cpf);
-
-                if (alunoExiste == null)
-                {
-                    int codigoAlunoInserido = _repository.Inserir(aluno);
-                    return codigoAlunoInserido;
-                }
-                else
-                {
-                    _notificationContext.AddNotification("Já existe um cadastro para esse CPF.");
-                    return 0;
-                }
+                int codigoProdutoLoteInserido = _repository.Inserir(ProdutoLote);
+                return codigoProdutoLoteInserido;
             }
             catch (Exception)
             {
@@ -72,11 +62,11 @@ namespace PB.Service
             return 0;
         }
 
-        public int Update(Aluno aluno)
+        public int Update(ProdutoLote ProdutoLote)
         {
             try
             {
-                _repository.Alterar(aluno);
+                _repository.Alterar(ProdutoLote);
             }
             catch (Exception)
             {
@@ -86,11 +76,11 @@ namespace PB.Service
             return 0;
         }
 
-        public int Delete(Aluno aluno)
+        public int Delete(ProdutoLote ProdutoLote)
         {
             try
             {
-                _repository.Excluir(aluno);
+                _repository.Excluir(ProdutoLote);
             }
             catch (Exception)
             {

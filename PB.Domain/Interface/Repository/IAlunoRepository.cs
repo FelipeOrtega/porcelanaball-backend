@@ -2,7 +2,6 @@
 {
     public interface IAlunoRepository : IRepositoryBase<Aluno>
     {
-        Aluno SelecionarPorCpf(Aluno aluno);
-
+        public Aluno ConsultaCpf(string cpf);
     }
 }

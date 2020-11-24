@@ -10,6 +10,7 @@ namespace PB.InfraEstrutura.Data.Mapping
         {
             base.Configure(builder);
             builder.ToTable("funcionario_possui_plano");
+            builder.Ignore(c => c.codigo);
         }
     }
 }
