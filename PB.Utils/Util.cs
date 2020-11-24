@@ -5,7 +5,7 @@ using System.Text.Json;
 
 namespace PB.Utils
 {
-    class Util
+    public class Util
     {
         public static Object deserializarJSonElement(Object inputModel)
         {
