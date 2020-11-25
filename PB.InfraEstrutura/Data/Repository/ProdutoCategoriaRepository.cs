@@ -1,6 +1,7 @@
 ﻿using PB.Domain;
 using PB.Domain.Interface.Repository;
 using PB.InfraEstrutura.Data.db.config;
+using System.Linq;
 
 namespace PB.InfraEstrutura.Data.Repository
 {
@@ -8,6 +9,11 @@ namespace PB.InfraEstrutura.Data.Repository
     {
         public ProdutoCategoriaRepository(ApplicationDBContext context) : base(context)
         {
+        }
+
+        public ProdutoCategoria ConsultaPorDescricao(string descricao)
+        {
+            return context.Set<ProdutoCategoria>().Where(x => x.descricao == descricao).FirstOrDefault();
         }
     }
 }

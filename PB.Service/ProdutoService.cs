@@ -10,12 +10,14 @@ namespace PB.Service
     public class ProdutoService : IProdutoService
     {
         private readonly IProdutoRepository _repository;
+        private readonly IProdutoCategoriaRepository _repositoryProdutoCategoria;
         private readonly NotificationContext _notificationContext;
 
-        public ProdutoService(IProdutoRepository repository, NotificationContext notificationContext)
+        public ProdutoService(IProdutoRepository repository, NotificationContext notificationContext, IProdutoCategoriaRepository repositoryProdutoCategoria)
         {
             _repository = repository;
             _notificationContext = notificationContext;
+            _repositoryProdutoCategoria = repositoryProdutoCategoria;
         }
 
         public List<Produto> Get()
@@ -52,10 +54,30 @@ namespace PB.Service
         {
             try
             {
-                int codigoProdutoInserido = _repository.Inserir(produto);
-                return codigoProdutoInserido;
+                Produto produtoExiste = _repository.ConsultaPorDescricao(produto.descricao);
+
+                if (produtoExiste == null)
+                {
+                    ProdutoCategoria produtoCategoriaExiste = _repositoryProdutoCategoria.SelecionarPorId(produto.produto_categoria_codigo);
+
+                    if (produtoCategoriaExiste != null)
+                    {
+                        int codigoProdutoInserido = _repository.Inserir(produto);
+                        return codigoProdutoInserido;
+                    }
+                    else
+                    {
+                        _notificationContext.AddNotification("Código da categoria não encontrado.");
+                        return 0;
+                    }
+                }
+                else
+                {
+                    _notificationContext.AddNotification("Já existe um cadastro para essa descrição de produto.");
+                    return 0;
+                }
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 _notificationContext.AddNotification("Não foi possivel inserir.");
             }

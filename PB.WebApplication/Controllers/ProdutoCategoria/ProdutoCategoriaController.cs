@@ -30,21 +30,21 @@ namespace PB.WebApplication.Controllers
         }
 
         [HttpPost]
-        public JsonReturn Post([FromBody]ProdutoCategoria modalidade)
+        public JsonReturn Post([FromBody]ProdutoCategoria produtoCategoria)
         {
-            return RetornaJson(_service.Insert(modalidade));
+            return RetornaJson(_service.Insert(produtoCategoria));
         }
 
         [HttpPut]
-        public JsonReturn Put([FromBody]ProdutoCategoria modalidade)
+        public JsonReturn Put([FromBody]ProdutoCategoria produtoCategoria)
         {
-            return RetornaJson(_service.Update(modalidade));
+            return RetornaJson(_service.Update(produtoCategoria));
         }
 
         [HttpDelete]
-        public JsonReturn Delete([FromBody]ProdutoCategoria modalidade)
+        public JsonReturn Delete([FromBody]ProdutoCategoria produtoCategoria)
         {
-            return RetornaJson(_service.Delete(modalidade));
+            return RetornaJson(_service.Delete(produtoCategoria));
         }
     }
 }

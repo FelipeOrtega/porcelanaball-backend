@@ -52,8 +52,18 @@ namespace PB.Service
         {
             try
             {
-                int codigoProdutoCategoriaInserido = _repository.Inserir(produtoCategoria);
-                return codigoProdutoCategoriaInserido;
+                ProdutoCategoria produtoCategoriaExiste = _repository.ConsultaPorDescricao(produtoCategoria.descricao);
+
+                if (produtoCategoriaExiste == null)
+                {
+                    int codigoProdutoCategoriaInserido = _repository.Inserir(produtoCategoria);
+                    return codigoProdutoCategoriaInserido;
+                }
+                else
+                {
+                    _notificationContext.AddNotification("Já existe um cadastro para essa descrição de categoria.");
+                    return 0;
+                }
             }
             catch (Exception)
             {

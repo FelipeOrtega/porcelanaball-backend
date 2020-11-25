@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using PB.Domain.Notifications;
@@ -36,9 +37,9 @@ namespace PB.WebApplication.Controllers.Produto
         [HttpPost]
         public JsonReturn Post([FromBody] Object inputModel)
         {
-
-            PB.Domain.Produto produto = (PB.Domain.Produto)inputModel;
-
+            JsonElement element = (JsonElement)inputModel;
+            var json = element.GetRawText();
+            PB.Domain.Produto produto = System.Text.Json.JsonSerializer.Deserialize<PB.Domain.Produto>(json);
             return RetornaJson(_service.Insert(produto));
         }
 
