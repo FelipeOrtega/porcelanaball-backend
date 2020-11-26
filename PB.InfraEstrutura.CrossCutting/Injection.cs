@@ -33,6 +33,7 @@ namespace PB.InfraEstrutura.CrossCutting
             services.AddScoped<ILancamentoRepository, LancamentoRepository>();
             services.AddScoped<IAlunoTreinoRepository, AlunoTreinoRepository>();
             services.AddScoped<IModalidadeFuncionarioRepository, ModalidadeFuncionarioRepository>();
+            services.AddScoped<IModuloRepository, ModuloRepository>();
 
             services.AddScoped<NotificationContext>();
         }
