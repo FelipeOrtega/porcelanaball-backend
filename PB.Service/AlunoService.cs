@@ -38,6 +38,7 @@ namespace PB.Service
             try
             {
                 Aluno aluno = _repository.SelecionarPorId(codigo);
+                aluno = _repository.ConsultaCompleta(aluno);
                 return aluno;
             }
             catch (Exception)
@@ -76,7 +77,17 @@ namespace PB.Service
         {
             try
             {
-                _repository.Alterar(aluno);
+                Aluno alunoExiste = _repository.SelecionarPorId(aluno.codigo);
+
+                if (alunoExiste != null)
+                {
+                    _repository.Alterar(aluno);
+                }
+                else
+                {
+                    _notificationContext.AddNotification("Aluno não encontrado.");
+                    return 0;
+                }
             }
             catch (Exception)
             {

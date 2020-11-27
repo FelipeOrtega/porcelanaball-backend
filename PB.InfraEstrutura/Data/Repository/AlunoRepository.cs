@@ -1,4 +1,5 @@
-﻿using PB.Domain;
+﻿using Microsoft.EntityFrameworkCore;
+using PB.Domain;
 using PB.Domain.Interface.Repository;
 using PB.InfraEstrutura.Data.db.config;
 using System.Linq;
@@ -14,8 +15,16 @@ namespace PB.InfraEstrutura.Data.Repository
 
         public Aluno ConsultaCpf(string cpf)
         {
-            Aluno teste = context.Set<Aluno>().Where(x => x.cpf == cpf).FirstOrDefault();
-            return teste;
+            Aluno aluno_ = context.Set<Aluno>().Where(x => x.cpf == cpf && x.alunoTreinos.Any(at => at.aluno_codigo == x.codigo)).FirstOrDefault(); ;
+            return aluno_;
+        }
+
+
+        //Essa consulta consiste em retornar a classe Aluno e todas suas entidades filhas
+        public Aluno ConsultaCompleta(Aluno aluno)
+        {            
+            Aluno aluno_ = context.Set<Aluno>().Include(a => a.alunoTreinos).FirstOrDefault();
+            return aluno_;
         }
     }
 }
