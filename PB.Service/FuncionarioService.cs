@@ -51,14 +51,23 @@ namespace PB.Service
         {
             try
             {
-                int codigoFuncionarioInserido = _repository.Inserir(funcionario);
-                return codigoFuncionarioInserido;
+                Funcionario funcionarioExiste = _repository.ConsultaCpf(funcionario.cpf);
+
+                if (funcionarioExiste == null)
+                {
+                    int codigoFuncionarioInserido = _repository.Inserir(funcionario);
+                    return codigoFuncionarioInserido;
+                }
+                else
+                {
+                    _notificationContext.AddNotification("Já existe um cadastro para esse CPF.");
+                    return 0;
+                }
             }
             catch (Exception)
             {
                 _notificationContext.AddNotification("Não foi possivel inserir.");
             }
-
             return 0;
         }
 

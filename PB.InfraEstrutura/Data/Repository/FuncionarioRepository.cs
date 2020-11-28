@@ -1,6 +1,7 @@
 ﻿using PB.Domain;
 using PB.Domain.Interface.Repository;
 using PB.InfraEstrutura.Data.db.config;
+using System.Linq;
 
 namespace PB.InfraEstrutura.Data.Repository
 {
@@ -8,6 +9,12 @@ namespace PB.InfraEstrutura.Data.Repository
     {
         public FuncionarioRepository(ApplicationDBContext context) : base(context)
         {
+        }
+
+        public Funcionario ConsultaCpf(string cpf)
+        {
+            Funcionario teste = context.Set<Funcionario>().Where(x => x.cpf == cpf).FirstOrDefault();
+            return teste;
         }
     }
 }

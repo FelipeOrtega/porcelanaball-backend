@@ -20,6 +20,7 @@ namespace PB.InfraEstrutura.CrossCutting
             services.AddScoped<IModalidadeService, ModalidadeService>();
             services.AddScoped<IProdutoCategoriaService, ProdutoCategoriaService>();
             services.AddScoped<ILancamentoService, LancamentoService>();
+            services.AddScoped<IModalidadeFuncionarioService, ModalidadeFuncionarioService>();
 
             // Repository
             services.AddScoped(typeof(IRepositoryBase<>), typeof(RepositoryBase<>));

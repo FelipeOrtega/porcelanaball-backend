@@ -8,9 +8,12 @@ using PB.Domain.Notifications;
 using PB.Service.Interface;
 using PB.WebApplication.Core;
 using PB.Utils;
+using Microsoft.AspNetCore.Authorization;
+
 namespace PB.WebApplication.Controllers.Aluno
 {
     [Route("Aluno")]
+
     public class AlunoController : ApiBase
     {
         private readonly IAlunoService _service;
@@ -22,12 +25,14 @@ namespace PB.WebApplication.Controllers.Aluno
         }
 
         [HttpGet]
+        [Authorize(Roles = "manager")]
         public JsonReturn Get()
         {
             return RetornaJson(_service.Get());
         }
 
         [HttpGet("{id}")]
+        [Authorize(Roles = "manager, employee")]
         public JsonReturn Get(int id)
         {
             return RetornaJson(_service.Get(id));

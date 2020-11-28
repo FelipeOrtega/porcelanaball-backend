@@ -3,40 +3,38 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-
+using PB.Domain;
+using PB.InfraEstrutura.Data.Repository;
+using PB.Service;
+using Microsoft.AspNetCore.Authorization;
 namespace PB.WebApplication.Controllers.Autenticacao
 {
     [Route("Autenticacao")]
     public class AutenticacaoController : Controller
     {
-        [HttpGet]
-        public IActionResult Get()
-        {
-            return Ok(null);
-        }
-
-        [HttpGet("{id}")]
-        public IActionResult Get(int id)
-        {
-            return Ok(null);
-        }
-
         [HttpPost]
-        public IActionResult Create([FromBody] Object inputModel)
+        [AllowAnonymous]
+        public async Task<ActionResult<dynamic>> Authenticate([FromBody] User model)
         {
-            return Ok(inputModel);
-        }
+            // Recupera o usuário
+            var user = UserRepository.Get(model.Username, model.Password);
 
-        [HttpPut("{id}")]
-        public IActionResult Update(int id, [FromBody] Object inputModel)
-        {
-            return Ok(inputModel);
-        }
+            // Verifica se o usuário existe
+            if (user == null)
+                return NotFound(new { message = "Usuário ou senha inválidos" });
 
-        [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
-        {
-            return Ok(null);
+            // Gera o Token
+            var token = TokenService.GenerateToken(user);
+
+            // Oculta a senha
+            user.Password = "";
+
+            // Retorna os dados
+            return new
+            {
+                user = user,
+                token = token
+            };
         }
     }
 }

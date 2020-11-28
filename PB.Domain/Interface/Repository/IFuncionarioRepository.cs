@@ -2,5 +2,6 @@
 {
     public interface IFuncionarioRepository : IRepositoryBase<Funcionario>
     {
+        public Funcionario ConsultaCpf(string cpf);
     }
 }
