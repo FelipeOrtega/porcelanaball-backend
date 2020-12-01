@@ -11,6 +11,7 @@ namespace PB.Service
     {
         private readonly IAlunoRepository _repository;
         private readonly NotificationContext _notificationContext;
+        private readonly IAlunoTreinoRepository _repositoryAlunoTreino;
 
         public AlunoService(IAlunoRepository repository, NotificationContext notificationContext)
         {
@@ -22,7 +23,7 @@ namespace PB.Service
         {
             try
             {
-                List<Aluno> alunos = _repository.Consultar();
+                List<Aluno> alunos = _repository.ListagemCompleta();
                 return alunos;
             }
             catch (Exception ex) 
@@ -77,12 +78,27 @@ namespace PB.Service
         {
             try
             {
-                Aluno alunoExiste = _repository.SelecionarPorId(aluno.codigo);
+                Aluno alunoExistente = _repository.SelecionarPorId(aluno.codigo);
 
-                if (alunoExiste != null)
+                if (alunoExistente != null)
                 {
-                    if (alunoExiste.ativo)
+                    if (alunoExistente.ativo)
                     {
+                        alunoExistente.alunoTreinos.ForEach(delegate (AlunoTreino ae)
+                        {
+                            aluno.alunoTreinos.ForEach(delegate (AlunoTreino a)
+                            {
+                                if(ae.codigo == a.codigo)
+                                {
+                                    _repositoryAlunoTreino.Alterar(a);
+                                }
+                                else
+                                {
+                                    _repositoryAlunoTreino.Excluir(a);//ontem tava dando o erro de tracking pq o codigo do treino novo era igual a um que ja tinha
+                                }
+                            });
+                        });
+
                         _repository.Alterar(aluno);
                     }
                     else
@@ -97,7 +113,7 @@ namespace PB.Service
                     return 0;
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 _notificationContext.AddNotification("Não foi possivel alterar.");
             }

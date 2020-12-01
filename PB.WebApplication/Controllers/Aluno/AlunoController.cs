@@ -41,19 +41,17 @@ namespace PB.WebApplication.Controllers.Aluno
         [HttpPost]
         public JsonReturn Post([FromBody] Object inputModel)
         {
-            JsonElement element = (JsonElement) inputModel;
-            var json = element.GetRawText();
-            PB.Domain.Aluno aluno = System.Text.Json.JsonSerializer.Deserialize<PB.Domain.Aluno>(json);
+            string json = inputModel.ToString();
+            PB.Domain.Aluno aluno = JsonConvert.DeserializeObject<PB.Domain.Aluno>(json);
             return RetornaJson(_service.Insert(aluno));
         }
 
         [HttpPut("{id}")]
         public JsonReturn Put(int id,[FromBody] Object inputModel)
         {
-            JsonElement element = (JsonElement)inputModel;
-            var json = element.GetRawText();
-            PB.Domain.Aluno aluno = System.Text.Json.JsonSerializer.Deserialize<PB.Domain.Aluno>(json);
-            if(aluno.codigo != id)
+            string json = inputModel.ToString();
+            PB.Domain.Aluno aluno = JsonConvert.DeserializeObject<PB.Domain.Aluno>(json);
+            if (aluno.codigo != id)
             {
                 _notificationContext.AddNotification("Codigo do aluno difere do corpo da requisicao.");
                 return RetornaJson(_notificationContext, (int)HttpStatusCode.BadRequest);
@@ -64,10 +62,8 @@ namespace PB.WebApplication.Controllers.Aluno
         [HttpDelete("{id}")]
         public JsonReturn Delete(int id, [FromBody] Object inputModel)
         {
-            JsonElement element = (JsonElement)inputModel;
-            var json = element.GetRawText();
-            PB.Domain.Aluno aluno = System.Text.Json.JsonSerializer.Deserialize<PB.Domain.Aluno>(json);
-
+            string json = inputModel.ToString();
+            PB.Domain.Aluno aluno = JsonConvert.DeserializeObject<PB.Domain.Aluno>(json);
             if (aluno.codigo != id)
             {
                 _notificationContext.AddNotification("Codigo do aluno difere do corpo da requisicao.");

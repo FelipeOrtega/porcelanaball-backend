@@ -2,6 +2,7 @@
 using PB.Domain;
 using PB.Domain.Interface.Repository;
 using PB.InfraEstrutura.Data.db.config;
+using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 
@@ -26,5 +27,13 @@ namespace PB.InfraEstrutura.Data.Repository
             Aluno aluno_ = context.Set<Aluno>().Include(a => a.alunoTreinos).FirstOrDefault();
             return aluno_;
         }
+
+        //Essa listagem consiste em retornar a classe Aluno e todas suas entidades filhas
+        public List<Aluno> ListagemCompleta()
+        {
+            List<Aluno> alunos = context.Set<Aluno>().Include(a => a.alunoTreinos).ToList();
+            return alunos;
+        }
+
     }
 }

@@ -1,6 +1,7 @@
 ﻿using PB.Domain;
 using PB.Domain.Interface.Repository;
 using PB.InfraEstrutura.Data.db.config;
+using System.Collections.Generic;
 
 namespace PB.InfraEstrutura.Data.Repository
 {
