@@ -2,6 +2,7 @@
 using PB.Domain.Core;
 using PB.Domain.Interface.Repository;
 using PB.InfraEstrutura.Data.db.config;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 

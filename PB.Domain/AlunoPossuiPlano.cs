@@ -3,9 +3,9 @@ using System;
 
 namespace PB.Domain
 {
-    public class FuncionarioPossuiPlano : EntityBase
+    public class AlunoPossuiPlano : EntityBase
     {
-        public int funcionario_codigo { get; set; }
+        public int aluno_codigo { get; set; }
         public int plano_codigo { get; set; }
         public DateTime data_inicio { get; set; }
         public DateTime data_validade { get; set; }
