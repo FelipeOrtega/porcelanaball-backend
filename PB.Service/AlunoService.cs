@@ -4,6 +4,7 @@ using PB.Domain.Notifications;
 using PB.Service.Interface;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace PB.Service
 {
@@ -13,9 +14,10 @@ namespace PB.Service
         private readonly NotificationContext _notificationContext;
         private readonly IAlunoTreinoRepository _repositoryAlunoTreino;
 
-        public AlunoService(IAlunoRepository repository, NotificationContext notificationContext)
+        public AlunoService(IAlunoRepository repository, IAlunoTreinoRepository repositoryAlunoTreino, NotificationContext notificationContext)
         {
             _repository = repository;
+            _repositoryAlunoTreino = repositoryAlunoTreino;
             _notificationContext = notificationContext;
         }
 
@@ -78,23 +80,30 @@ namespace PB.Service
         {
             try
             {
-                Aluno alunoExistente = _repository.SelecionarPorId(aluno.codigo);
+                Aluno alunoExistente = _repository.ConsultaCpf(aluno.cpf);
 
                 if (alunoExistente != null)
                 {
                     if (alunoExistente.ativo)
                     {
-                        alunoExistente.alunoTreinos.ForEach(delegate (AlunoTreino ae)
+                        aluno.alunoTreinos.ForEach(delegate (AlunoTreino alunoTreino)
                         {
-                            aluno.alunoTreinos.ForEach(delegate (AlunoTreino a)
+                            alunoExistente.alunoTreinos.ForEach(delegate (AlunoTreino alunoExistenteTreino)
                             {
-                                if(ae.codigo == a.codigo)
+                                if (alunoExistenteTreino.codigo != alunoTreino.codigo)
                                 {
-                                    _repositoryAlunoTreino.Alterar(a);
+                                    if (!aluno.alunoTreinos.Contains(alunoExistenteTreino))
+                                    {
+                                        _repositoryAlunoTreino.Excluir(alunoTreino);
+                                    }
+                                    else
+                                    {
+                                        _repositoryAlunoTreino.Inserir(alunoTreino);
+                                    }
                                 }
                                 else
                                 {
-                                    _repositoryAlunoTreino.Excluir(a);//ontem tava dando o erro de tracking pq o codigo do treino novo era igual a um que ja tinha
+                                    _repositoryAlunoTreino.Alterar(alunoTreino);
                                 }
                             });
                         });
@@ -113,7 +122,7 @@ namespace PB.Service
                     return 0;
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 _notificationContext.AddNotification("Não foi possivel alterar.");
             }

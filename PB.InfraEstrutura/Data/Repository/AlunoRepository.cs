@@ -16,7 +16,8 @@ namespace PB.InfraEstrutura.Data.Repository
 
         public Aluno ConsultaCpf(string cpf)
         {
-            Aluno aluno_ = context.Set<Aluno>().Where(x => x.cpf == cpf && x.alunoTreinos.Any(at => at.aluno_codigo == x.codigo)).FirstOrDefault(); ;
+            Aluno aluno_ = context.Set<Aluno>().Where(x => x.cpf == cpf && x.alunoTreinos.Any(at => at.aluno_codigo == x.codigo))
+                                  .Include(a => a.alunoTreinos).FirstOrDefault();
             return aluno_;
         }
 
