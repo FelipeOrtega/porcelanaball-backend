@@ -1,4 +1,5 @@
-﻿using PB.Domain;
+﻿using Microsoft.EntityFrameworkCore;
+using PB.Domain;
 using PB.Domain.Interface.Repository;
 using PB.Domain.Notifications;
 using PB.Service.Interface;
@@ -80,34 +81,12 @@ namespace PB.Service
         {
             try
             {
-                Aluno alunoExistente = _repository.ConsultaCpf(aluno.cpf);
+                Aluno alunoExistente =  _repository.ConsultaCpf(aluno.cpf);
 
                 if (alunoExistente != null)
                 {
                     if (alunoExistente.ativo)
                     {
-                        aluno.alunoTreinos.ForEach(delegate (AlunoTreino alunoTreino)
-                        {
-                            alunoExistente.alunoTreinos.ForEach(delegate (AlunoTreino alunoExistenteTreino)
-                            {
-                                if (alunoExistenteTreino.codigo != alunoTreino.codigo)
-                                {
-                                    if (!aluno.alunoTreinos.Contains(alunoExistenteTreino))
-                                    {
-                                        _repositoryAlunoTreino.Excluir(alunoTreino);
-                                    }
-                                    else
-                                    {
-                                        _repositoryAlunoTreino.Inserir(alunoTreino);
-                                    }
-                                }
-                                else
-                                {
-                                    _repositoryAlunoTreino.Alterar(alunoTreino);
-                                }
-                            });
-                        });
-
                         _repository.Alterar(aluno);
                     }
                     else
@@ -143,5 +122,6 @@ namespace PB.Service
 
             return 0;
         }
+
     }
 }

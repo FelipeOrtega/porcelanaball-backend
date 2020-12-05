@@ -8,6 +8,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PB.Service", "PB.Service\PB.Service.csproj", "{65CAE2F5-9E27-477E-85C8-9A865CCD20FF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PB.WebApplication", "PB.WebApplication\PB.WebApplication.csproj", "{95D6A90D-F0F1-45D0-9E13-260A951F7359}"
+	ProjectSection(ProjectDependencies) = postProject
+		{9758B7FA-1748-4BFB-AA5D-0E1843922A22} = {9758B7FA-1748-4BFB-AA5D-0E1843922A22}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PB.Domain", "PB.Domain\PB.Domain.csproj", "{EE8A2A81-CADF-41D2-BD84-9CF2C03EE4EC}"
 EndProject
