@@ -30,7 +30,7 @@ namespace PB.WebApplication.Controllers
         }
 
         [HttpPost]
-        public JsonReturn Post([FromBody]AlunoTreino alunoTreino)
+        public JsonReturn Post([FromBody] AlunoTreino alunoTreino)
         {
             return RetornaJson(_service.Insert(alunoTreino));
         }

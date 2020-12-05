@@ -70,7 +70,7 @@ namespace PB.Service
                     return 0;
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 _notificationContext.AddNotification("Não foi possivel inserir.");
             }
