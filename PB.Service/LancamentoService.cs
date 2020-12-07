@@ -11,11 +11,22 @@ namespace PB.Service
     {
         private readonly ILancamentoRepository _repository;
         private readonly NotificationContext _notificationContext;
+        private readonly IFuncionarioRepository _repositoryFuncionario;
+        private readonly IFormaPagamentoRepository _repositoryFormaPagamento;
+        private readonly IProdutoRepository _repositoryProduto;
 
-        public LancamentoService(ILancamentoRepository repository, NotificationContext notificationContext)
+        public LancamentoService(
+            ILancamentoRepository repository, 
+            NotificationContext notificationContext, 
+            IFuncionarioRepository repositoryFuncionario,
+            IFormaPagamentoRepository repositoryFormaPagamento,
+            IProdutoRepository repositoryProduto)
         {
             _repository = repository;
             _notificationContext = notificationContext;
+            _repositoryFuncionario = repositoryFuncionario;
+            _repositoryFormaPagamento = repositoryFormaPagamento;
+            _repositoryProduto = repositoryProduto;
         }
 
         public List<Lancamento> Get()
@@ -52,10 +63,49 @@ namespace PB.Service
         {
             try
             {
-                int codigoLancamentoInserido = _repository.Inserir(lancamento);
-                return codigoLancamentoInserido;
+                var existeSaldo = true;
+                Funcionario funcionarioExiste = _repositoryFuncionario.SelecionarPorId(lancamento.funcionario_codigo.Value);
+                FormaPagamento formaPagamentoExiste = _repositoryFormaPagamento.SelecionarPorId(lancamento.forma_pagamento_codigo.Value);
+
+                if ((funcionarioExiste != null && funcionarioExiste.ativo) && formaPagamentoExiste != null)
+                {
+                    if (lancamento.lancamentoProduto != null)
+                    {
+                        Produto produtoExiste;
+                        for (int i = 0; i < lancamento.lancamentoProduto.Count; i++)
+                        {
+                            produtoExiste = _repositoryProduto.SelecionarPorId(lancamento.lancamentoProduto[i].produto_codigo);
+
+                            if (produtoExiste.saldo < lancamento.lancamentoProduto[i].quantidade)
+                            {
+                                _notificationContext.AddNotification("Não existe saldo suficiente no produto com codigo: " + 
+                                    lancamento.lancamentoProduto[i].produto_codigo);
+                                existeSaldo = false;
+                            }
+                            else
+                            {
+                                produtoExiste.saldo = produtoExiste.saldo - lancamento.lancamentoProduto[i].quantidade;
+                            }
+                        }
+                    }
+
+                    if (existeSaldo)
+                    {
+                        int codigoLancamentoInserido = _repository.Inserir(lancamento);
+                        return codigoLancamentoInserido;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+                else
+                {
+                    _notificationContext.AddNotification("É necessário incluir funcionario e/ou forma de pagamento.");
+                    return 0;
+                }
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 _notificationContext.AddNotification("Não foi possivel inserir.");
             }

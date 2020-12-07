@@ -8,6 +8,7 @@ namespace PB.InfraEstrutura.Data.Mapping
     {
         public override void Configure(EntityTypeBuilder<Lancamento> builder)
         {
+            builder.HasMany(l => l.lancamentoProduto).WithOne(lp => lp.lancamento);
             base.Configure(builder);
         }
     }

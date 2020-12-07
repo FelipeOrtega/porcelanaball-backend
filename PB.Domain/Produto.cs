@@ -12,6 +12,7 @@ namespace PB.Domain
         public DateTime data_cadastro { get; set; } 
         public int lote_codigo { get; set; }
         public int produto_categoria_codigo { get; set; }
-        public bool ativo;
+        public bool ativo { get; set; }
+        public decimal saldo { get; set; }
     }
 }
