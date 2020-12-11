@@ -10,7 +10,7 @@ using System.Net;
 
 namespace PB.WebApplication.Controllers
 {
-    [Route("Funcionario")]
+    [Route("[controller]")]
     public class FuncionarioController : ApiBase
     {
         private readonly IFuncionarioService _service;

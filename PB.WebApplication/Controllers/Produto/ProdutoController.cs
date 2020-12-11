@@ -11,7 +11,7 @@ using PB.WebApplication.Core;
 
 namespace PB.WebApplication.Controllers
 {
-    [Route("Produto")]
+    [Route("[controller]")]
     public class ProdutoController : ApiBase
     {
         private readonly IProdutoService _service;

@@ -1,40 +1,42 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using PB.Domain;
 using PB.InfraEstrutura.Data.Repository;
 using PB.Service;
 using Microsoft.AspNetCore.Authorization;
-namespace PB.WebApplication.Controllers.Autenticacao
+using PB.WebApplication.Core;
+using System.Net;
+using PB.Domain.Notifications;
+using PB.Service.Interface;
+using FluentValidation;
+
+namespace PB.WebApplication.Controllers
 {
-    [Route("Autenticacao")]
-    public class AutenticacaoController : Controller
+    [Route("[controller]")]
+    public class AutenticacaoController : ApiBase
     {
+
+        public AutenticacaoController(NotificationContext notificationContext)
+        {
+            _notificationContext = notificationContext;
+        }
+
         [HttpPost]
         [AllowAnonymous]
-        public async Task<ActionResult<dynamic>> Authenticate([FromBody] User model)
+        public JsonReturn Post([FromBody] User model)
         {
-            // Recupera o usuário
             var user = UserRepository.Get(model.Username, model.Password);
 
-            // Verifica se o usuário existe
             if (user == null)
-                return NotFound(new { message = "Usuário ou senha inválidos" });
+                return RetornaJson(user, (int)HttpStatusCode.Forbidden);
 
-            // Gera o Token
             var token = TokenService.GenerateToken(user);
 
-            // Oculta a senha
             user.Password = "";
 
-            // Retorna os dados
-            return new
-            {
-                user = user,
-                token = token
-            };
+            var data = new { user = user, token = token };
+   
+            return RetornaJson(data);
         }
     }
 }

@@ -10,7 +10,7 @@ using System.Net;
 
 namespace PB.WebApplication.Controllers
 {
-    [Route("Plano")]
+    [Route("[controller]")]
     public class PlanoController : ApiBase
     {
         private readonly IPlanoService _service;
