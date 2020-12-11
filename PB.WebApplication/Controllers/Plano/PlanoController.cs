@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PB.Domain;
 using PB.Domain.Notifications;
@@ -29,13 +30,15 @@ namespace PB.WebApplication.Controllers
         }
 
         [HttpGet("{id}")]
+        [Authorize(Roles = "manager, employee")]
         public JsonReturn Get(int id)
         {
             return RetornaJson(_service.Get(id));
         }
 
         [HttpPost]
-        public JsonReturn Create([FromBody]Plano plano)
+        [Authorize(Roles = "manager, employee")]
+        public JsonReturn Post([FromBody]Plano plano)
         {
             if (plano == null)
                 return RetornaJson("Por favor, passe alguma informação.", (int)HttpStatusCode.BadRequest);
@@ -48,7 +51,8 @@ namespace PB.WebApplication.Controllers
         }
 
         [HttpPut]
-        public JsonReturn Update([FromBody]Plano plano)
+        [Authorize(Roles = "manager")]
+        public JsonReturn Put([FromBody]Plano plano)
         {
             if (plano == null)
                 return RetornaJson("Por favor, passe alguma informação.", (int)HttpStatusCode.BadRequest);
@@ -61,6 +65,7 @@ namespace PB.WebApplication.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "manager")]
         public JsonReturn Delete(int id)
         {
             return RetornaJson(_service.Delete(id));

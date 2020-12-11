@@ -10,7 +10,7 @@ using FluentValidation.Results;
 
 namespace PB.WebApplication.Controllers
 {
-    [Route("Aluno")]
+    [Route("[controller]")]
 
     public class AlunoController : ApiBase
     {
@@ -25,7 +25,7 @@ namespace PB.WebApplication.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "manager")]
+        [Authorize(Roles = "manager, employee")]
         public JsonReturn Get()
         {
             return RetornaJson(_service.Get());
@@ -39,6 +39,7 @@ namespace PB.WebApplication.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "manager")]
         public JsonReturn Post([FromBody]Aluno aluno)
         {
             if (aluno == null)
@@ -52,6 +53,7 @@ namespace PB.WebApplication.Controllers
         }
 
         [HttpPut]
+        [Authorize(Roles = "manager")]
         public JsonReturn Put([FromBody]Aluno aluno)
         {
             if (aluno == null)
@@ -65,6 +67,7 @@ namespace PB.WebApplication.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "manager")]
         public JsonReturn Delete(int id, [FromBody] PB.Domain.Aluno aluno)
         {
             if (aluno.codigo != id)

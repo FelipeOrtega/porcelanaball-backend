@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PB.Domain;
 using PB.Domain.Notifications;
@@ -23,18 +24,21 @@ namespace PB.WebApplication.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "manager, employee")]
         public JsonReturn Get()
         {
             return RetornaJson(_service.Get());
         }
 
         [HttpGet("{id}")]
+        [Authorize(Roles = "manager, employee")]
         public JsonReturn Get(int id)
         {
             return RetornaJson(_service.Get(id));
         }
 
         [HttpPost]
+        [Authorize(Roles = "manager")]
         public JsonReturn Post([FromBody]Lancamento lancamento)
         {
             if (lancamento == null)
@@ -48,6 +52,7 @@ namespace PB.WebApplication.Controllers
         }
 
         [HttpPut]
+        [Authorize(Roles = "manager")]
         public JsonReturn Put([FromBody]Lancamento lancamento)
         {
             if (lancamento == null)
@@ -61,6 +66,7 @@ namespace PB.WebApplication.Controllers
         }
 
         [HttpDelete]
+        [Authorize(Roles = "manager")]
         public JsonReturn Delete([FromBody]Lancamento lancamento)
         {
             return RetornaJson(_service.Delete(lancamento));
