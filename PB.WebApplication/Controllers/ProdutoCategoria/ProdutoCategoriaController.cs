@@ -1,8 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FluentValidation;
+using FluentValidation.Results;
+using Microsoft.AspNetCore.Mvc;
 using PB.Domain;
 using PB.Domain.Notifications;
 using PB.Service.Interface;
 using PB.WebApplication.Core;
+using System.Net;
 
 namespace PB.WebApplication.Controllers
 {
@@ -10,11 +13,13 @@ namespace PB.WebApplication.Controllers
     public class ProdutoCategoriaController : ApiBase
     {
         private readonly IProdutoCategoriaService _service;
+        private readonly IValidator<ProdutoCategoria> _validator;
 
-        public ProdutoCategoriaController(NotificationContext notificationContext, IProdutoCategoriaService service)
+        public ProdutoCategoriaController(NotificationContext notificationContext, IProdutoCategoriaService service, IValidator<ProdutoCategoria> validator)
         {
             _notificationContext = notificationContext;
             _service = service;
+            _validator = validator;
         }
 
         [HttpGet]
@@ -32,13 +37,27 @@ namespace PB.WebApplication.Controllers
         [HttpPost]
         public JsonReturn Post([FromBody]ProdutoCategoria produtoCategoria)
         {
-            return RetornaJson(_service.Insert(produtoCategoria));
+            if (produtoCategoria == null)
+                return RetornaJson("Por favor, passe alguma informação.", (int)HttpStatusCode.BadRequest);
+
+            ValidationResult results = _validator.Validate(produtoCategoria, ruleSet: "insert");
+            if (results.IsValid)
+                return RetornaJson(_service.Insert(produtoCategoria));
+            else
+                return RetornaJson(results.Errors, (int)HttpStatusCode.BadRequest);
         }
 
         [HttpPut]
         public JsonReturn Put([FromBody]ProdutoCategoria produtoCategoria)
         {
-            return RetornaJson(_service.Update(produtoCategoria));
+            if (produtoCategoria == null)
+                return RetornaJson("Por favor, passe alguma informação.", (int)HttpStatusCode.BadRequest);
+
+            ValidationResult results = _validator.Validate(produtoCategoria, ruleSet: "update");
+            if (results.IsValid)
+                return RetornaJson(_service.Update(produtoCategoria));
+            else
+                return RetornaJson(results.Errors, (int)HttpStatusCode.BadRequest);
         }
 
         [HttpDelete]

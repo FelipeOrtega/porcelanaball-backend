@@ -60,10 +60,7 @@ namespace PB.Service
         {
             try
             {
-                Aluno alunoExiste = _repositoryAluno.SelecionarPorId(alunoPossuiPlano.aluno_codigo);
-                Plano planoExiste = _repositoryPlano.SelecionarPorId(alunoPossuiPlano.plano_codigo);
-
-                if ((alunoExiste != null && alunoExiste.ativo) && (planoExiste != null && planoExiste.ativo))
+                if (VerificaInclusaoAlteracao(alunoPossuiPlano))
                 {
                     int codigoAlunoPossuiPlanoInserido = _repository.Inserir(alunoPossuiPlano);
                     return codigoAlunoPossuiPlanoInserido;
@@ -84,7 +81,14 @@ namespace PB.Service
         {
             try
             {
-                _repository.Alterar(alunoPossuiPlano);
+                if (VerificaInclusaoAlteracao(alunoPossuiPlano))
+                {
+                    _repository.Alterar(alunoPossuiPlano);
+                }
+                else
+                {
+                    _notificationContext.AddNotification("Aluno ou Plano inexistente(s) ou inativo(s).");
+                }
             }
             catch (Exception)
             {
@@ -106,6 +110,21 @@ namespace PB.Service
             }
 
             return 0;
+        }
+
+        private bool VerificaInclusaoAlteracao(AlunoPossuiPlano alunoPossuiPlano)
+        {
+            try
+            {
+                Aluno alunoExiste = _repositoryAluno.SelecionarPorId(alunoPossuiPlano.aluno_codigo);
+                Plano planoExiste = _repositoryPlano.SelecionarPorId(alunoPossuiPlano.plano_codigo);
+
+                return ((alunoExiste != null && alunoExiste.ativo) && (planoExiste != null && planoExiste.ativo));
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
     }
 }

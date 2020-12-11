@@ -1,8 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FluentValidation;
+using FluentValidation.Results;
+using Microsoft.AspNetCore.Mvc;
 using PB.Domain;
 using PB.Domain.Notifications;
 using PB.Service.Interface;
 using PB.WebApplication.Core;
+using System.Net;
 
 namespace PB.WebApplication.Controllers
 {
@@ -10,11 +13,13 @@ namespace PB.WebApplication.Controllers
     public class AlunoTreinoController : ApiBase
     {
         private readonly IAlunoTreinoService _service;
+        private readonly IValidator<AlunoTreino> _validator;
 
-        public AlunoTreinoController(NotificationContext notificationContext, IAlunoTreinoService service)
+        public AlunoTreinoController(NotificationContext notificationContext, IAlunoTreinoService service, IValidator<AlunoTreino> validator)
         {
             _notificationContext = notificationContext;
             _service = service;
+            _validator = validator;
         }
 
         [HttpGet]
@@ -32,13 +37,27 @@ namespace PB.WebApplication.Controllers
         [HttpPost]
         public JsonReturn Post([FromBody]AlunoTreino alunoTreino)
         {
-            return RetornaJson(_service.Insert(alunoTreino));
+            if (alunoTreino == null)
+                return RetornaJson("Por favor, passe alguma informação.", (int)HttpStatusCode.BadRequest);
+
+            ValidationResult results = _validator.Validate(alunoTreino, ruleSet: "insert");
+            if (results.IsValid)
+                return RetornaJson(_service.Insert(alunoTreino));
+            else
+                return RetornaJson(results.Errors, (int)HttpStatusCode.BadRequest);
         }
 
         [HttpPut]
         public JsonReturn Put([FromBody]AlunoTreino alunoTreino)
         {
-            return RetornaJson(_service.Update(alunoTreino));
+            if (alunoTreino == null)
+                return RetornaJson("Por favor, passe alguma informação.", (int)HttpStatusCode.BadRequest);
+
+            ValidationResult results = _validator.Validate(alunoTreino, ruleSet: "update");
+            if (results.IsValid)
+                return RetornaJson(_service.Update(alunoTreino));
+            else
+                return RetornaJson(results.Errors, (int)HttpStatusCode.BadRequest);
         }
 
         [HttpDelete]

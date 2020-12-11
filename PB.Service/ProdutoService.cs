@@ -54,27 +54,10 @@ namespace PB.Service
         {
             try
             {
-                Produto produtoExiste = _repository.ConsultaPorDescricao(produto.descricao);
-
-                if (produtoExiste == null)
+                if (VerificaInclusaoAlteracao(produto))
                 {
-                    ProdutoCategoria produtoCategoriaExiste = _repositoryProdutoCategoria.SelecionarPorId(produto.produto_categoria_codigo);
-
-                    if (produtoCategoriaExiste != null)
-                    {
-                        int codigoProdutoInserido = _repository.Inserir(produto);
-                        return codigoProdutoInserido;
-                    }
-                    else
-                    {
-                        _notificationContext.AddNotification("Código da categoria não encontrado.");
-                        return 0;
-                    }
-                }
-                else
-                {
-                    _notificationContext.AddNotification("Já existe um cadastro para essa descrição de produto.");
-                    return 0;
+                    int codigoProdutoInserido = _repository.Inserir(produto);
+                    return codigoProdutoInserido;
                 }
             }
             catch (Exception e)
@@ -88,7 +71,10 @@ namespace PB.Service
         {
             try
             {
-                _repository.Alterar(produto);
+                if (VerificaInclusaoAlteracao(produto))
+                {
+                    _repository.Alterar(produto);
+                }
             }
             catch (Exception)
             {
@@ -110,6 +96,31 @@ namespace PB.Service
             }
 
             return 0;
+        }
+
+        private bool VerificaInclusaoAlteracao(Produto produto)
+        {
+            Produto produtoExiste = _repository.ConsultaPorDescricao(produto.descricao);
+
+            if (produtoExiste == null)
+            {
+                ProdutoCategoria produtoCategoriaExiste = _repositoryProdutoCategoria.SelecionarPorId(produto.produto_categoria_codigo);
+
+                if (produtoCategoriaExiste != null)
+                {
+                    return true;
+                }
+                else
+                {
+                    _notificationContext.AddNotification("Código da categoria não encontrado.");
+                    return false;
+                }
+            }
+            else
+            {
+                _notificationContext.AddNotification("Já existe um cadastro para essa descrição de produto.");
+                return false;
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace PB.Domain
 {
@@ -11,5 +12,9 @@ namespace PB.Domain
         public String uf { get; set; }
         public String cep { get; set; }
         public String senha { get; set; }
+
+        public List<FuncionarioPermissao> funcionarioPermissao { get; set; }
+        public List<ModalidadeFuncionario> modalidadeFuncionario { get; set; }
+        public List<FuncionarioPossuiPlano> funcionarioPossuiPlano { get; set; }
     }
 }

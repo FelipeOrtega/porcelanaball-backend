@@ -1,6 +1,9 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using FluentValidation;
+using Microsoft.Extensions.DependencyInjection;
+using PB.Domain;
 using PB.Domain.Interface.Repository;
 using PB.Domain.Notifications;
+using PB.Domain.Validators;
 using PB.InfraEstrutura.Data.Repository;
 using PB.Service;
 using PB.Service.Interface;
@@ -11,6 +14,18 @@ namespace PB.InfraEstrutura.CrossCutting
     {
         public static void Configure(IServiceCollection services)
         {
+            // Validator
+            services.AddScoped<IValidator<Aluno>, AlunoValidator>();
+            services.AddScoped<IValidator<AlunoPossuiPlano>, AlunoPossuiPlanoValidator>();
+            services.AddScoped<IValidator<Funcionario>, FuncionarioValidator>();
+            services.AddScoped<IValidator<Lancamento>, LancamentoValidator>();
+            services.AddScoped<IValidator<AlunoTreino>, AlunoTreinoValidator>();
+            services.AddScoped<IValidator<Modalidade>, ModalidadeValidator>();
+            services.AddScoped<IValidator<ModalidadeFuncionario>, ModalidadeFuncionarioValidator>();
+            services.AddScoped<IValidator<Plano>, PlanoValidator>();
+            services.AddScoped<IValidator<Produto>, ProdutoValidator>();
+            services.AddScoped<IValidator<ProdutoCategoria>, ProdutoCategoriaValidator>();
+
             // Service
             services.AddScoped<IAlunoService, AlunoService>();
             services.AddScoped<IProdutoService, ProdutoService>();

@@ -1,8 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FluentValidation;
+using FluentValidation.Results;
+using Microsoft.AspNetCore.Mvc;
 using PB.Domain;
 using PB.Domain.Notifications;
 using PB.Service.Interface;
 using PB.WebApplication.Core;
+using System.Net;
 
 namespace PB.WebApplication.Controllers
 {
@@ -10,11 +13,15 @@ namespace PB.WebApplication.Controllers
     public class AlunoPossuiPlanoController : ApiBase
     {
         private readonly IAlunoPossuiPlanoService _service;
+        private readonly IValidator<AlunoPossuiPlano> _validator;
 
-        public AlunoPossuiPlanoController(NotificationContext notificationContext, IAlunoPossuiPlanoService service)
+        public AlunoPossuiPlanoController(NotificationContext notificationContext, 
+            IAlunoPossuiPlanoService service, 
+            IValidator<AlunoPossuiPlano> validator)
         {
             _notificationContext = notificationContext;
             _service = service;
+            _validator = validator;
         }
 
         [HttpGet]
@@ -32,13 +39,27 @@ namespace PB.WebApplication.Controllers
         [HttpPost]
         public JsonReturn Post([FromBody]AlunoPossuiPlano alunoPossuiPlano)
         {
-            return RetornaJson(_service.Insert(alunoPossuiPlano));
+            if (alunoPossuiPlano == null)
+                return RetornaJson("Por favor, passe alguma informação.", (int)HttpStatusCode.BadRequest);
+
+            ValidationResult results = _validator.Validate(alunoPossuiPlano, ruleSet: "insert");
+            if (results.IsValid)
+                return RetornaJson(_service.Insert(alunoPossuiPlano));
+            else
+                return RetornaJson(results.Errors, (int)HttpStatusCode.BadRequest);
         }
 
         [HttpPut]
         public JsonReturn Put([FromBody]AlunoPossuiPlano alunoPossuiPlano)
         {
-            return RetornaJson(_service.Update(alunoPossuiPlano));
+            if (alunoPossuiPlano == null)
+                return RetornaJson("Por favor, passe alguma informação.", (int)HttpStatusCode.BadRequest);
+
+            ValidationResult results = _validator.Validate(alunoPossuiPlano, ruleSet: "update");
+            if (results.IsValid)
+                return RetornaJson(_service.Update(alunoPossuiPlano));
+            else
+                return RetornaJson(results.Errors, (int)HttpStatusCode.BadRequest);
         }
 
         [HttpDelete]

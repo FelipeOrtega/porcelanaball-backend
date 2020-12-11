@@ -1,27 +1,27 @@
-﻿using System;
-using System.Net;
-using System.Text.Json;
-using System.Threading.Tasks;
+﻿using System.Net;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 using PB.Domain.Notifications;
 using PB.Service.Interface;
 using PB.WebApplication.Core;
-using PB.Utils;
 using Microsoft.AspNetCore.Authorization;
+using FluentValidation;
+using PB.Domain;
+using FluentValidation.Results;
 
-namespace PB.WebApplication.Controllers.Aluno
+namespace PB.WebApplication.Controllers
 {
     [Route("Aluno")]
 
     public class AlunoController : ApiBase
     {
         private readonly IAlunoService _service;
+        private readonly IValidator<Aluno> _validator;
 
-        public AlunoController(NotificationContext notificationContext, IAlunoService service)
+        public AlunoController(NotificationContext notificationContext, IAlunoService service, IValidator<Aluno> validator)
         {
             _notificationContext = notificationContext;
             _service = service;
+            _validator = validator;
         }
 
         [HttpGet]
@@ -39,20 +39,29 @@ namespace PB.WebApplication.Controllers.Aluno
         }
 
         [HttpPost]
-        public JsonReturn Post([FromBody] PB.Domain.Aluno aluno)
+        public JsonReturn Post([FromBody]Aluno aluno)
         {
-            return RetornaJson(_service.Insert(aluno));
+            if (aluno == null)
+                return RetornaJson("Por favor, passe alguma informação.", (int)HttpStatusCode.BadRequest);
+
+            ValidationResult results = _validator.Validate(aluno, ruleSet: "insert");
+            if (results.IsValid)
+                return RetornaJson(_service.Insert(aluno));
+            else
+                return RetornaJson(results.Errors, (int)HttpStatusCode.BadRequest);
         }
 
-        [HttpPut("{id}")]
-        public JsonReturn Put(int id, [FromBody] PB.Domain.Aluno aluno)
+        [HttpPut]
+        public JsonReturn Put([FromBody]Aluno aluno)
         {
-            if (aluno.codigo != id)
-            {
-                _notificationContext.AddNotification("Codigo do aluno difere do corpo da requisicao.");
-                return RetornaJson(_notificationContext, (int)HttpStatusCode.BadRequest);
-            }
-            return RetornaJson(_service.Update(aluno));
+            if (aluno == null)
+                return RetornaJson("Por favor, passe alguma informação.", (int)HttpStatusCode.BadRequest);
+
+            ValidationResult results = _validator.Validate(aluno, ruleSet: "update");
+            if (results.IsValid)
+                return RetornaJson(_service.Update(aluno));
+            else
+                return RetornaJson(results.Errors, (int)HttpStatusCode.BadRequest);
         }
 
         [HttpDelete("{id}")]

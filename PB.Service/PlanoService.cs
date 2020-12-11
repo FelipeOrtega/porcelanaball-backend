@@ -57,31 +57,13 @@ namespace PB.Service
         {
             try
             {
-                Plano planoExiste = _repository.ConsultaPorDescricao(plano.descricao);
-
-                if (planoExiste == null)
+                if (VerificaInclusaoAlteracao(plano))
                 {
-                    Modalidade modalidadeExiste = _repositoryModalidade.SelecionarPorId(plano.modalidade_codigo);
-                    Modulo moduloExiste = _repositoryModulo.SelecionarPorId(plano.modulo_codigo);
-
-                    if (modalidadeExiste != null && moduloExiste != null)
-                    {
-                        int planoInserido = _repository.Inserir(plano);
-                        return planoInserido;
-                    }
-                    else
-                    {
-                        _notificationContext.AddNotification("É necessário o preenchimento dos campos modulo e modalidade.");
-                        return 0;
-                    }
-                }
-                else
-                {
-                    _notificationContext.AddNotification("Já existe um cadastro para essa descrição de plano.");
-                    return 0;
+                    int planoInserido = _repository.Inserir(plano);
+                    return planoInserido;
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 _notificationContext.AddNotification("Não foi possivel inserir.");
             }
@@ -92,7 +74,11 @@ namespace PB.Service
         {
             try
             {
-                _repository.Alterar(plano);
+                if (VerificaInclusaoAlteracao(plano))
+                {
+                    _repository.Alterar(plano);
+                }
+                
             }
             catch (Exception)
             {
@@ -115,6 +101,32 @@ namespace PB.Service
             }
 
             return 0;
+        }
+
+        private bool VerificaInclusaoAlteracao(Plano plano)
+        {
+            Plano planoExiste = _repository.ConsultaPorDescricao(plano.descricao);
+
+            if (planoExiste == null)
+            {
+                Modalidade modalidadeExiste = _repositoryModalidade.SelecionarPorId(plano.modalidade_codigo);
+                Modulo moduloExiste = _repositoryModulo.SelecionarPorId(plano.modulo_codigo);
+
+                if (modalidadeExiste != null && moduloExiste != null)
+                {
+                    return true;
+                }
+                else
+                {
+                    _notificationContext.AddNotification("É necessário o preenchimento dos campos modulo e modalidade.");
+                    return false;
+                }
+            }
+            else
+            {
+                _notificationContext.AddNotification("Já existe um cadastro para essa descrição de plano.");
+                return false;
+            }
         }
     }
 }

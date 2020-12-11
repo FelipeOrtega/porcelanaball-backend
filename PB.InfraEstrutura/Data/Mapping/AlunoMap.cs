@@ -9,6 +9,7 @@ namespace PB.InfraEstrutura.Data.Mapping
         public override void Configure(EntityTypeBuilder<Aluno> builder)
         {
             builder.HasMany(a => a.alunoTreinos).WithOne(at => at.aluno);
+            builder.HasMany(a => a.alunoPossuiPlano).WithOne(app => app.aluno);
             base.Configure(builder);
         }
     }

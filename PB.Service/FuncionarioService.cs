@@ -51,9 +51,7 @@ namespace PB.Service
         {
             try
             {
-                Funcionario funcionarioExiste = _repository.ConsultaCpf(funcionario.cpf);
-
-                if (funcionarioExiste == null)
+                if (VerificaInclusaoAlteracao(funcionario))
                 {
                     int codigoFuncionarioInserido = _repository.Inserir(funcionario);
                     return codigoFuncionarioInserido;
@@ -75,7 +73,15 @@ namespace PB.Service
         {
             try
             {
-                _repository.Alterar(funcionario);
+                if (VerificaInclusaoAlteracao(funcionario))
+                {
+                    _repository.Alterar(funcionario);
+                }
+                else
+                {
+                    _notificationContext.AddNotification("Já existe um cadastro para esse CPF.");
+                    return 0;
+                }
             }
             catch (Exception)
             {
@@ -98,6 +104,20 @@ namespace PB.Service
             }
 
             return 0;
+        }
+
+        private bool VerificaInclusaoAlteracao(Funcionario funcionario)
+        {
+            try
+            {
+                Funcionario funcionarioExiste = _repository.ConsultaCpf(funcionario.cpf);
+
+                return (funcionarioExiste == null);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
     }
 }

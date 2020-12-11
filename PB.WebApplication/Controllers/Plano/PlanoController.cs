@@ -1,8 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FluentValidation;
+using FluentValidation.Results;
+using Microsoft.AspNetCore.Mvc;
 using PB.Domain;
 using PB.Domain.Notifications;
 using PB.Service.Interface;
 using PB.WebApplication.Core;
+using System.Net;
 
 namespace PB.WebApplication.Controllers
 {
@@ -10,11 +13,13 @@ namespace PB.WebApplication.Controllers
     public class PlanoController : ApiBase
     {
         private readonly IPlanoService _service;
+        private readonly IValidator<Plano> _validator;
 
-        public PlanoController(NotificationContext notificationContext, IPlanoService service)
+        public PlanoController(NotificationContext notificationContext, IPlanoService service, IValidator<Plano> validator)
         {
             _notificationContext = notificationContext;
             _service = service;
+            _validator = validator;
         }
 
         [HttpGet]
@@ -32,13 +37,27 @@ namespace PB.WebApplication.Controllers
         [HttpPost]
         public JsonReturn Create([FromBody]Plano plano)
         {
-            return RetornaJson(_service.Insert(plano));
+            if (plano == null)
+                return RetornaJson("Por favor, passe alguma informação.", (int)HttpStatusCode.BadRequest);
+
+            ValidationResult results = _validator.Validate(plano, ruleSet: "insert");
+            if (results.IsValid)
+                return RetornaJson(_service.Insert(plano));
+            else
+                return RetornaJson(results.Errors, (int)HttpStatusCode.BadRequest);
         }
 
         [HttpPut]
         public JsonReturn Update([FromBody]Plano plano)
         {
-            return RetornaJson(_service.Update(plano));
+            if (plano == null)
+                return RetornaJson("Por favor, passe alguma informação.", (int)HttpStatusCode.BadRequest);
+
+            ValidationResult results = _validator.Validate(plano, ruleSet: "update");
+            if (results.IsValid)
+                return RetornaJson(_service.Update(plano));
+            else
+                return RetornaJson(results.Errors, (int)HttpStatusCode.BadRequest);
         }
 
         [HttpDelete("{id}")]

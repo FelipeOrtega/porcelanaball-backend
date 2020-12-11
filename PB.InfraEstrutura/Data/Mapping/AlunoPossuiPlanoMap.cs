@@ -8,6 +8,7 @@ namespace PB.InfraEstrutura.Data.Mapping
     {
         public override void Configure(EntityTypeBuilder<AlunoPossuiPlano> builder)
         {
+            builder.HasOne(app => app.aluno).WithMany(a => a.alunoPossuiPlano).HasForeignKey(app => app.aluno_codigo);
             base.Configure(builder);
             builder.ToTable("aluno_possui_plano");
         }

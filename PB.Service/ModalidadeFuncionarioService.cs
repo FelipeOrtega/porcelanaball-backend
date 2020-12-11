@@ -54,28 +54,10 @@ namespace PB.Service
         {
             try
             {
-                ModalidadeFuncionario modalidadeFuncionarioExiste = _repository.
-                    ModalidadeFuncionarioExiste(modalidadeFuncionario.funcionario_codigo, modalidadeFuncionario.modalidade_codigo);
-
-                if (modalidadeFuncionarioExiste == null)
+                if (VerificaInclusaoAlteracao(modalidadeFuncionario))
                 {
-                    Funcionario funcionarioExiste = _repositoryFuncionario.SelecionarPorId(modalidadeFuncionario.funcionario_codigo);
-
-                    if (funcionarioExiste != null && funcionarioExiste.ativo)
-                    {
-                        int codigoModalidadeFuncionarioInserido = _repository.Inserir(modalidadeFuncionario);
-                        return codigoModalidadeFuncionarioInserido;
-                    }
-                    else
-                    {
-                        _notificationContext.AddNotification("Funcionario inexistente ou inativo.");
-                        return 0;
-                    }
-                }
-                else
-                {
-                    _notificationContext.AddNotification("Já existe um cadastro para essa modalidade_funcionario.");
-                    return 0;
+                    int codigoModalidadeFuncionarioInserido = _repository.Inserir(modalidadeFuncionario);
+                    return codigoModalidadeFuncionarioInserido;
                 }
             }
             catch (Exception e)
@@ -89,7 +71,10 @@ namespace PB.Service
         {
             try
             {
-                _repository.Alterar(modalidadeFuncionario);
+                if (VerificaInclusaoAlteracao(modalidadeFuncionario))
+                {
+                    _repository.Alterar(modalidadeFuncionario);
+                }
             }
             catch (Exception)
             {
@@ -112,6 +97,32 @@ namespace PB.Service
             }
 
             return 0;
+        }
+
+        private bool VerificaInclusaoAlteracao(ModalidadeFuncionario modalidadeFuncionario)
+        {
+            ModalidadeFuncionario modalidadeFuncionarioExiste = _repository.
+                    ModalidadeFuncionarioExiste(modalidadeFuncionario.funcionario_codigo, modalidadeFuncionario.modalidade_codigo);
+
+            if (modalidadeFuncionarioExiste == null)
+            {
+                Funcionario funcionarioExiste = _repositoryFuncionario.SelecionarPorId(modalidadeFuncionario.funcionario_codigo);
+
+                if (funcionarioExiste != null && funcionarioExiste.ativo)
+                {
+                    return true;
+                }
+                else
+                {
+                    _notificationContext.AddNotification("Funcionario inexistente ou inativo.");
+                    return false;
+                }
+            }
+            else
+            {
+                _notificationContext.AddNotification("Já existe um cadastro para essa modalidade_funcionario.");
+                return false;
+            }
         }
     }
 }

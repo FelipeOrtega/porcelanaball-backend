@@ -7,6 +7,9 @@ namespace PB.InfraEstrutura.Data.Mapping
     {
         public override void Configure(EntityTypeBuilder<Funcionario> builder)
         {
+            builder.HasMany(f => f.funcionarioPermissao).WithOne(fp => fp.funcionario);
+            builder.HasMany(f => f.modalidadeFuncionario).WithOne(mf => mf.funcionario);
+            builder.HasMany(f => f.funcionarioPossuiPlano).WithOne(fpp => fpp.funcionario);
             base.Configure(builder);
         }
     }

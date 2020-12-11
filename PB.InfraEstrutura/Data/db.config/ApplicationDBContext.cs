@@ -77,7 +77,9 @@ namespace PB.InfraEstrutura.Data.db.config
                          ApplyConfiguration(new ModalidadeFuncionarioMap()).
                          ApplyConfiguration(new AlunoPossuiPlanoMap()).
                          ApplyConfiguration(new FormaPagamentoMap()).
-                         ApplyConfiguration(new LancamentoProdutoMap());
+                         ApplyConfiguration(new LancamentoProdutoMap()).
+                         ApplyConfiguration(new FuncionarioPermissaoMap()).
+                         ApplyConfiguration(new FuncionarioPossuiPlanoMap());
         }
     }
 }

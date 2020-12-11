@@ -52,17 +52,10 @@ namespace PB.Service
         {
             try
             {
-                ProdutoCategoria produtoCategoriaExiste = _repository.ConsultaPorDescricao(produtoCategoria.descricao);
-
-                if (produtoCategoriaExiste == null)
+                if (VerificaInclusaoAlteracao(produtoCategoria))
                 {
                     int codigoProdutoCategoriaInserido = _repository.Inserir(produtoCategoria);
                     return codigoProdutoCategoriaInserido;
-                }
-                else
-                {
-                    _notificationContext.AddNotification("Já existe um cadastro para essa descrição de categoria.");
-                    return 0;
                 }
             }
             catch (Exception)
@@ -76,7 +69,10 @@ namespace PB.Service
         {
             try
             {
-                _repository.Alterar(produtoCategoria);
+                if (VerificaInclusaoAlteracao(produtoCategoria))
+                {
+                    _repository.Alterar(produtoCategoria);
+                }
             }
             catch (Exception)
             {
@@ -98,6 +94,21 @@ namespace PB.Service
             }
 
             return 0;
+        }
+
+        private bool VerificaInclusaoAlteracao(ProdutoCategoria produtoCategoria)
+        {
+            ProdutoCategoria produtoCategoriaExiste = _repository.ConsultaPorDescricao(produtoCategoria.descricao);
+
+            if (produtoCategoriaExiste == null)
+            {
+                return true;
+            }
+            else
+            {
+                _notificationContext.AddNotification("Já existe um cadastro para essa descrição de categoria.");
+                return false;
+            }
         }
     }
 }
