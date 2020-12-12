@@ -5,6 +5,7 @@
     <OutputType>Exe</OutputType>
     <NoWin32Manifest>true</NoWin32Manifest>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <UserSecretsId>bbc0ca2a-94f0-49aa-b441-3b8328a68d3d</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
