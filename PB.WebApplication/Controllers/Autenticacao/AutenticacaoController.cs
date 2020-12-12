@@ -25,14 +25,14 @@ namespace PB.WebApplication.Controllers
         [AllowAnonymous]
         public JsonReturn Post([FromBody] User model)
         {
-            var user = UserRepository.Get(model.Username, model.Password);
+            var user = UserRepository.Get(model.username, model.password);
 
             if (user == null)
                 return RetornaJson(user, (int)HttpStatusCode.Forbidden);
 
             var token = TokenService.GenerateToken(user);
 
-            user.Password = "";
+            user.password = "";
 
             var data = new { user = user, token = token };
    
