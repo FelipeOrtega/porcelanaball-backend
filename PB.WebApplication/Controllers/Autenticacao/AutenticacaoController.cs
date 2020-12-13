@@ -16,13 +16,11 @@ namespace PB.WebApplication.Controllers
     public class AutenticacaoController : ApiBase
     {
         private readonly IUserService _serviceUser;
-        private readonly IUserTokenService _serviceUserToken;
 
 
-        public AutenticacaoController(NotificationContext notificationContext, IUserService serviceUser, IUserTokenService serviceUserToken)
+        public AutenticacaoController(NotificationContext notificationContext, IUserService serviceUser)
         {
             _serviceUser = serviceUser;
-            _serviceUserToken = serviceUserToken;
             _notificationContext = notificationContext;
         }
 
