@@ -1,12 +1,12 @@
-﻿using System;
+﻿using PB.Domain.Core;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace PB.Domain
 {
-    public class User
+    public class User : EntityBase
     {
-        public int id { get; set; }
         public string username { get; set; }
         public string password { get; set; }
         public string role { get; set; }

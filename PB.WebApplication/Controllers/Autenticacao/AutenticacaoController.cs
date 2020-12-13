@@ -15,9 +15,14 @@ namespace PB.WebApplication.Controllers
     [Route("[controller]")]
     public class AutenticacaoController : ApiBase
     {
+        private readonly IUserService _serviceUser;
+        private readonly IUserTokenService _serviceUserToken;
 
-        public AutenticacaoController(NotificationContext notificationContext)
+
+        public AutenticacaoController(NotificationContext notificationContext, IUserService serviceUser, IUserTokenService serviceUserToken)
         {
+            _serviceUser = serviceUser;
+            _serviceUserToken = serviceUserToken;
             _notificationContext = notificationContext;
         }
 
@@ -25,7 +30,7 @@ namespace PB.WebApplication.Controllers
         [AllowAnonymous]
         public JsonReturn Post([FromBody] User model)
         {
-            var user = UserRepository.Get(model.username, model.password);
+            var user = _serviceUser.Get(model);
 
             if (user == null)
                 return RetornaJson(user, (int)HttpStatusCode.Forbidden);
