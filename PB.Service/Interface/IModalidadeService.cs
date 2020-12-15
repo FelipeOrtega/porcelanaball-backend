@@ -9,6 +9,6 @@ namespace PB.Service.Interface
         Modalidade Get(int codigo);
         int Insert(Modalidade modalidade);
         int Update(Modalidade modalidade);
-        int Delete(Modalidade modalidade);
+        int Delete(int codigo);
     }
 }

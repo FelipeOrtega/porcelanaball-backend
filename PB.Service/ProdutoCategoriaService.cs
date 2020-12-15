@@ -82,10 +82,16 @@ namespace PB.Service
             return 0;
         }
 
-        public int Delete(ProdutoCategoria produtoCategoria)
+        public int Delete(int codigo)
         {
             try
             {
+                ProdutoCategoria produtoCategoria = _repository.SelecionarPorId(codigo);
+                if (produtoCategoria == null)
+                {
+                    _notificationContext.AddNotification("Este cadastro não foi encontrado no banco de dados.");
+                    return 0;
+                }
                 _repository.Excluir(produtoCategoria);
             }
             catch (Exception)

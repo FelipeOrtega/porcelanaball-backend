@@ -10,6 +10,6 @@ namespace PB.Service.Interface
         Produto Get(int codigo);
         int Insert(Produto aluno);
         int Update(Produto aluno);
-        int Delete(Produto aluno);
+        int Delete(int codigo);
     }
 }

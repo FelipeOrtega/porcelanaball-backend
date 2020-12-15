@@ -68,14 +68,9 @@ namespace PB.WebApplication.Controllers
 
         [HttpDelete("{id}")]
         [Authorize(Roles = "manager")]
-        public JsonReturn Delete(int id, [FromBody] PB.Domain.Aluno aluno)
+        public JsonReturn Delete(int id)
         {
-            if (aluno.codigo != id)
-            {
-                _notificationContext.AddNotification("Codigo do aluno difere do corpo da requisicao.");
-                return RetornaJson(_notificationContext, (int)HttpStatusCode.BadRequest);
-            }
-            return RetornaJson(_service.Delete(aluno));
+            return RetornaJson(_service.Delete(id));
         }
     }
 }

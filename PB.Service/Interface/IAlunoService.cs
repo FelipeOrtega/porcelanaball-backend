@@ -10,6 +10,6 @@ namespace PB.Service.Interface
         Aluno Get(int codigo);
         int Insert(Aluno aluno);
         int Update(Aluno aluno);
-        int Delete(Aluno aluno);
+        int Delete(int id);
     }
 }

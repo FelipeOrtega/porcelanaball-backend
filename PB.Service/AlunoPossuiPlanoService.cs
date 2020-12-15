@@ -98,10 +98,17 @@ namespace PB.Service
             return 0;
         }
 
-        public int Delete(AlunoPossuiPlano alunoPossuiPlano)
+        public int Delete(int codigo)
         {
             try
             {
+                AlunoPossuiPlano alunoPossuiPlano = _repository.SelecionarPorId(codigo);
+                if (alunoPossuiPlano == null)
+                {
+                    _notificationContext.AddNotification("Este cadastro não foi encontrado no banco de dados.");
+                    return 0;
+                }
+
                 _repository.Excluir(alunoPossuiPlano);
             }
             catch (Exception)

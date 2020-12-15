@@ -9,6 +9,6 @@ namespace PB.Service.Interface
         AlunoPossuiPlano Get(int codigo);
         int Insert(AlunoPossuiPlano alunoPossuiPlano);
         int Update(AlunoPossuiPlano alunoPossuiPlano);
-        int Delete(AlunoPossuiPlano alunoPossuiPlano);
+        int Delete(int id);
     }
 }

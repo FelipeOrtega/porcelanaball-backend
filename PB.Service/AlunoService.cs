@@ -1,11 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
-using PB.Domain;
+﻿using PB.Domain;
 using PB.Domain.Interface.Repository;
 using PB.Domain.Notifications;
 using PB.Service.Interface;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace PB.Service
 {
@@ -13,12 +11,10 @@ namespace PB.Service
     {
         private readonly IAlunoRepository _repository;
         private readonly NotificationContext _notificationContext;
-        private readonly IAlunoTreinoRepository _repositoryAlunoTreino;
 
-        public AlunoService(IAlunoRepository repository, IAlunoTreinoRepository repositoryAlunoTreino, NotificationContext notificationContext)
+        public AlunoService(IAlunoRepository repository, NotificationContext notificationContext)
         {
             _repository = repository;
-            _repositoryAlunoTreino = repositoryAlunoTreino;
             _notificationContext = notificationContext;
         }
 
@@ -109,15 +105,23 @@ namespace PB.Service
             return 0;
         }
 
-        public int Delete(Aluno aluno)
+        public int Delete(int codigo)
         {
             try
             {
+                Aluno aluno = _repository.SelecionarPorId(codigo);
+                if (aluno == null)
+                {
+                    _notificationContext.AddNotification("Este cadastro não foi encontrado no banco de dados.");
+                    return 0;
+                }
+
                 _repository.Excluir(aluno);
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 _notificationContext.AddNotification("Não foi possivel deletar.");
+                _notificationContext.AddNotification(e.Message);
             }
 
             return 0;

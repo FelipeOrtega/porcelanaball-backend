@@ -9,6 +9,6 @@ namespace PB.Service.Interface
         AlunoTreino Get(int codigo);
         int Insert(AlunoTreino alunoTreino);
         int Update(AlunoTreino alunoTreino);
-        int Delete(AlunoTreino alunoTreino);
+        int Delete(int codigo);
     }
 }

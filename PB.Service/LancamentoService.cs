@@ -126,10 +126,17 @@ namespace PB.Service
             return 0;
         }
 
-        public int Delete(Lancamento lancamento)
+        public int Delete(int codigo)
         {
             try
             {
+                Lancamento lancamento = _repository.SelecionarPorId(codigo);
+                if (lancamento == null)
+                {
+                    _notificationContext.AddNotification("Este cadastro não foi encontrado no banco de dados.");
+                    return 0;
+                }
+
                 _repository.Excluir(lancamento);
             }
             catch (Exception)

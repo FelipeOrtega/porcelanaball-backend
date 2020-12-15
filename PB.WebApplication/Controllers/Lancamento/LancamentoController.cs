@@ -65,11 +65,11 @@ namespace PB.WebApplication.Controllers
                 return RetornaJson(results.Errors, (int)HttpStatusCode.BadRequest);
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         [Authorize(Roles = "manager")]
-        public JsonReturn Delete([FromBody]Lancamento lancamento)
+        public JsonReturn Delete(int id)
         {
-            return RetornaJson(_service.Delete(lancamento));
+            return RetornaJson(_service.Delete(id));
         }
     }
 }

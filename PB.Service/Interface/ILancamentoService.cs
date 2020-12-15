@@ -9,6 +9,6 @@ namespace PB.Service.Interface
         Lancamento Get(int codigo);
         int Insert(Lancamento modalidade);
         int Update(Lancamento modalidade);
-        int Delete(Lancamento modalidade);
+        int Delete(int codigo);
     }
 }

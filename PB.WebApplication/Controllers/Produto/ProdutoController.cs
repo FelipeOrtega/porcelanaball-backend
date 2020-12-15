@@ -69,12 +69,9 @@ namespace PB.WebApplication.Controllers
 
         [HttpDelete("{id}")]
         [Authorize(Roles = "manager")]
-        public JsonReturn Delete([FromBody] Object inputModel)
+        public JsonReturn Delete(int id)
         {
-
-            PB.Domain.Produto produto = (PB.Domain.Produto)inputModel;
-
-            return RetornaJson(_service.Delete(produto));
+            return RetornaJson(_service.Delete(id));
         }
     }
 }

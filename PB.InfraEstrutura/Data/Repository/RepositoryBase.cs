@@ -27,6 +27,10 @@ namespace PB.InfraEstrutura.Data.Repository
 
         public void Excluir(TEntity entity)
         {
+            var i = SelecionarPorId(entity.codigo);
+            if (i == null)
+                throw new Exception("Este cadastro não foi encontrado no banco de dados.");
+
             context.InitTransacao();
             context.Set<TEntity>().Remove(entity);
             context.SendChanges();

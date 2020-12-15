@@ -7,8 +7,8 @@ namespace PB.Service.Interface
     {
         List<ProdutoCategoria> Get();
         ProdutoCategoria Get(int codigo);
-        int Insert(ProdutoCategoria modalidade);
-        int Update(ProdutoCategoria modalidade);
-        int Delete(ProdutoCategoria modalidade);
+        int Insert(ProdutoCategoria produtoCategoria);
+        int Update(ProdutoCategoria produtoCategoria);
+        int Delete(int codigo);
     }
 }

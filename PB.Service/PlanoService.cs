@@ -93,6 +93,12 @@ namespace PB.Service
             try
             {
                 Plano plano = _repository.SelecionarPorId(codigo);
+                if (plano == null)
+                {
+                    _notificationContext.AddNotification("Este cadastro não foi encontrado no banco de dados.");
+                    return 0;
+                }
+
                 _repository.Excluir(plano);
             }
             catch (Exception)

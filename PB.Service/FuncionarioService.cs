@@ -96,6 +96,12 @@ namespace PB.Service
             try
             {
                 Funcionario funcionario = _repository.SelecionarPorId(codigo);
+                if (funcionario == null)
+                {
+                    _notificationContext.AddNotification("Este cadastro não foi encontrado no banco de dados.");
+                    return 0;
+                }
+
                 _repository.Excluir(funcionario);
             }
             catch (Exception)
