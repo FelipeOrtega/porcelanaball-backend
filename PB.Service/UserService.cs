@@ -76,11 +76,18 @@ namespace PB.Service
             return 0;
         }
 
-        public int Delete(User User)
+        public int Delete(int codigo)
         {
+
             try
             {
-                _repository.Excluir(User);
+                User user = _repository.SelecionarPorId(codigo);
+                if (user == null)
+                {
+                    _notificationContext.AddNotification("Este cadastro não foi encontrado no banco de dados.");
+                    return 0;
+                }
+                _repository.Excluir(user);
             }
             catch (Exception)
             {

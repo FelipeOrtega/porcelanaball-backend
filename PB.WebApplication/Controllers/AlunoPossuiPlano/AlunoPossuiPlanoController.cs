@@ -16,9 +16,7 @@ namespace PB.WebApplication.Controllers
         private readonly IAlunoPossuiPlanoService _service;
         private readonly IValidator<AlunoPossuiPlano> _validator;
 
-        public AlunoPossuiPlanoController(NotificationContext notificationContext, 
-            IAlunoPossuiPlanoService service, 
-            IValidator<AlunoPossuiPlano> validator)
+        public AlunoPossuiPlanoController(NotificationContext notificationContext, IAlunoPossuiPlanoService service, IValidator<AlunoPossuiPlano> validator)
         {
             _notificationContext = notificationContext;
             _service = service;
@@ -47,6 +45,7 @@ namespace PB.WebApplication.Controllers
                 return RetornaJson("Por favor, passe alguma informação.", (int)HttpStatusCode.BadRequest);
 
             ValidationResult results = _validator.Validate(alunoPossuiPlano, ruleSet: "insert");
+
             if (results.IsValid)
                 return RetornaJson(_service.Insert(alunoPossuiPlano));
             else
@@ -61,6 +60,7 @@ namespace PB.WebApplication.Controllers
                 return RetornaJson("Por favor, passe alguma informação.", (int)HttpStatusCode.BadRequest);
 
             ValidationResult results = _validator.Validate(alunoPossuiPlano, ruleSet: "update");
+
             if (results.IsValid)
                 return RetornaJson(_service.Update(alunoPossuiPlano));
             else

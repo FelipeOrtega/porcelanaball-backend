@@ -1,6 +1,4 @@
-﻿using System;
-using System.Net;
-using FluentValidation;
+﻿using FluentValidation;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -8,6 +6,7 @@ using PB.Domain;
 using PB.Domain.Notifications;
 using PB.Service.Interface;
 using PB.WebApplication.Core;
+using System.Net;
 
 namespace PB.WebApplication.Controllers
 {
@@ -35,7 +34,6 @@ namespace PB.WebApplication.Controllers
         [Authorize(Roles = "manager, employee")]
         public JsonReturn Get(int id)
         {
-
             return RetornaJson(_service.Get(id));
         }
 
@@ -47,6 +45,7 @@ namespace PB.WebApplication.Controllers
                 return RetornaJson("Por favor, passe alguma informação.", (int)HttpStatusCode.BadRequest);
 
             ValidationResult results = _validator.Validate(produto, ruleSet: "insert");
+
             if (results.IsValid)
                 return RetornaJson(_service.Insert(produto));
             else
@@ -61,6 +60,7 @@ namespace PB.WebApplication.Controllers
                 return RetornaJson("Por favor, passe alguma informação.", (int)HttpStatusCode.BadRequest);
 
             ValidationResult results = _validator.Validate(produto, ruleSet: "update");
+
             if (results.IsValid)
                 return RetornaJson(_service.Update(produto));
             else

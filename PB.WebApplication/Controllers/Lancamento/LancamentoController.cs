@@ -45,6 +45,7 @@ namespace PB.WebApplication.Controllers
                 return RetornaJson("Por favor, passe alguma informação.", (int)HttpStatusCode.BadRequest);
 
             ValidationResult results = _validator.Validate(lancamento, ruleSet: "insert");
+
             if (results.IsValid)
                 return RetornaJson(_service.Insert(lancamento));
             else
@@ -59,6 +60,7 @@ namespace PB.WebApplication.Controllers
                 return RetornaJson("Por favor, passe alguma informação.", (int)HttpStatusCode.BadRequest);
 
             ValidationResult results = _validator.Validate(lancamento, ruleSet: "update");
+
             if (results.IsValid)
                 return RetornaJson(_service.Update(lancamento));
             else

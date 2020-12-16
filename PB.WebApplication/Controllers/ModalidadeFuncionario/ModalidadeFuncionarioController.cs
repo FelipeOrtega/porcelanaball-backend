@@ -16,10 +16,7 @@ namespace PB.WebApplication.Controllers
         private readonly IModalidadeFuncionarioService _service;
         private readonly IValidator<ModalidadeFuncionario> _validator;
 
-        public ModalidadeFuncionarioController(
-            NotificationContext notificationContext, 
-            IModalidadeFuncionarioService service,
-            IValidator<ModalidadeFuncionario> validator)
+        public ModalidadeFuncionarioController(NotificationContext notificationContext, IModalidadeFuncionarioService service, IValidator<ModalidadeFuncionario> validator)
         {
             _notificationContext = notificationContext;
             _service = service;
@@ -48,6 +45,7 @@ namespace PB.WebApplication.Controllers
                 return RetornaJson("Por favor, passe alguma informação.", (int)HttpStatusCode.BadRequest);
 
             ValidationResult results = _validator.Validate(modalidadeFuncionario, ruleSet: "insert");
+
             if (results.IsValid)
                 return RetornaJson(_service.Insert(modalidadeFuncionario));
             else
@@ -62,6 +60,7 @@ namespace PB.WebApplication.Controllers
                 return RetornaJson("Por favor, passe alguma informação.", (int)HttpStatusCode.BadRequest);
 
             ValidationResult results = _validator.Validate(modalidadeFuncionario, ruleSet: "update");
+
             if (results.IsValid)
                 return RetornaJson(_service.Update(modalidadeFuncionario));
             else
