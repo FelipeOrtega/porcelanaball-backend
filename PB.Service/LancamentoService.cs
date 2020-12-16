@@ -1,4 +1,5 @@
-﻿using PB.Domain;
+﻿using Microsoft.AspNetCore.Server.IIS.Core;
+using PB.Domain;
 using PB.Domain.Interface.Repository;
 using PB.Domain.Notifications;
 using PB.Service.Interface;
@@ -63,49 +64,18 @@ namespace PB.Service
         {
             try
             {
-                var existeSaldo = true;
-                Funcionario funcionarioExiste = _repositoryFuncionario.SelecionarPorId(lancamento.funcionario_codigo.Value);
-                FormaPagamento formaPagamentoExiste = _repositoryFormaPagamento.SelecionarPorId(lancamento.forma_pagamento_codigo.Value);
-
-                if ((funcionarioExiste != null && funcionarioExiste.ativo) && formaPagamentoExiste != null)
+                Lancamento lancamentoValido = VerificaAlteracaoInclusao(lancamento);
+                if (lancamentoValido != null)
                 {
-                    if (lancamento.lancamentoProduto != null)
-                    {
-                        Produto produtoExiste;
-                        for (int i = 0; i < lancamento.lancamentoProduto.Count; i++)
-                        {
-                            produtoExiste = _repositoryProduto.SelecionarPorId(lancamento.lancamentoProduto[i].produto_codigo);
-
-                            if (produtoExiste.saldo < lancamento.lancamentoProduto[i].quantidade)
-                            {
-                                _notificationContext.AddNotification("Não existe saldo suficiente no produto com codigo: " + 
-                                    lancamento.lancamentoProduto[i].produto_codigo);
-                                existeSaldo = false;
-                            }
-                            else
-                            {
-                                produtoExiste.saldo = produtoExiste.saldo - lancamento.lancamentoProduto[i].quantidade;
-                            }
-                        }
-                    }
-
-                    if (existeSaldo)
-                    {
-                        int codigoLancamentoInserido = _repository.Inserir(lancamento);
-                        return codigoLancamentoInserido;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    int codigoLancamentoInserido = _repository.Inserir(lancamento);
+                    return codigoLancamentoInserido;
                 }
                 else
                 {
-                    _notificationContext.AddNotification("É necessário incluir funcionario e/ou forma de pagamento.");
-                    return 0;
+                    throw new Exception();
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 _notificationContext.AddNotification("Não foi possivel inserir.");
             }
@@ -116,7 +86,15 @@ namespace PB.Service
         {
             try
             {
-                _repository.Alterar(lancamento);
+                Lancamento lancamentoValido = VerificaAlteracaoInclusao(lancamento);
+                if (lancamentoValido != null)
+                {
+                    _repository.Alterar(lancamento);
+                }
+                else
+                {
+                    throw new Exception();
+                }
             }
             catch (Exception)
             {
@@ -145,6 +123,50 @@ namespace PB.Service
             }
 
             return 0;
+        }
+
+        public Lancamento VerificaAlteracaoInclusao(Lancamento lancamento)
+        {
+            var existeSaldo = true;
+            Funcionario funcionarioExiste = _repositoryFuncionario.SelecionarPorId(lancamento.funcionario_codigo.Value);
+            FormaPagamento formaPagamentoExiste = _repositoryFormaPagamento.SelecionarPorId(lancamento.forma_pagamento_codigo.Value);
+
+            if ((funcionarioExiste != null && funcionarioExiste.ativo) && formaPagamentoExiste != null)
+            {
+                if (lancamento.lancamentoProduto != null)
+                {
+                    Produto produtoExiste;
+                    for (int i = 0; i < lancamento.lancamentoProduto.Count; i++)
+                    {
+                        produtoExiste = _repositoryProduto.SelecionarPorId(lancamento.lancamentoProduto[i].produto_codigo);
+
+                        if (produtoExiste.saldo < lancamento.lancamentoProduto[i].quantidade)
+                        {
+                            _notificationContext.AddNotification("Não existe saldo suficiente no produto com codigo: " +
+                                lancamento.lancamentoProduto[i].produto_codigo);
+                            existeSaldo = false;
+                        }
+                        else
+                        {
+                            produtoExiste.saldo = produtoExiste.saldo - lancamento.lancamentoProduto[i].quantidade;
+                        }
+                    }
+                }
+
+                if (existeSaldo)
+                {
+                    return lancamento;
+                }
+                else
+                {
+                    throw new Exception();
+                }
+            }
+            else
+            {
+                _notificationContext.AddNotification("É necessário incluir funcionario e/ou forma de pagamento.");
+                throw new Exception();
+            }
         }
     }
 }

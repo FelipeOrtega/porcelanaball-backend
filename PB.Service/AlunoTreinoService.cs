@@ -54,8 +54,7 @@ namespace PB.Service
         {
             try
             {
-                Aluno alunoExiste = _repositoryAluno.SelecionarPorId(alunoTreino.aluno_codigo);
-                if (alunoExiste != null && alunoExiste.ativo)
+                if (VerificaInclusaoAlteracao(alunoTreino))
                 {
                     int codigoAlunoTreinoInserido = _repository.Inserir(alunoTreino);
                     return codigoAlunoTreinoInserido;
@@ -63,7 +62,6 @@ namespace PB.Service
                 else
                 {
                     _notificationContext.AddNotification("Aluno inexistente ou inativo.");
-                    return 0;
                 }
             }
             catch (Exception)
@@ -77,7 +75,15 @@ namespace PB.Service
         {
             try
             {
-                _repository.Alterar(alunoTreino);
+                if (VerificaInclusaoAlteracao(alunoTreino))
+                {
+                    _repository.Alterar(alunoTreino);
+                }
+                else
+                {
+                    _notificationContext.AddNotification("Aluno inexistente ou inativo.");
+                }
+                
             }
             catch (Exception)
             {
@@ -106,6 +112,27 @@ namespace PB.Service
             }
 
             return 0;
+        }
+
+        private bool VerificaInclusaoAlteracao(AlunoTreino alunoTreino)
+        {
+            try
+            {
+                Aluno alunoExiste = _repositoryAluno.SelecionarPorId(alunoTreino.aluno_codigo);
+                if (alunoExiste != null && alunoExiste.ativo)
+                {
+                    return true;
+                }
+                else
+                {
+                    _notificationContext.AddNotification("Aluno inexistente ou inativo.");
+                    return false;
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
     }
 }
