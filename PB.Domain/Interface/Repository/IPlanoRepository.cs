@@ -2,6 +2,6 @@
 {
     public interface IPlanoRepository : IRepositoryBase<Plano>
     {
-        public Plano ConsultaPorDescricao(string descricao);
+        public Plano SearchByDescription(string descricao);
     }
 }

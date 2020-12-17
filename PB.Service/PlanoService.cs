@@ -15,22 +15,22 @@ namespace PB.Service
         private readonly IModalidadeRepository _repositoryModalidade;
         private readonly IModuloRepository _repositoryModulo;
 
-        public PlanoService(IPlanoRepository repository, NotificationContext notificationContext, IModalidadeRepository repositoryModalidade,
-            IModuloRepository repositoryModulo)
+        public PlanoService(IPlanoRepository repository, NotificationContext notificationContext, IModalidadeRepository repositoryModalidade, IModuloRepository repositoryModulo)
         {
             _repository = repository;
             _notificationContext = notificationContext;
             _repositoryModalidade = repositoryModalidade;
             _repositoryModulo = repositoryModulo;
         }
+
         public List<Plano> Get()
         {
             try
             {
-                List<Plano> planos = _repository.Consultar();
+                List<Plano> planos = _repository.Get();
                 return planos;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 _notificationContext.AddNotification("Não foi possivel capturar as informações.");
             }
@@ -42,7 +42,7 @@ namespace PB.Service
         {
             try
             {
-                Plano plano = _repository.SelecionarPorId(codigo);
+                Plano plano = _repository.SelectById(codigo);
                 return plano;
             }
             catch (Exception)
@@ -57,9 +57,9 @@ namespace PB.Service
         {
             try
             {
-                if (VerificaInclusaoAlteracao(plano))
+                if (CheckInsertUpdate(plano))
                 {
-                    int planoInserido = _repository.Inserir(plano);
+                    int planoInserido = _repository.Insert(plano);
                     return planoInserido;
                 }
             }
@@ -74,9 +74,9 @@ namespace PB.Service
         {
             try
             {
-                if (VerificaInclusaoAlteracao(plano))
+                if (CheckInsertUpdate(plano))
                 {
-                    _repository.Alterar(plano);
+                    _repository.Update(plano);
                 }
                 
             }
@@ -92,14 +92,15 @@ namespace PB.Service
         {
             try
             {
-                Plano plano = _repository.SelecionarPorId(codigo);
+                Plano plano = _repository.SelectById(codigo);
+
                 if (plano == null)
                 {
                     _notificationContext.AddNotification("Este cadastro não foi encontrado no banco de dados.");
                     return 0;
                 }
 
-                _repository.Excluir(plano);
+                _repository.Delete(plano);
             }
             catch (Exception)
             {
@@ -109,14 +110,14 @@ namespace PB.Service
             return 0;
         }
 
-        private bool VerificaInclusaoAlteracao(Plano plano)
+        private bool CheckInsertUpdate(Plano plano)
         {
-            Plano planoExiste = _repository.ConsultaPorDescricao(plano.descricao);
+            Plano planoExiste = _repository.SearchByDescription(plano.descricao);
 
             if (planoExiste == null)
             {
-                Modalidade modalidadeExiste = _repositoryModalidade.SelecionarPorId(plano.modalidade_codigo);
-                Modulo moduloExiste = _repositoryModulo.SelecionarPorId(plano.modulo_codigo);
+                Modalidade modalidadeExiste = _repositoryModalidade.SelectById(plano.modalidade_codigo);
+                Modulo moduloExiste = _repositoryModulo.SelectById(plano.modulo_codigo);
 
                 if (modalidadeExiste != null && moduloExiste != null)
                 {

@@ -8,7 +8,7 @@ namespace PB.WebApplication.Core
     {
         public NotificationContext _notificationContext;
 
-        public JsonReturn RetornaJson(object retorno, int status = (int)HttpStatusCode.OK)
+        public JsonReturn ReturnJson(object retorno, int status = (int)HttpStatusCode.OK)
         {
             JsonReturn json = new JsonReturn();
 

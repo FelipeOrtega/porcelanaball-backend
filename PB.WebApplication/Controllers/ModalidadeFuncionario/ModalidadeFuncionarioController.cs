@@ -27,14 +27,14 @@ namespace PB.WebApplication.Controllers
         [Authorize(Roles = "manager, employee")]
         public JsonReturn Get()
         {
-            return RetornaJson(_service.Get());
+            return ReturnJson(_service.Get());
         }
 
         [HttpGet("{id}")]
         [Authorize(Roles = "manager, employee")]
         public JsonReturn Get(int id)
         {
-            return RetornaJson(_service.Get(id));
+            return ReturnJson(_service.Get(id));
         }
 
         [HttpPost]
@@ -42,14 +42,14 @@ namespace PB.WebApplication.Controllers
         public JsonReturn Post([FromBody]ModalidadeFuncionario modalidadeFuncionario)
         {
             if (modalidadeFuncionario == null)
-                return RetornaJson("Por favor, passe alguma informação.", (int)HttpStatusCode.BadRequest);
+                return ReturnJson("Por favor, passe alguma informação.", (int)HttpStatusCode.BadRequest);
 
-            ValidationResult results = _validator.Validate(modalidadeFuncionario, ruleSet: "insert");
+            ValidationResult results = _validator.Validate(modalidadeFuncionario, options => options.IncludeRuleSets("insert"));
 
             if (results.IsValid)
-                return RetornaJson(_service.Insert(modalidadeFuncionario));
+                return ReturnJson(_service.Insert(modalidadeFuncionario));
             else
-                return RetornaJson(results.Errors, (int)HttpStatusCode.BadRequest);
+                return ReturnJson(results.Errors, (int)HttpStatusCode.BadRequest);
         }
 
         [HttpPut]
@@ -57,21 +57,21 @@ namespace PB.WebApplication.Controllers
         public JsonReturn Put([FromBody]ModalidadeFuncionario modalidadeFuncionario)
         {
             if (modalidadeFuncionario == null)
-                return RetornaJson("Por favor, passe alguma informação.", (int)HttpStatusCode.BadRequest);
+                return ReturnJson("Por favor, passe alguma informação.", (int)HttpStatusCode.BadRequest);
 
-            ValidationResult results = _validator.Validate(modalidadeFuncionario, ruleSet: "update");
+            ValidationResult results = _validator.Validate(modalidadeFuncionario, options => options.IncludeRuleSets("update"));
 
             if (results.IsValid)
-                return RetornaJson(_service.Update(modalidadeFuncionario));
+                return ReturnJson(_service.Update(modalidadeFuncionario));
             else
-                return RetornaJson(results.Errors, (int)HttpStatusCode.BadRequest);
+                return ReturnJson(results.Errors, (int)HttpStatusCode.BadRequest);
         }
 
         [HttpDelete("{id}")]
         [Authorize(Roles = "manager")]
         public JsonReturn Delete(int id)
         {
-            return RetornaJson(_service.Delete(id));
+            return ReturnJson(_service.Delete(id));
         }
     }
 }

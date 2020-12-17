@@ -22,7 +22,7 @@ namespace PB.Service
         {
             try
             {
-                List<User> Users = _repository.Consultar();
+                List<User> Users = _repository.Get();
                 return Users;
             }
             catch (Exception)
@@ -40,7 +40,7 @@ namespace PB.Service
                 User User = _repository.Get(user.username, user.password);
                 return User;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 _notificationContext.AddNotification("Não foi possivel capturar as informações.");
             }
@@ -52,10 +52,10 @@ namespace PB.Service
         {
             try
             {
-                 int codigoUserInserido = _repository.Inserir(User);
+                 int codigoUserInserido = _repository.Insert(User);
                  return codigoUserInserido;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 _notificationContext.AddNotification("Não foi possivel inserir.");
             }
@@ -66,7 +66,7 @@ namespace PB.Service
         {
             try
             {
-                 _repository.Alterar(User);   
+                 _repository.Update(User);   
             }
             catch (Exception)
             {
@@ -78,16 +78,16 @@ namespace PB.Service
 
         public int Delete(int codigo)
         {
-
             try
             {
-                User user = _repository.SelecionarPorId(codigo);
+                User user = _repository.SelectById(codigo);
+
                 if (user == null)
                 {
                     _notificationContext.AddNotification("Este cadastro não foi encontrado no banco de dados.");
                     return 0;
                 }
-                _repository.Excluir(user);
+                _repository.Delete(user);
             }
             catch (Exception)
             {
@@ -96,6 +96,5 @@ namespace PB.Service
 
             return 0;
         }
-
     }
 }

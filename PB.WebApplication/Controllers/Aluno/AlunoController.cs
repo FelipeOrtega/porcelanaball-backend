@@ -28,14 +28,14 @@ namespace PB.WebApplication.Controllers
         [Authorize(Roles = "manager, employee")]
         public JsonReturn Get()
         {
-            return RetornaJson(_service.Get());
+            return ReturnJson(_service.Get());
         }
 
         [HttpGet("{id}")]
         [Authorize(Roles = "manager, employee")]
         public JsonReturn Get(int id)
         {
-            return RetornaJson(_service.Get(id));
+            return ReturnJson(_service.Get(id));
         }
 
         [HttpPost]
@@ -43,14 +43,15 @@ namespace PB.WebApplication.Controllers
         public JsonReturn Post([FromBody]Aluno aluno)
         {
             if (aluno == null)
-                return RetornaJson("Por favor, passe alguma informação.", (int)HttpStatusCode.BadRequest);
+                return ReturnJson("Por favor, passe alguma informação.", (int)HttpStatusCode.BadRequest);
 
-            ValidationResult results = _validator.Validate(aluno, ruleSet: "insert");
+            ValidationResult results = _validator.Validate(aluno, options => options.IncludeRuleSets("insert"));
+
 
             if (results.IsValid)
-                return RetornaJson(_service.Insert(aluno));
+                return ReturnJson(_service.Insert(aluno));
             else
-                return RetornaJson(results.Errors, (int)HttpStatusCode.BadRequest);
+                return ReturnJson(results.Errors, (int)HttpStatusCode.BadRequest);
         }
 
         [HttpPut]
@@ -58,21 +59,21 @@ namespace PB.WebApplication.Controllers
         public JsonReturn Put([FromBody]Aluno aluno)
         {
             if (aluno == null)
-                return RetornaJson("Por favor, passe alguma informação.", (int)HttpStatusCode.BadRequest);
+                return ReturnJson("Por favor, passe alguma informação.", (int)HttpStatusCode.BadRequest);
 
-            ValidationResult results = _validator.Validate(aluno, ruleSet: "update");
+            ValidationResult results = _validator.Validate(aluno, options => options.IncludeRuleSets("update"));
 
             if (results.IsValid)
-                return RetornaJson(_service.Update(aluno));
+                return ReturnJson(_service.Update(aluno));
             else
-                return RetornaJson(results.Errors, (int)HttpStatusCode.BadRequest);
+                return ReturnJson(results.Errors, (int)HttpStatusCode.BadRequest);
         }
 
         [HttpDelete("{id}")]
         [Authorize(Roles = "manager")]
         public JsonReturn Delete(int id)
         {
-            return RetornaJson(_service.Delete(id));
+            return ReturnJson(_service.Delete(id));
         }
     }
 }

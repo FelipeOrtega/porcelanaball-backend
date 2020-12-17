@@ -22,10 +22,10 @@ namespace PB.Service
         {
             try
             {
-                List<ProdutoLote> ProdutoLotes = _repository.Consultar();
+                List<ProdutoLote> ProdutoLotes = _repository.Get();
                 return ProdutoLotes;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 _notificationContext.AddNotification("Não foi possivel capturar as informações.");
             }
@@ -37,7 +37,7 @@ namespace PB.Service
         { 
             try
             {
-                ProdutoLote ProdutoLote = _repository.SelecionarPorId(codigo);
+                ProdutoLote ProdutoLote = _repository.SelectById(codigo);
                 return ProdutoLote;
             }
             catch (Exception)
@@ -52,7 +52,7 @@ namespace PB.Service
         {
             try
             {
-                int codigoProdutoLoteInserido = _repository.Inserir(ProdutoLote);
+                int codigoProdutoLoteInserido = _repository.Insert(ProdutoLote);
                 return codigoProdutoLoteInserido;
             }
             catch (Exception)
@@ -66,7 +66,7 @@ namespace PB.Service
         {
             try
             {
-                _repository.Alterar(ProdutoLote);
+                _repository.Update(ProdutoLote);
             }
             catch (Exception)
             {
@@ -80,7 +80,7 @@ namespace PB.Service
         {
             try
             {
-                _repository.Excluir(ProdutoLote);
+                _repository.Delete(ProdutoLote);
             }
             catch (Exception)
             {

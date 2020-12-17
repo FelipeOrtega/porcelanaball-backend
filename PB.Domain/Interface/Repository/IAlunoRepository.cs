@@ -4,9 +4,9 @@ namespace PB.Domain.Interface.Repository
 {
     public interface IAlunoRepository : IRepositoryBase<Aluno>
     {
-        public Aluno ConsultaCpf(string cpf);
-        public Aluno ConsultaCompleta(Aluno aluno);
-        public List<Aluno> ListagemCompleta();
+        public Aluno SearchCpf(string cpf);
+        public Aluno FullSearch(Aluno aluno);
+        public List<Aluno> FullList();
 
     }
 }

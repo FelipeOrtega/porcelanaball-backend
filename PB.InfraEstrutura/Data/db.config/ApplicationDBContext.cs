@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
-using PB.Domain;
 using PB.InfraEstrutura.Data.Mapping;
 using System;
 
@@ -14,7 +13,7 @@ namespace PB.InfraEstrutura.Data.db.config
         public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options) : base(options)
         {}
 
-        public IDbContextTransaction InitTransacao()
+        public IDbContextTransaction InitTransaction()
         {
             if (Transaction == null) Transaction = this.Database.BeginTransaction();
             return Transaction;
@@ -22,11 +21,11 @@ namespace PB.InfraEstrutura.Data.db.config
 
         public void SendChanges()
         {
-            Salvar();
+            Save();
             Commit();
         }
 
-        private void Salvar()
+        private void Save()
         {
             try
             {

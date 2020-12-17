@@ -2,6 +2,6 @@
 {
     public interface IProdutoCategoriaRepository : IRepositoryBase<ProdutoCategoria>
     {
-        public ProdutoCategoria ConsultaPorDescricao(string descricao);
+        public ProdutoCategoria SearchByDescription(string descricao);
     }
 }

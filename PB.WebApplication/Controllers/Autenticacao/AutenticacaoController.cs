@@ -28,7 +28,7 @@ namespace PB.WebApplication.Controllers
         [Authorize(Roles = "manager")]
         public JsonReturn Get()
         {
-            return RetornaJson(_service.Get());
+            return ReturnJson(_service.Get());
         }
 
         [HttpPost]
@@ -38,7 +38,7 @@ namespace PB.WebApplication.Controllers
             var userValidate = _service.Get(user);
 
             if (userValidate == null)
-                return RetornaJson(userValidate, (int)HttpStatusCode.Forbidden);
+                return ReturnJson(userValidate, (int)HttpStatusCode.Forbidden);
 
             var token = TokenService.GenerateToken(userValidate);
 
@@ -46,7 +46,7 @@ namespace PB.WebApplication.Controllers
 
             var data = new { user = userValidate, token = token };
    
-            return RetornaJson(data);
+            return ReturnJson(data);
         }
 
         [HttpPut]
@@ -54,21 +54,21 @@ namespace PB.WebApplication.Controllers
         public JsonReturn Put([FromBody] User user)
         {
             if (user == null)
-                return RetornaJson("Por favor, passe alguma informação.", (int)HttpStatusCode.BadRequest);
+                return ReturnJson("Por favor, passe alguma informação.", (int)HttpStatusCode.BadRequest);
 
-            ValidationResult results = _validator.Validate(user, ruleSet: "update");
+            ValidationResult results = _validator.Validate(user, options => options.IncludeRuleSets("update")); 
 
             if (results.IsValid)
-                return RetornaJson(_service.Update(user));
+                return ReturnJson(_service.Update(user));
             else
-                return RetornaJson(results.Errors, (int)HttpStatusCode.BadRequest);
+                return ReturnJson(results.Errors, (int)HttpStatusCode.BadRequest);
         }
 
         [HttpDelete("{id}")]
         [Authorize(Roles = "manager")]
         public JsonReturn Delete(int id)
         {
-            return RetornaJson(_service.Delete(id));
+            return ReturnJson(_service.Delete(id));
         }
 
     }

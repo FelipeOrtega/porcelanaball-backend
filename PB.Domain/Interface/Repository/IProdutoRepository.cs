@@ -6,6 +6,6 @@ namespace PB.Domain.Interface.Repository
 {
     public interface IProdutoRepository : IRepositoryBase<Produto>
     {
-        public Produto ConsultaPorDescricao(string descricao);
+        public Produto SearchByDescription(string descricao);
     }
 }

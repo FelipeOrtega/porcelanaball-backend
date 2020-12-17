@@ -22,10 +22,10 @@ namespace PB.Service
         {
             try
             {
-                List<Aluno> alunos = _repository.ListagemCompleta();
+                List<Aluno> alunos = _repository.FullList();
                 return alunos;
             }
-            catch (Exception ex) 
+            catch (Exception) 
             {
                 _notificationContext.AddNotification("Não foi possivel capturar as informações.");
             }
@@ -37,8 +37,8 @@ namespace PB.Service
         { 
             try
             {
-                Aluno aluno = _repository.SelecionarPorId(codigo);
-                aluno = _repository.ConsultaCompleta(aluno);
+                Aluno aluno = _repository.SelectById(codigo);
+                aluno = _repository.FullSearch(aluno);
                 return aluno;
             }
             catch (Exception)
@@ -53,11 +53,11 @@ namespace PB.Service
         {
             try
             {
-                Aluno alunoExiste = _repository.ConsultaCpf(aluno.cpf);
+                Aluno alunoExiste = _repository.SearchCpf(aluno.cpf);
 
                 if (alunoExiste == null)
                 {
-                    int codigoAlunoInserido = _repository.Inserir(aluno);
+                    int codigoAlunoInserido = _repository.Insert(aluno);
                     return codigoAlunoInserido;
                 }
                 else
@@ -77,13 +77,13 @@ namespace PB.Service
         {
             try
             {
-                Aluno alunoExistente =  _repository.ConsultaCpf(aluno.cpf);
+                Aluno alunoExistente =  _repository.SearchCpf(aluno.cpf);
 
                 if (alunoExistente != null)
                 {
                     if (alunoExistente.ativo)
                     {
-                        _repository.Alterar(aluno);
+                        _repository.Update(aluno);
                     }
                     else
                     {
@@ -97,7 +97,7 @@ namespace PB.Service
                     return 0;
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 _notificationContext.AddNotification("Não foi possivel alterar.");
             }
@@ -109,14 +109,14 @@ namespace PB.Service
         {
             try
             {
-                Aluno aluno = _repository.SelecionarPorId(codigo);
+                Aluno aluno = _repository.SelectById(codigo);
                 if (aluno == null)
                 {
                     _notificationContext.AddNotification("Este cadastro não foi encontrado no banco de dados.");
                     return 0;
                 }
 
-                _repository.Excluir(aluno);
+                _repository.Delete(aluno);
             }
             catch (Exception e)
             {
@@ -126,6 +126,5 @@ namespace PB.Service
 
             return 0;
         }
-
     }
 }

@@ -11,7 +11,7 @@ namespace PB.InfraEstrutura.Data.Repository
         {
         }
 
-        public Plano ConsultaPorDescricao(string descricao)
+        public Plano SearchByDescription(string descricao)
         {
             return context.Set<Plano>().Where(x => x.descricao == descricao).FirstOrDefault();
         }

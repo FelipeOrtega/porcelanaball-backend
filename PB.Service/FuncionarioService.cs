@@ -17,14 +17,15 @@ namespace PB.Service
             _repository = repository;
             _notificationContext = notificationContext;
         }
+
         public List<Funcionario> Get()
         {
             try
             {
-                List<Funcionario> funcionarios = _repository.Consultar();
+                List<Funcionario> funcionarios = _repository.Get();
                 return funcionarios;
             }
-            catch(Exception e)
+            catch(Exception)
             {
                 _notificationContext.AddNotification("Não foi possivel capturar as informações.");
             }
@@ -36,7 +37,7 @@ namespace PB.Service
         {
             try
             {
-                Funcionario funcionario = _repository.SelecionarPorId(codigo);
+                Funcionario funcionario = _repository.SelectById(codigo);
                 return funcionario;
             }
             catch (Exception)
@@ -51,9 +52,9 @@ namespace PB.Service
         {
             try
             {
-                if (VerificaInclusaoAlteracao(funcionario))
+                if (CheckInsertUpdate(funcionario))
                 {
-                    int codigoFuncionarioInserido = _repository.Inserir(funcionario);
+                    int codigoFuncionarioInserido = _repository.Insert(funcionario);
                     return codigoFuncionarioInserido;
                 }
                 else
@@ -73,9 +74,9 @@ namespace PB.Service
         {
             try
             {
-                if (VerificaInclusaoAlteracao(funcionario))
+                if (CheckInsertUpdate(funcionario))
                 {
-                    _repository.Alterar(funcionario);
+                    _repository.Update(funcionario);
                 }
                 else
                 {
@@ -95,14 +96,15 @@ namespace PB.Service
         {
             try
             {
-                Funcionario funcionario = _repository.SelecionarPorId(codigo);
+                Funcionario funcionario = _repository.SelectById(codigo);
+
                 if (funcionario == null)
                 {
                     _notificationContext.AddNotification("Este cadastro não foi encontrado no banco de dados.");
                     return 0;
                 }
 
-                _repository.Excluir(funcionario);
+                _repository.Delete(funcionario);
             }
             catch (Exception)
             {
@@ -112,17 +114,17 @@ namespace PB.Service
             return 0;
         }
 
-        private bool VerificaInclusaoAlteracao(Funcionario funcionario)
+        private bool CheckInsertUpdate(Funcionario funcionario)
         {
             try
             {
-                Funcionario funcionarioExiste = _repository.ConsultaCpf(funcionario.cpf);
+                Funcionario funcionarioExiste = _repository.SearchCpf(funcionario.cpf);
 
                 return (funcionarioExiste == null);
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                throw new Exception(e.Message);
+                throw;
             }
         }
     }

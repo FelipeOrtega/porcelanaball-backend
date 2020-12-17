@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Server.IIS.Core;
-using PB.Domain;
+﻿using PB.Domain;
 using PB.Domain.Interface.Repository;
 using PB.Domain.Notifications;
 using PB.Service.Interface;
@@ -34,10 +33,10 @@ namespace PB.Service
         {
             try
             {
-                List<Lancamento> lancamentos = _repository.Consultar();
+                List<Lancamento> lancamentos = _repository.Get();
                 return lancamentos;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 _notificationContext.AddNotification("Não foi possivel capturar as informações.");
             }
@@ -49,7 +48,7 @@ namespace PB.Service
         {
             try
             {
-                Lancamento lancamento = _repository.SelecionarPorId(codigo);
+                Lancamento lancamento = _repository.SelectById(codigo);
                 return lancamento;
             }
             catch (Exception)
@@ -64,10 +63,11 @@ namespace PB.Service
         {
             try
             {
-                Lancamento lancamentoValido = VerificaAlteracaoInclusao(lancamento);
+                Lancamento lancamentoValido = CheckInsertUpdate(lancamento);
+
                 if (lancamentoValido != null)
                 {
-                    int codigoLancamentoInserido = _repository.Inserir(lancamento);
+                    int codigoLancamentoInserido = _repository.Insert(lancamento);
                     return codigoLancamentoInserido;
                 }
                 else
@@ -86,10 +86,11 @@ namespace PB.Service
         {
             try
             {
-                Lancamento lancamentoValido = VerificaAlteracaoInclusao(lancamento);
+                Lancamento lancamentoValido = CheckInsertUpdate(lancamento);
+
                 if (lancamentoValido != null)
                 {
-                    _repository.Alterar(lancamento);
+                    _repository.Update(lancamento);
                 }
                 else
                 {
@@ -108,14 +109,15 @@ namespace PB.Service
         {
             try
             {
-                Lancamento lancamento = _repository.SelecionarPorId(codigo);
+                Lancamento lancamento = _repository.SelectById(codigo);
+
                 if (lancamento == null)
                 {
                     _notificationContext.AddNotification("Este cadastro não foi encontrado no banco de dados.");
                     return 0;
                 }
 
-                _repository.Excluir(lancamento);
+                _repository.Delete(lancamento);
             }
             catch (Exception)
             {
@@ -125,11 +127,11 @@ namespace PB.Service
             return 0;
         }
 
-        public Lancamento VerificaAlteracaoInclusao(Lancamento lancamento)
+        public Lancamento CheckInsertUpdate(Lancamento lancamento)
         {
             var existeSaldo = true;
-            Funcionario funcionarioExiste = _repositoryFuncionario.SelecionarPorId(lancamento.funcionario_codigo.Value);
-            FormaPagamento formaPagamentoExiste = _repositoryFormaPagamento.SelecionarPorId(lancamento.forma_pagamento_codigo.Value);
+            Funcionario funcionarioExiste = _repositoryFuncionario.SelectById(lancamento.funcionario_codigo.Value);
+            FormaPagamento formaPagamentoExiste = _repositoryFormaPagamento.SelectById(lancamento.forma_pagamento_codigo.Value);
 
             if ((funcionarioExiste != null && funcionarioExiste.ativo) && formaPagamentoExiste != null)
             {
@@ -138,7 +140,7 @@ namespace PB.Service
                     Produto produtoExiste;
                     for (int i = 0; i < lancamento.lancamentoProduto.Count; i++)
                     {
-                        produtoExiste = _repositoryProduto.SelecionarPorId(lancamento.lancamentoProduto[i].produto_codigo);
+                        produtoExiste = _repositoryProduto.SelectById(lancamento.lancamentoProduto[i].produto_codigo);
 
                         if (produtoExiste.saldo < lancamento.lancamentoProduto[i].quantidade)
                         {

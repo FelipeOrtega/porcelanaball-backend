@@ -13,21 +13,21 @@ namespace PB.Service
         private readonly NotificationContext _notificationContext;
         private readonly IFuncionarioRepository _repositoryFuncionario;
 
-        public ModalidadeFuncionarioService(IModalidadeFuncionarioRepository repository, NotificationContext notificationContext, 
-            IFuncionarioRepository repositoryFuncionario)
+        public ModalidadeFuncionarioService(IModalidadeFuncionarioRepository repository, NotificationContext notificationContext, IFuncionarioRepository repositoryFuncionario)
         {
             _repository = repository;
             _notificationContext = notificationContext;
             _repositoryFuncionario = repositoryFuncionario;
         }
+
         public List<ModalidadeFuncionario> Get()
         {
             try
             {
-                List<ModalidadeFuncionario> modalidadesFuncionario = _repository.Consultar();
+                List<ModalidadeFuncionario> modalidadesFuncionario = _repository.Get();
                 return modalidadesFuncionario;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 _notificationContext.AddNotification("Não foi possivel capturar as informações.");
             }
@@ -39,7 +39,7 @@ namespace PB.Service
         {
             try
             {
-                ModalidadeFuncionario modalidadeFuncionario = _repository.SelecionarPorId(codigo);
+                ModalidadeFuncionario modalidadeFuncionario = _repository.SelectById(codigo);
                 return modalidadeFuncionario;
             }
             catch (Exception)
@@ -54,13 +54,13 @@ namespace PB.Service
         {
             try
             {
-                if (VerificaInclusaoAlteracao(modalidadeFuncionario))
+                if (CheckInsertUpdate(modalidadeFuncionario))
                 {
-                    int codigoModalidadeFuncionarioInserido = _repository.Inserir(modalidadeFuncionario);
+                    int codigoModalidadeFuncionarioInserido = _repository.Insert(modalidadeFuncionario);
                     return codigoModalidadeFuncionarioInserido;
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 _notificationContext.AddNotification("Não foi possivel inserir.");
             }
@@ -71,9 +71,9 @@ namespace PB.Service
         {
             try
             {
-                if (VerificaInclusaoAlteracao(modalidadeFuncionario))
+                if (CheckInsertUpdate(modalidadeFuncionario))
                 {
-                    _repository.Alterar(modalidadeFuncionario);
+                    _repository.Update(modalidadeFuncionario);
                 }
             }
             catch (Exception)
@@ -88,14 +88,15 @@ namespace PB.Service
         {
             try
             {
-                ModalidadeFuncionario modalidadeFuncionario = _repository.SelecionarPorId(codigo);
+                ModalidadeFuncionario modalidadeFuncionario = _repository.SelectById(codigo);
+
                 if (modalidadeFuncionario == null)
                 {
                     _notificationContext.AddNotification("Este cadastro não foi encontrado no banco de dados.");
                     return 0;
                 }
 
-                _repository.Excluir(modalidadeFuncionario);
+                _repository.Delete(modalidadeFuncionario);
             }
             catch (Exception)
             {
@@ -105,14 +106,14 @@ namespace PB.Service
             return 0;
         }
 
-        private bool VerificaInclusaoAlteracao(ModalidadeFuncionario modalidadeFuncionario)
+        private bool CheckInsertUpdate(ModalidadeFuncionario modalidadeFuncionario)
         {
             ModalidadeFuncionario modalidadeFuncionarioExiste = _repository.
-                    ModalidadeFuncionarioExiste(modalidadeFuncionario.funcionario_codigo, modalidadeFuncionario.modalidade_codigo);
+                    ModalidadeFuncionarioExist(modalidadeFuncionario.funcionario_codigo, modalidadeFuncionario.modalidade_codigo);
 
             if (modalidadeFuncionarioExiste == null)
             {
-                Funcionario funcionarioExiste = _repositoryFuncionario.SelecionarPorId(modalidadeFuncionario.funcionario_codigo);
+                Funcionario funcionarioExiste = _repositoryFuncionario.SelectById(modalidadeFuncionario.funcionario_codigo);
 
                 if (funcionarioExiste != null && funcionarioExiste.ativo)
                 {

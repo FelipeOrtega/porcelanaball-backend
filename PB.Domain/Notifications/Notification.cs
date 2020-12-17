@@ -2,11 +2,11 @@
 {
     public class Notification
     {
-        public string ErrorMessage { get; }
+        public string errorMessage { get; }
 
         public Notification(string message)
         {
-            ErrorMessage = message;
+            errorMessage = message;
         }
     }
 }

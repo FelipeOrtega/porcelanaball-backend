@@ -11,7 +11,7 @@ namespace PB.InfraEstrutura.Data.Repository
         {
         }
 
-        public Funcionario ConsultaCpf(string cpf)
+        public Funcionario SearchCpf(string cpf)
         {
             Funcionario teste = context.Set<Funcionario>().Where(x => x.cpf == cpf).FirstOrDefault();
             return teste;

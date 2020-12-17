@@ -11,7 +11,7 @@ namespace PB.InfraEstrutura.Data.Repository
         {
         }
 
-        public ModalidadeFuncionario ModalidadeFuncionarioExiste(int funcionario_codigo, int modalidade_codigo)
+        public ModalidadeFuncionario ModalidadeFuncionarioExist(int funcionario_codigo, int modalidade_codigo)
         {
             return context.Set<ModalidadeFuncionario>().
                 Where(x => x.funcionario_codigo == funcionario_codigo && x.modalidade_codigo == modalidade_codigo).

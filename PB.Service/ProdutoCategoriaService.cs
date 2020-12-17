@@ -22,10 +22,10 @@ namespace PB.Service
         {
             try
             {
-                List<ProdutoCategoria> produtosCategoria = _repository.Consultar();
+                List<ProdutoCategoria> produtosCategoria = _repository.Get();
                 return produtosCategoria;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 _notificationContext.AddNotification("Não foi possivel capturar as informações.");
             }
@@ -37,7 +37,7 @@ namespace PB.Service
         {
             try
             {
-                ProdutoCategoria produtoCategoria = _repository.SelecionarPorId(codigo);
+                ProdutoCategoria produtoCategoria = _repository.SelectById(codigo);
                 return produtoCategoria;
             }
             catch (Exception)
@@ -52,9 +52,9 @@ namespace PB.Service
         {
             try
             {
-                if (VerificaInclusaoAlteracao(produtoCategoria))
+                if (CheckInsertUpdate(produtoCategoria))
                 {
-                    int codigoProdutoCategoriaInserido = _repository.Inserir(produtoCategoria);
+                    int codigoProdutoCategoriaInserido = _repository.Insert(produtoCategoria);
                     return codigoProdutoCategoriaInserido;
                 }
             }
@@ -69,9 +69,9 @@ namespace PB.Service
         {
             try
             {
-                if (VerificaInclusaoAlteracao(produtoCategoria))
+                if (CheckInsertUpdate(produtoCategoria))
                 {
-                    _repository.Alterar(produtoCategoria);
+                    _repository.Update(produtoCategoria);
                 }
             }
             catch (Exception)
@@ -86,13 +86,14 @@ namespace PB.Service
         {
             try
             {
-                ProdutoCategoria produtoCategoria = _repository.SelecionarPorId(codigo);
+                ProdutoCategoria produtoCategoria = _repository.SelectById(codigo);
+
                 if (produtoCategoria == null)
                 {
                     _notificationContext.AddNotification("Este cadastro não foi encontrado no banco de dados.");
                     return 0;
                 }
-                _repository.Excluir(produtoCategoria);
+                _repository.Delete(produtoCategoria);
             }
             catch (Exception)
             {
@@ -102,9 +103,9 @@ namespace PB.Service
             return 0;
         }
 
-        private bool VerificaInclusaoAlteracao(ProdutoCategoria produtoCategoria)
+        private bool CheckInsertUpdate(ProdutoCategoria produtoCategoria)
         {
-            ProdutoCategoria produtoCategoriaExiste = _repository.ConsultaPorDescricao(produtoCategoria.descricao);
+            ProdutoCategoria produtoCategoriaExiste = _repository.SearchByDescription(produtoCategoria.descricao);
 
             if (produtoCategoriaExiste == null)
             {

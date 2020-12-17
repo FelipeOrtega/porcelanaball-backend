@@ -30,10 +30,10 @@ namespace PB.Service
         {
             try
             {
-                List<AlunoPossuiPlano> alunoPossuiPlanos = _repository.Consultar();
+                List<AlunoPossuiPlano> alunoPossuiPlanos = _repository.Get();
                 return alunoPossuiPlanos;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 _notificationContext.AddNotification("Não foi possivel capturar as informações.");
             }
@@ -45,7 +45,7 @@ namespace PB.Service
         {
             try
             {
-                AlunoPossuiPlano alunoPossuiPlano = _repository.SelecionarPorId(codigo);
+                AlunoPossuiPlano alunoPossuiPlano = _repository.SelectById(codigo);
                 return alunoPossuiPlano;
             }
             catch (Exception)
@@ -60,9 +60,9 @@ namespace PB.Service
         {
             try
             {
-                if (VerificaInclusaoAlteracao(alunoPossuiPlano))
+                if (CheckInsertUpdate(alunoPossuiPlano))
                 {
-                    int codigoAlunoPossuiPlanoInserido = _repository.Inserir(alunoPossuiPlano);
+                    int codigoAlunoPossuiPlanoInserido = _repository.Insert(alunoPossuiPlano);
                     return codigoAlunoPossuiPlanoInserido;
                 }
                 else
@@ -70,7 +70,7 @@ namespace PB.Service
                     _notificationContext.AddNotification("Aluno ou Plano inexistente(s) ou inativo(s).");
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 _notificationContext.AddNotification("Não foi possivel inserir.");
             }
@@ -81,9 +81,9 @@ namespace PB.Service
         {
             try
             {
-                if (VerificaInclusaoAlteracao(alunoPossuiPlano))
+                if (CheckInsertUpdate(alunoPossuiPlano))
                 {
-                    _repository.Alterar(alunoPossuiPlano);
+                    _repository.Update(alunoPossuiPlano);
                 }
                 else
                 {
@@ -102,14 +102,14 @@ namespace PB.Service
         {
             try
             {
-                AlunoPossuiPlano alunoPossuiPlano = _repository.SelecionarPorId(codigo);
+                AlunoPossuiPlano alunoPossuiPlano = _repository.SelectById(codigo);
                 if (alunoPossuiPlano == null)
                 {
                     _notificationContext.AddNotification("Este cadastro não foi encontrado no banco de dados.");
                     return 0;
                 }
 
-                _repository.Excluir(alunoPossuiPlano);
+                _repository.Delete(alunoPossuiPlano);
             }
             catch (Exception)
             {
@@ -119,18 +119,18 @@ namespace PB.Service
             return 0;
         }
 
-        private bool VerificaInclusaoAlteracao(AlunoPossuiPlano alunoPossuiPlano)
+        private bool CheckInsertUpdate(AlunoPossuiPlano alunoPossuiPlano)
         {
             try
             {
-                Aluno alunoExiste = _repositoryAluno.SelecionarPorId(alunoPossuiPlano.aluno_codigo);
-                Plano planoExiste = _repositoryPlano.SelecionarPorId(alunoPossuiPlano.plano_codigo);
+                Aluno alunoExiste = _repositoryAluno.SelectById(alunoPossuiPlano.aluno_codigo);
+                Plano planoExiste = _repositoryPlano.SelectById(alunoPossuiPlano.plano_codigo);
 
                 return ((alunoExiste != null && alunoExiste.ativo) && (planoExiste != null && planoExiste.ativo));
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                throw new Exception(e.Message);
+                throw;
             }
         }
     }

@@ -22,10 +22,10 @@ namespace PB.Service
         {
             try
             {
-                List<Modalidade> modalidades = _repository.Consultar();
+                List<Modalidade> modalidades = _repository.Get();
                 return modalidades;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 _notificationContext.AddNotification("Não foi possivel capturar as informações.");
             }
@@ -37,7 +37,7 @@ namespace PB.Service
         {
             try
             {
-                Modalidade modalidade = _repository.SelecionarPorId(codigo);
+                Modalidade modalidade = _repository.SelectById(codigo);
                 return modalidade;
             }
             catch (Exception)
@@ -52,7 +52,7 @@ namespace PB.Service
         {
             try
             {
-                int codigoModalidadeInserido = _repository.Inserir(modalidade);
+                int codigoModalidadeInserido = _repository.Insert(modalidade);
                 return codigoModalidadeInserido;
             }
             catch (Exception)
@@ -66,7 +66,7 @@ namespace PB.Service
         {
             try
             {
-                _repository.Alterar(modalidade);
+                _repository.Update(modalidade);
             }
             catch (Exception)
             {
@@ -80,14 +80,15 @@ namespace PB.Service
         {
             try
             {
-                Modalidade modalidade = _repository.SelecionarPorId(codigo);
+                Modalidade modalidade = _repository.SelectById(codigo);
+
                 if (modalidade == null)
                 {
                     _notificationContext.AddNotification("Este cadastro não foi encontrado no banco de dados.");
                     return 0;
                 }
 
-                _repository.Excluir(modalidade);
+                _repository.Delete(modalidade);
             }
             catch (Exception)
             {

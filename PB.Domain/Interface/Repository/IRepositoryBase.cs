@@ -6,10 +6,10 @@ namespace PB.Domain.Interface.Repository
 {
     public interface IRepositoryBase<TEntity> where TEntity : EntityBase
     {
-        int Inserir(TEntity entity);
-        void Excluir(TEntity entity);
-        void Alterar(TEntity entity);
-        List<TEntity> Consultar();
-        TEntity SelecionarPorId(int codigo);
+        int Insert(TEntity entity);
+        void Delete(TEntity entity);
+        void Update(TEntity entity);
+        List<TEntity> Get();
+        TEntity SelectById(int codigo);
     }
 }

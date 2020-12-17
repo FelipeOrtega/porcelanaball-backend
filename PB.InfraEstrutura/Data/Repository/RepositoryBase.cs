@@ -17,39 +17,39 @@ namespace PB.InfraEstrutura.Data.Repository
             this.context = context;
         }
 
-        public void Alterar(TEntity entity)
+        public void Update(TEntity entity)
         {
-            context.InitTransacao();
+            context.InitTransaction();
             context.Set<TEntity>().Attach(entity);
             context.Entry(entity).State = EntityState.Modified;
             context.SendChanges();
         }
 
-        public void Excluir(TEntity entity)
+        public void Delete(TEntity entity)
         {
-            var i = SelecionarPorId(entity.codigo);
+            var i = SelectById(entity.codigo);
             if (i == null)
                 throw new Exception("Este cadastro não foi encontrado no banco de dados.");
 
-            context.InitTransacao();
+            context.InitTransaction();
             context.Set<TEntity>().Remove(entity);
             context.SendChanges();
         }
 
-        public int Inserir(TEntity entity)
+        public int Insert(TEntity entity)
         {
-            context.InitTransacao();
+            context.InitTransaction();
             var id = context.Set<TEntity>().Add(entity).Entity.codigo;
             context.SendChanges();
             return id;
         }
 
-        public List<TEntity> Consultar()
+        public List<TEntity> Get()
         {
             return context.Set<TEntity>().ToList();
         }
 
-        public TEntity SelecionarPorId(int codigo)
+        public TEntity SelectById(int codigo)
         {
             return context.Set<TEntity>().Find(codigo);
         }

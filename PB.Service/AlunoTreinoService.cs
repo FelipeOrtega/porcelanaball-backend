@@ -24,10 +24,10 @@ namespace PB.Service
         {
             try
             {
-                List<AlunoTreino> alunoTreinos = _repository.Consultar();
+                List<AlunoTreino> alunoTreinos = _repository.Get();
                 return alunoTreinos;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 _notificationContext.AddNotification("Não foi possivel capturar as informações.");
             }
@@ -39,7 +39,7 @@ namespace PB.Service
         {
             try
             {
-                AlunoTreino alunoTreino = _repository.SelecionarPorId(codigo);
+                AlunoTreino alunoTreino = _repository.SelectById(codigo);
                 return alunoTreino;
             }
             catch (Exception)
@@ -54,9 +54,9 @@ namespace PB.Service
         {
             try
             {
-                if (VerificaInclusaoAlteracao(alunoTreino))
+                if (CheckInsertUpdate(alunoTreino))
                 {
-                    int codigoAlunoTreinoInserido = _repository.Inserir(alunoTreino);
+                    int codigoAlunoTreinoInserido = _repository.Insert(alunoTreino);
                     return codigoAlunoTreinoInserido;
                 }
                 else
@@ -75,9 +75,9 @@ namespace PB.Service
         {
             try
             {
-                if (VerificaInclusaoAlteracao(alunoTreino))
+                if (CheckInsertUpdate(alunoTreino))
                 {
-                    _repository.Alterar(alunoTreino);
+                    _repository.Update(alunoTreino);
                 }
                 else
                 {
@@ -97,14 +97,14 @@ namespace PB.Service
         {
             try
             {
-                AlunoTreino alunoTreino = _repository.SelecionarPorId(codigo);
+                AlunoTreino alunoTreino = _repository.SelectById(codigo);
                 if (alunoTreino == null)
                 {
                     _notificationContext.AddNotification("Este cadastro não foi encontrado no banco de dados.");
                     return 0;
                 }
 
-                _repository.Excluir(alunoTreino);
+                _repository.Delete(alunoTreino);
             }
             catch (Exception)
             {
@@ -114,11 +114,12 @@ namespace PB.Service
             return 0;
         }
 
-        private bool VerificaInclusaoAlteracao(AlunoTreino alunoTreino)
+        private bool CheckInsertUpdate(AlunoTreino alunoTreino)
         {
             try
             {
-                Aluno alunoExiste = _repositoryAluno.SelecionarPorId(alunoTreino.aluno_codigo);
+                Aluno alunoExiste = _repositoryAluno.SelectById(alunoTreino.aluno_codigo);
+
                 if (alunoExiste != null && alunoExiste.ativo)
                 {
                     return true;
@@ -129,9 +130,9 @@ namespace PB.Service
                     return false;
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                throw new Exception(e.Message);
+                throw;
             }
         }
     }

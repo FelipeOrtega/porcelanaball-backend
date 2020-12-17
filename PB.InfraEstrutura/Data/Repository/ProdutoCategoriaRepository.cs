@@ -11,7 +11,7 @@ namespace PB.InfraEstrutura.Data.Repository
         {
         }
 
-        public ProdutoCategoria ConsultaPorDescricao(string descricao)
+        public ProdutoCategoria SearchByDescription(string descricao)
         {
             return context.Set<ProdutoCategoria>().Where(x => x.descricao == descricao).FirstOrDefault();
         }
