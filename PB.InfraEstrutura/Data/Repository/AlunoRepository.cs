@@ -15,7 +15,7 @@ namespace PB.InfraEstrutura.Data.Repository
 
         public Aluno SearchCpf(string cpf)
         {
-            Aluno aluno_ = context.Set<Aluno>().Where(x => x.cpf == cpf && x.alunoTreinos.Any(at => at.aluno_codigo == x.codigo))
+            Aluno aluno_ = context.Set<Aluno>().Where(x => x.cpf == cpf)
                                   .Include(a => a.alunoTreinos).AsNoTracking().FirstOrDefault();
             return aluno_;
         }
@@ -23,8 +23,8 @@ namespace PB.InfraEstrutura.Data.Repository
 
         //Essa consulta consiste em retornar a classe Aluno e todas suas entidades filhas
         public Aluno FullSearch(Aluno aluno)
-        {            
-            Aluno aluno_ = context.Set<Aluno>().Include(a => a.alunoTreinos).FirstOrDefault();
+        {
+            Aluno aluno_ = context.Set<Aluno>().Where(a => a.codigo == aluno.codigo).Include(a => a.alunoTreinos).Single();
             return aluno_;
         }
 

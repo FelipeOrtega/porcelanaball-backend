@@ -81,15 +81,7 @@ namespace PB.Service
 
                 if (alunoExistente != null)
                 {
-                    if (alunoExistente.ativo)
-                    {
-                        _repository.Update(aluno);
-                    }
-                    else
-                    {
-                        _notificationContext.AddNotification("Aluno inativo.");
-                        return 0;
-                    }
+                    _repository.Update(aluno);
                 }
                 else
                 {

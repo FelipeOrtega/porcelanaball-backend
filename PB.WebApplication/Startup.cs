@@ -74,7 +74,7 @@ namespace PB.WebApplication
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
 
-            app.UseCors(option => option.AllowAnyOrigin().AllowAnyHeader());
+            app.UseCors(option => option.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 
             app.UseForwardedHeaders(new ForwardedHeadersOptions
             {
