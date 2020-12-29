@@ -31,7 +31,9 @@ namespace PB.InfraEstrutura.Data.Repository
         //Essa listagem consiste em retornar a classe Aluno e todas suas entidades filhas
         public List<Aluno> FullList()
         {
-            List<Aluno> alunos = context.Set<Aluno>().Include(a => a.alunoTreinos).Include(app => app.alunoPossuiPlano).ToList();
+            List<Aluno> alunos = context.Set<Aluno>().Include(a => a.alunoTreinos)
+                                                     .Include(app => app.alunoPossuiPlano)
+                                                     .Include(app => app.alunoPossuiEquipe).ToList();
             return alunos;
         }
 

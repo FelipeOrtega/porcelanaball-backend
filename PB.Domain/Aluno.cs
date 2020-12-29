@@ -10,5 +10,7 @@ namespace PB.Domain
         public Decimal altura { get; set; }
         public List<AlunoTreino> alunoTreinos { get; set; }
         public List<AlunoPossuiPlano> alunoPossuiPlano { get; set; }
+        public List<AlunoPossuiEquipe> alunoPossuiEquipe { get; set; }
+
     }
 }
