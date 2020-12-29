@@ -24,7 +24,10 @@ namespace PB.InfraEstrutura.Data.Repository
         //Essa consulta consiste em retornar a classe Aluno e todas suas entidades filhas
         public Aluno FullSearch(Aluno aluno)
         {
-            Aluno aluno_ = context.Set<Aluno>().Where(a => a.codigo == aluno.codigo).Include(a => a.alunoTreinos).Single();
+            Aluno aluno_ = context.Set<Aluno>().Where(a => a.codigo == aluno.codigo)
+                                               .Include(a => a.alunoTreinos)
+                                               .Include(app => app.alunoPossuiPlano)
+                                               .Include(app => app.alunoPossuiEquipe).Single();
             return aluno_;
         }
 
