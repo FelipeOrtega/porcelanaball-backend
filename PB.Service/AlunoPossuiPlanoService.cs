@@ -4,6 +4,7 @@ using PB.Domain.Notifications;
 using PB.Service.Interface;
 using System;
 using System.Collections.Generic;
+using PB.Utils;
 
 namespace PB.Service
 {
@@ -30,11 +31,14 @@ namespace PB.Service
         {
             try
             {
+                Log.write(Log.Nivel.INFO, "Get<List> AlunoPossuiPlano IN");
                 List<AlunoPossuiPlano> alunoPossuiPlanos = _repository.Get();
+                Log.write(Log.Nivel.INFO, "Get<List> AlunoPossuiPlano OUT");
                 return alunoPossuiPlanos;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Log.write(Log.Nivel.ERROR, ex, "Get<List> AlunoPossuiPlano OUT ERROR");
                 _notificationContext.AddNotification("Não foi possivel capturar as informações.");
             }
 
@@ -45,11 +49,14 @@ namespace PB.Service
         {
             try
             {
+                Log.write(Log.Nivel.INFO, "Get AlunoPossuiPlano Codigo = " + codigo + " IN");
                 AlunoPossuiPlano alunoPossuiPlano = _repository.SelectById(codigo);
+                Log.write(Log.Nivel.INFO, "Get AlunoPossuiPlano Codigo = " + codigo + " OUT");
                 return alunoPossuiPlano;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Log.write(Log.Nivel.ERROR, ex, "Get AlunoPossuiPlano Codigo = " + codigo + " OUT ERROR");
                 _notificationContext.AddNotification("Não foi possivel capturar as informações.");
             }
 
@@ -60,18 +67,22 @@ namespace PB.Service
         {
             try
             {
+                Log.write(Log.Nivel.INFO, "Insert AlunoPossuiPlano IN");
                 if (CheckInsertUpdate(alunoPossuiPlano))
                 {
                     int codigoAlunoPossuiPlanoInserido = _repository.Insert(alunoPossuiPlano);
+                    Log.write(Log.Nivel.INFO, "Insert AlunoPossuiPlano OUT");
                     return codigoAlunoPossuiPlanoInserido;
                 }
                 else
                 {
+                    Log.write(Log.Nivel.INFO, "Insert AlunoPossuiPlano inexistente(s) ou inativo(s). OUT");
                     _notificationContext.AddNotification("Aluno ou Plano inexistente(s) ou inativo(s).");
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Log.write(Log.Nivel.ERROR, ex, "Insert AlunoPossuiPlano OUT ERROR");
                 _notificationContext.AddNotification("Não foi possivel inserir.");
             }
             return 0;
@@ -81,17 +92,21 @@ namespace PB.Service
         {
             try
             {
+                Log.write(Log.Nivel.INFO, "Update AlunoPossuiPlano IN");
                 if (CheckInsertUpdate(alunoPossuiPlano))
                 {
                     _repository.Update(alunoPossuiPlano);
+                    Log.write(Log.Nivel.INFO, "Update AlunoPossuiPlano OK OUT");
                 }
                 else
                 {
+                    Log.write(Log.Nivel.INFO, "Update AlunoPossuiPlano Aluno ou Plano inexistente(s) ou inativo(s). OUT");
                     _notificationContext.AddNotification("Aluno ou Plano inexistente(s) ou inativo(s).");
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Log.write(Log.Nivel.ERROR, ex, "Update AlunoPossuiPlano OUT ERROR");
                 _notificationContext.AddNotification("Não foi possivel alterar.");
             }
 
@@ -102,17 +117,22 @@ namespace PB.Service
         {
             try
             {
+                Log.write(Log.Nivel.INFO, "Delete AlunoPossuiPlano Codigo  = " + codigo + " IN");
                 AlunoPossuiPlano alunoPossuiPlano = _repository.SelectById(codigo);
+
                 if (alunoPossuiPlano == null)
                 {
+                    Log.write(Log.Nivel.INFO, "Delete AlunoPossuiPlano Codigo  = " + codigo + " nao encontrado OUT");
                     _notificationContext.AddNotification("Este cadastro não foi encontrado no banco de dados.");
                     return 0;
                 }
 
                 _repository.Delete(alunoPossuiPlano);
+                Log.write(Log.Nivel.INFO, "Delete AlunoPossuiPlano OUT");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Log.write(Log.Nivel.INFO, ex, "Delete AlunoPossuiPlano Codigo  = " + codigo + " OUT ERROR");
                 _notificationContext.AddNotification("Não foi possivel deletar.");
             }
 

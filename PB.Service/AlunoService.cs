@@ -5,6 +5,7 @@ using PB.Service.Interface;
 using System;
 using System.Collections.Generic;
 using PB.Utils;
+
 namespace PB.Service
 {
     public class AlunoService : IAlunoService
@@ -20,10 +21,9 @@ namespace PB.Service
 
         public List<Aluno> Get()
         {
-            Log.write(Log.Nivel.INFO, "Get<List> Alunos IN");
-
             try
             {
+                Log.write(Log.Nivel.INFO, "Get<List> Alunos IN");
                 List<Aluno> alunos = _repository.FullList();
                 Log.write(Log.Nivel.INFO, "Get<List> Alunos OUT");
                 return alunos;
@@ -40,15 +40,15 @@ namespace PB.Service
         { 
             try
             {
-                Log.write(Log.Nivel.INFO, "Get Aluno = " + codigo + " IN");
+                Log.write(Log.Nivel.INFO, "Get Aluno Codigo = " + codigo + " IN");
                 Aluno aluno = _repository.SelectById(codigo);
                 aluno = _repository.FullSearch(aluno);
-                Log.write(Log.Nivel.INFO, "Get Aluno = " + codigo + " OUT");
+                Log.write(Log.Nivel.INFO, "Get Aluno Codigo = " + codigo + " OUT");
                 return aluno;
             }
             catch (Exception ex)
             {
-                Log.write(Log.Nivel.ERROR, ex, "Get Aluno = " + codigo + " OUT ERROR");
+                Log.write(Log.Nivel.ERROR, ex, "Get Aluno Codigo = " + codigo + " OUT ERROR");
                 _notificationContext.AddNotification("Não foi possivel capturar as informações.");
             }
 
@@ -64,13 +64,13 @@ namespace PB.Service
 
                 if (alunoExiste == null)
                 {
-                    Log.write(Log.Nivel.INFO, "Insert Aluno OK");
+                    Log.write(Log.Nivel.INFO, "Insert Aluno OK OUT");
                     int codigoAlunoInserido = _repository.Insert(aluno);
                     return codigoAlunoInserido;
                 }
                 else
                 {
-                    Log.write(Log.Nivel.INFO, "Insert Aluno CPF Ja Cadastrado");
+                    Log.write(Log.Nivel.INFO, "Insert Aluno ja existe um cadastro para esse CPF OUT");
                     _notificationContext.AddNotification("Já existe um cadastro para esse CPF.");
                     return 0;
                 }
@@ -92,12 +92,12 @@ namespace PB.Service
 
                 if (alunoExistente != null)
                 {
-                    Log.write(Log.Nivel.INFO, "Update Aluno OK");
                     _repository.Update(aluno);
+                    Log.write(Log.Nivel.INFO, "Update Aluno OK OUT");
                 }
                 else
                 {
-                    Log.write(Log.Nivel.INFO, "Update Aluno CPF = " + aluno.cpf + " não existe");
+                    Log.write(Log.Nivel.INFO, "Update Aluno CPF = " + aluno.cpf + " nao existe OUT");
                     _notificationContext.AddNotification("Aluno não encontrado.");
                     return 0;
                 }
@@ -115,21 +115,22 @@ namespace PB.Service
         {
             try
             {
-                Log.write(Log.Nivel.INFO, "Delete Aluno Codigo  = " + codigo+ " IN");
+                Log.write(Log.Nivel.INFO, "Delete Aluno Codigo = " + codigo+ " IN");
                 Aluno aluno = _repository.SelectById(codigo);
 
                 if (aluno == null)
                 {
-                    Log.write(Log.Nivel.INFO, "Delete Aluno Codigo  = " + codigo + " Não encontrado");
+                    Log.write(Log.Nivel.INFO, "Delete Aluno Codigo = " + codigo + " nao encontrado OUT");
                     _notificationContext.AddNotification("Este cadastro não foi encontrado no banco de dados.");
                     return 0;
                 }
 
                 _repository.Delete(aluno);
+                Log.write(Log.Nivel.INFO, "Delete Aluno Codigo = " + codigo + " OUT");
             }
             catch (Exception ex)
             {
-                Log.write(Log.Nivel.INFO, ex, "Delete Aluno Codigo  = " + codigo + " OUT ERROR");
+                Log.write(Log.Nivel.INFO, ex, "Delete Aluno Codigo = " + codigo + " OUT ERROR");
                 _notificationContext.AddNotification("Não foi possivel deletar.");
                 _notificationContext.AddNotification(ex.Message);
             }

@@ -4,6 +4,7 @@ using PB.Domain.Notifications;
 using PB.Service.Interface;
 using System;
 using System.Collections.Generic;
+using PB.Utils;
 
 namespace PB.Service
 {
@@ -24,11 +25,14 @@ namespace PB.Service
         {
             try
             {
+                Log.write(Log.Nivel.INFO, "Get<List> AlunoTreino IN");
                 List<AlunoTreino> alunoTreinos = _repository.Get();
+                Log.write(Log.Nivel.INFO, "Get<List> AlunoTreino OUT");
                 return alunoTreinos;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Log.write(Log.Nivel.ERROR, ex, "Get<List> AlunoTreino OUT ERROR");
                 _notificationContext.AddNotification("Não foi possivel capturar as informações.");
             }
 
@@ -39,11 +43,14 @@ namespace PB.Service
         {
             try
             {
+                Log.write(Log.Nivel.INFO, "Get AlunoTreino Codigo = " + codigo + " IN");
                 AlunoTreino alunoTreino = _repository.SelectById(codigo);
+                Log.write(Log.Nivel.INFO, "Get AlunoTreino Codigo = " + codigo + " OUT");
                 return alunoTreino;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Log.write(Log.Nivel.ERROR, ex, "Get AlunoTreino Codigo = " + codigo + " OUT ERROR");
                 _notificationContext.AddNotification("Não foi possivel capturar as informações.");
             }
 
@@ -54,18 +61,23 @@ namespace PB.Service
         {
             try
             {
+                Log.write(Log.Nivel.INFO, "Insert AlunoTreino IN");
                 if (CheckInsertUpdate(alunoTreino))
                 {
                     int codigoAlunoTreinoInserido = _repository.Insert(alunoTreino);
+
+                    Log.write(Log.Nivel.INFO, "Insert AlunoTreino OK OUT");
                     return codigoAlunoTreinoInserido;
                 }
                 else
                 {
+                    Log.write(Log.Nivel.INFO, "Insert AlunoTreino inexistente ou inativo OUT");
                     _notificationContext.AddNotification("Aluno inexistente ou inativo.");
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Log.write(Log.Nivel.ERROR, ex, "Insert AlunoTreino OUT ERROR");
                 _notificationContext.AddNotification("Não foi possivel inserir.");
             }
             return 0;
@@ -75,18 +87,22 @@ namespace PB.Service
         {
             try
             {
+                Log.write(Log.Nivel.INFO, "Update AlunoTreino IN");
                 if (CheckInsertUpdate(alunoTreino))
                 {
                     _repository.Update(alunoTreino);
+                    Log.write(Log.Nivel.INFO, "Update AlunoTreino OUT");
                 }
                 else
                 {
+                    Log.write(Log.Nivel.INFO, "Update AlunoTreino inexistente ou inativo. OUT");
                     _notificationContext.AddNotification("Aluno inexistente ou inativo.");
                 }
                 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Log.write(Log.Nivel.ERROR, ex, "Update AlunoTreino OUT ERROR");
                 _notificationContext.AddNotification("Não foi possivel alterar.");
             }
 
@@ -97,17 +113,22 @@ namespace PB.Service
         {
             try
             {
+                Log.write(Log.Nivel.INFO, "Delete alunoTreino Codigo = " + codigo + " IN");
                 AlunoTreino alunoTreino = _repository.SelectById(codigo);
+
                 if (alunoTreino == null)
                 {
+                    Log.write(Log.Nivel.INFO, "Delete AlunoTreino Codigo = " + codigo + " nao encontrado OUT");
                     _notificationContext.AddNotification("Este cadastro não foi encontrado no banco de dados.");
                     return 0;
                 }
 
                 _repository.Delete(alunoTreino);
+                Log.write(Log.Nivel.INFO, "Delete AlunoTreino Codigo = " + codigo + " OUT");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Log.write(Log.Nivel.INFO, ex, "Delete AlunoTreino Codigo = " + codigo + " OUT ERROR");
                 _notificationContext.AddNotification("Não foi possivel deletar.");
             }
 

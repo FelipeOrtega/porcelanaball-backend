@@ -4,7 +4,7 @@ using PB.Domain.Notifications;
 using PB.Service.Interface;
 using System;
 using System.Collections.Generic;
-using System.Text;
+using PB.Utils;
 
 namespace PB.Service
 {
@@ -27,11 +27,14 @@ namespace PB.Service
         {
             try
             {
+                Log.write(Log.Nivel.INFO, "Get<List> Equipe IN");
                 List<Equipe> equipes = _repository.Get();
+                Log.write(Log.Nivel.INFO, "Get<List> Equipe OUT");
                 return equipes;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Log.write(Log.Nivel.ERROR, ex, "Get<List> Alunos OUT ERROR");
                 _notificationContext.AddNotification("Não foi possivel capturar as informações.");
             }
 
