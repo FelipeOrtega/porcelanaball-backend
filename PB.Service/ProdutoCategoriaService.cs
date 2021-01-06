@@ -4,6 +4,7 @@ using PB.Domain.Notifications;
 using PB.Service.Interface;
 using System;
 using System.Collections.Generic;
+using PB.Utils;
 
 namespace PB.Service
 {
@@ -22,11 +23,14 @@ namespace PB.Service
         {
             try
             {
+                Log.write(Log.Nivel.INFO, "<List> IN");
                 List<ProdutoCategoria> produtosCategoria = _repository.Get();
+                Log.write(Log.Nivel.INFO, "<List> OUT");
                 return produtosCategoria;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Log.write(Log.Nivel.ERROR, ex, "<List> OUT ERROR");
                 _notificationContext.AddNotification("Não foi possivel capturar as informações.");
             }
 
@@ -37,11 +41,14 @@ namespace PB.Service
         {
             try
             {
+                Log.write(Log.Nivel.INFO, "Codigo = " + codigo + " IN");
                 ProdutoCategoria produtoCategoria = _repository.SelectById(codigo);
+                Log.write(Log.Nivel.INFO, "Codigo = " + codigo + " OUT");
                 return produtoCategoria;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Log.write(Log.Nivel.ERROR, ex, "Codigo = " + codigo + " OUT ERROR");
                 _notificationContext.AddNotification("Não foi possivel capturar as informações.");
             }
 
@@ -52,14 +59,17 @@ namespace PB.Service
         {
             try
             {
+                Log.write(Log.Nivel.INFO, "IN");
                 if (CheckInsertUpdate(produtoCategoria))
                 {
                     int codigoProdutoCategoriaInserido = _repository.Insert(produtoCategoria);
+                    Log.write(Log.Nivel.INFO, "OUT");
                     return codigoProdutoCategoriaInserido;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Log.write(Log.Nivel.ERROR, ex, "OUT ERROR");
                 _notificationContext.AddNotification("Não foi possivel inserir.");
             }
             return 0;
@@ -69,13 +79,16 @@ namespace PB.Service
         {
             try
             {
+                Log.write(Log.Nivel.INFO, "Codigo = " + produtoCategoria.codigo + " IN");
                 if (CheckInsertUpdate(produtoCategoria))
                 {
                     _repository.Update(produtoCategoria);
+                    Log.write(Log.Nivel.INFO, "Codigo = " + produtoCategoria.codigo + " OUT");
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Log.write(Log.Nivel.ERROR, ex, "Codigo = " + produtoCategoria.codigo + " OUT ERROR");
                 _notificationContext.AddNotification("Não foi possivel alterar.");
             }
 
@@ -86,17 +99,21 @@ namespace PB.Service
         {
             try
             {
+                Log.write(Log.Nivel.INFO, "Codigo = " + codigo + " IN");
                 ProdutoCategoria produtoCategoria = _repository.SelectById(codigo);
 
                 if (produtoCategoria == null)
                 {
+                    Log.write(Log.Nivel.INFO, "Codigo = " + codigo + " Este cadastro não foi encontrado no banco de dados. OUT");
                     _notificationContext.AddNotification("Este cadastro não foi encontrado no banco de dados.");
                     return 0;
                 }
                 _repository.Delete(produtoCategoria);
+                Log.write(Log.Nivel.INFO, "Codigo = " + codigo + " OUT");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Log.write(Log.Nivel.ERROR, ex, "Codigo = " + codigo + " OUT ERROR");
                 _notificationContext.AddNotification("Não foi possivel deletar.");
             }
 

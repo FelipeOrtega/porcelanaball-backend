@@ -4,6 +4,7 @@ using System.Security.Claims;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using PB.Domain;
+using PB.Utils;
 
 namespace PB.Service
 {
@@ -11,6 +12,7 @@ namespace PB.Service
     {
         public static string GenerateToken(User user)
         {
+            Log.write(Log.Nivel.INFO, "UserName = " + user.username + "Password = " + user.password + " IN");
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(Settings.secret);
             var tokenDescriptor = new SecurityTokenDescriptor
@@ -26,7 +28,7 @@ namespace PB.Service
             };
 
             var token = tokenHandler.CreateToken(tokenDescriptor);
-
+            Log.write(Log.Nivel.INFO, "Token = " + token + " OUT");
             return tokenHandler.WriteToken(token);
         }
     }

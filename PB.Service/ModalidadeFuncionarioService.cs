@@ -61,14 +61,17 @@ namespace PB.Service
         {
             try
             {
+                Log.write(Log.Nivel.INFO, "modalidade_codigo = " + modalidadeFuncionario.modalidade_codigo + " IN");
                 if (CheckInsertUpdate(modalidadeFuncionario))
                 {
                     int codigoModalidadeFuncionarioInserido = _repository.Insert(modalidadeFuncionario);
+                    Log.write(Log.Nivel.INFO, "modalidade_codigo = " + modalidadeFuncionario.modalidade_codigo + " OUT");
                     return codigoModalidadeFuncionarioInserido;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Log.write(Log.Nivel.ERROR, ex, "modalidade_codigo = " + modalidadeFuncionario.modalidade_codigo + " OUT ERROR");
                 _notificationContext.AddNotification("Não foi possivel inserir.");
             }
             return 0;
@@ -78,13 +81,16 @@ namespace PB.Service
         {
             try
             {
+                Log.write(Log.Nivel.INFO, "Codigo = " + modalidadeFuncionario.codigo + " IN");
                 if (CheckInsertUpdate(modalidadeFuncionario))
                 {
                     _repository.Update(modalidadeFuncionario);
+                    Log.write(Log.Nivel.INFO, "Codigo = " + modalidadeFuncionario.codigo + " OUT");
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Log.write(Log.Nivel.ERROR, ex, "Codigo = " + modalidadeFuncionario.codigo + " OUT ERROR");
                 _notificationContext.AddNotification("Não foi possivel alterar.");
             }
 
@@ -95,18 +101,22 @@ namespace PB.Service
         {
             try
             {
+                Log.write(Log.Nivel.INFO, "Codigo = " + codigo + " IN");
                 ModalidadeFuncionario modalidadeFuncionario = _repository.SelectById(codigo);
 
                 if (modalidadeFuncionario == null)
                 {
+                    Log.write(Log.Nivel.INFO, "Codigo = " + codigo + " Este cadastro não foi encontrado no banco de dados. OUT");
                     _notificationContext.AddNotification("Este cadastro não foi encontrado no banco de dados.");
                     return 0;
                 }
 
                 _repository.Delete(modalidadeFuncionario);
+                Log.write(Log.Nivel.INFO, "Codigo = " + codigo + " OUT");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Log.write(Log.Nivel.ERROR, ex, "Codigo = " + codigo + " OUT ERROR");
                 _notificationContext.AddNotification("Não foi possivel deletar.");
             }
 
