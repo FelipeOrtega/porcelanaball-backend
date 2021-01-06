@@ -23,14 +23,14 @@ namespace PB.Service
         {
             try
             {
-                Log.write(Log.Nivel.INFO, "Get<List> Alunos IN");
+                Log.write(Log.Nivel.INFO, "<List> IN");
                 List<Aluno> alunos = _repository.FullList();
-                Log.write(Log.Nivel.INFO, "Get<List> Alunos OUT");
+                Log.write(Log.Nivel.INFO, "<List> OUT");
                 return alunos;
             }
             catch (Exception ex) 
             {
-                Log.write(Log.Nivel.ERROR, ex, "Get<List> Alunos OUT ERROR");
+                Log.write(Log.Nivel.ERROR, ex, "<List> OUT ERROR");
                 _notificationContext.AddNotification("Não foi possivel capturar as informações.");
             }
             return null;
@@ -40,15 +40,15 @@ namespace PB.Service
         { 
             try
             {
-                Log.write(Log.Nivel.INFO, "Get Aluno Codigo = " + codigo + " IN");
+                Log.write(Log.Nivel.INFO, "Codigo = " + codigo + " IN");
                 Aluno aluno = _repository.SelectById(codigo);
                 aluno = _repository.FullSearch(aluno);
-                Log.write(Log.Nivel.INFO, "Get Aluno Codigo = " + codigo + " OUT");
+                Log.write(Log.Nivel.INFO, "Codigo = " + codigo + " OUT");
                 return aluno;
             }
             catch (Exception ex)
             {
-                Log.write(Log.Nivel.ERROR, ex, "Get Aluno Codigo = " + codigo + " OUT ERROR");
+                Log.write(Log.Nivel.ERROR, ex, "Codigo = " + codigo + " OUT ERROR");
                 _notificationContext.AddNotification("Não foi possivel capturar as informações.");
             }
 
@@ -59,25 +59,25 @@ namespace PB.Service
         {
             try
             {
-                Log.write(Log.Nivel.INFO, "Insert Aluno CPF = " + aluno.cpf + " IN");
+                Log.write(Log.Nivel.INFO, "CPF = " + aluno.cpf + " IN");
                 Aluno alunoExiste = _repository.SearchCpf(aluno.cpf);
 
                 if (alunoExiste == null)
                 {
-                    Log.write(Log.Nivel.INFO, "Insert Aluno OK OUT");
+                    Log.write(Log.Nivel.INFO, "CPF = " + aluno.cpf + " OUT");
                     int codigoAlunoInserido = _repository.Insert(aluno);
                     return codigoAlunoInserido;
                 }
                 else
                 {
-                    Log.write(Log.Nivel.INFO, "Insert Aluno ja existe um cadastro para esse CPF OUT");
+                    Log.write(Log.Nivel.INFO, "Já existe um cadastro para esse CPF OUT");
                     _notificationContext.AddNotification("Já existe um cadastro para esse CPF.");
                     return 0;
                 }
             }
             catch (Exception ex)
             {
-                Log.write(Log.Nivel.ERROR, ex, "Insert Aluno OUT ERROR");
+                Log.write(Log.Nivel.ERROR, ex, "OUT ERROR");
                 _notificationContext.AddNotification("Não foi possivel inserir.");
             }
             return 0;
@@ -87,24 +87,24 @@ namespace PB.Service
         {
             try
             {
-                Log.write(Log.Nivel.INFO, "Update Aluno CPF = " + aluno.cpf + " IN");
+                Log.write(Log.Nivel.INFO, "CPF = " + aluno.cpf + " IN");
                 Aluno alunoExistente =  _repository.SearchCpf(aluno.cpf);
 
                 if (alunoExistente != null)
                 {
                     _repository.Update(aluno);
-                    Log.write(Log.Nivel.INFO, "Update Aluno OK OUT");
+                    Log.write(Log.Nivel.INFO, "CPF = " + aluno.cpf + " OUT");
                 }
                 else
                 {
-                    Log.write(Log.Nivel.INFO, "Update Aluno CPF = " + aluno.cpf + " nao existe OUT");
+                    Log.write(Log.Nivel.INFO, "CPF = " + aluno.cpf + " Aluno não encontrado OUT");
                     _notificationContext.AddNotification("Aluno não encontrado.");
                     return 0;
                 }
             }
             catch (Exception ex)
             {
-                Log.write(Log.Nivel.ERROR, ex, "Update Aluno OUT ERROR");
+                Log.write(Log.Nivel.ERROR, ex, "OUT ERROR");
                 _notificationContext.AddNotification("Não foi possivel alterar.");
             }
 
@@ -115,22 +115,22 @@ namespace PB.Service
         {
             try
             {
-                Log.write(Log.Nivel.INFO, "Delete Aluno Codigo = " + codigo+ " IN");
+                Log.write(Log.Nivel.INFO, "Codigo = " + codigo+ " IN");
                 Aluno aluno = _repository.SelectById(codigo);
 
                 if (aluno == null)
                 {
-                    Log.write(Log.Nivel.INFO, "Delete Aluno Codigo = " + codigo + " nao encontrado OUT");
+                    Log.write(Log.Nivel.INFO, "Codigo = " + codigo + ", Este cadastro não foi encontrado no banco de dados OUT");
                     _notificationContext.AddNotification("Este cadastro não foi encontrado no banco de dados.");
                     return 0;
                 }
 
                 _repository.Delete(aluno);
-                Log.write(Log.Nivel.INFO, "Delete Aluno Codigo = " + codigo + " OUT");
+                Log.write(Log.Nivel.INFO, "Codigo = " + codigo + " OUT");
             }
             catch (Exception ex)
             {
-                Log.write(Log.Nivel.INFO, ex, "Delete Aluno Codigo = " + codigo + " OUT ERROR");
+                Log.write(Log.Nivel.ERROR, ex, "Codigo = " + codigo + " OUT ERROR");
                 _notificationContext.AddNotification("Não foi possivel deletar.");
                 _notificationContext.AddNotification(ex.Message);
             }

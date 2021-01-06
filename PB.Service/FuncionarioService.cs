@@ -4,6 +4,7 @@ using PB.Domain.Notifications;
 using PB.Service.Interface;
 using System;
 using System.Collections.Generic;
+using PB.Utils;
 
 namespace PB.Service
 {
@@ -22,11 +23,14 @@ namespace PB.Service
         {
             try
             {
+                Log.write(Log.Nivel.INFO, "<List> IN");
                 List<Funcionario> funcionarios = _repository.Get();
+                Log.write(Log.Nivel.INFO, "<List> OUT");
                 return funcionarios;
             }
-            catch(Exception)
+            catch(Exception ex)
             {
+                Log.write(Log.Nivel.ERROR, ex, "<List> OUT ERROR");
                 _notificationContext.AddNotification("Não foi possivel capturar as informações.");
             }
 
@@ -37,11 +41,14 @@ namespace PB.Service
         {
             try
             {
+                Log.write(Log.Nivel.INFO, "Codigo = " + codigo + " IN");
                 Funcionario funcionario = _repository.SelectById(codigo);
+                Log.write(Log.Nivel.INFO, "Codigo = " + codigo + " OUT");
                 return funcionario;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Log.write(Log.Nivel.ERROR, ex, "Codigo = " + codigo + " OUT ERROR");
                 _notificationContext.AddNotification("Não foi possivel capturar as informações.");
             }
 
@@ -52,19 +59,23 @@ namespace PB.Service
         {
             try
             {
+                Log.write(Log.Nivel.INFO, "CPF = " + funcionario.cpf + " IN");
                 if (CheckInsertUpdate(funcionario))
                 {
                     int codigoFuncionarioInserido = _repository.Insert(funcionario);
+                    Log.write(Log.Nivel.INFO, "CPF = " + funcionario.cpf + " OUT");
                     return codigoFuncionarioInserido;
                 }
                 else
                 {
+                    Log.write(Log.Nivel.INFO, "CPF = " + funcionario.cpf + " Já existe um cadastro para esse CPF OUT");
                     _notificationContext.AddNotification("Já existe um cadastro para esse CPF.");
                     return 0;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Log.write(Log.Nivel.ERROR, ex, "CPF = " + funcionario.cpf + " OUT ERROR");
                 _notificationContext.AddNotification("Não foi possivel inserir.");
             }
             return 0;
@@ -74,18 +85,22 @@ namespace PB.Service
         {
             try
             {
+                Log.write(Log.Nivel.INFO, "CPF = " + funcionario.cpf + " IN");
                 if (CheckInsertUpdate(funcionario))
                 {
                     _repository.Update(funcionario);
+                    Log.write(Log.Nivel.INFO, "CPF = " + funcionario.cpf + " OUT");
                 }
                 else
                 {
+                    Log.write(Log.Nivel.INFO, "CPF = " + funcionario.cpf + " Já existe um cadastro para esse CPF. OUT");
                     _notificationContext.AddNotification("Já existe um cadastro para esse CPF.");
                     return 0;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Log.write(Log.Nivel.ERROR, ex, "CPF = " + funcionario.cpf + " OUT ERROR");
                 _notificationContext.AddNotification("Não foi possivel alterar.");
             }
 
@@ -96,18 +111,22 @@ namespace PB.Service
         {
             try
             {
+                Log.write(Log.Nivel.INFO, "Codigo = " + codigo + " IN");
                 Funcionario funcionario = _repository.SelectById(codigo);
 
                 if (funcionario == null)
                 {
+                    Log.write(Log.Nivel.INFO, "Codigo = " + codigo + " Este cadastro não foi encontrado no banco de dados. OUT");
                     _notificationContext.AddNotification("Este cadastro não foi encontrado no banco de dados.");
                     return 0;
                 }
 
                 _repository.Delete(funcionario);
+                Log.write(Log.Nivel.INFO, "Codigo = " + codigo + " OUT");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Log.write(Log.Nivel.ERROR, ex, "Codigo = " + codigo + " OUT ERROR");
                 _notificationContext.AddNotification("Não foi possivel deletar.");
             }
 

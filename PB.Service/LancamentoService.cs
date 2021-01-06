@@ -4,6 +4,7 @@ using PB.Domain.Notifications;
 using PB.Service.Interface;
 using System;
 using System.Collections.Generic;
+using PB.Utils;
 
 namespace PB.Service
 {
@@ -33,11 +34,14 @@ namespace PB.Service
         {
             try
             {
+                Log.write(Log.Nivel.INFO, "<List> IN");
                 List<Lancamento> lancamentos = _repository.Get();
+                Log.write(Log.Nivel.INFO, "<List> OUT");
                 return lancamentos;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Log.write(Log.Nivel.ERROR, ex, "<List> OUT ERROR");
                 _notificationContext.AddNotification("Não foi possivel capturar as informações.");
             }
 
@@ -48,11 +52,14 @@ namespace PB.Service
         {
             try
             {
+                Log.write(Log.Nivel.INFO, "Codigo = " + codigo + " IN");
                 Lancamento lancamento = _repository.SelectById(codigo);
+                Log.write(Log.Nivel.INFO, "Codigo = " + codigo + " OUT");
                 return lancamento;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Log.write(Log.Nivel.ERROR, ex, "Codigo = " + codigo + " OUT ERROR");
                 _notificationContext.AddNotification("Não foi possivel capturar as informações.");
             }
 
@@ -63,11 +70,14 @@ namespace PB.Service
         {
             try
             {
+                Log.write(Log.Nivel.INFO, "Codigo funcionario = " + lancamento.funcionario_codigo + " IN");
+
                 Lancamento lancamentoValido = CheckInsertUpdate(lancamento);
 
                 if (lancamentoValido != null)
                 {
                     int codigoLancamentoInserido = _repository.Insert(lancamento);
+                    Log.write(Log.Nivel.INFO, "Codigo funcionario = " + lancamento.funcionario_codigo + " OUT");
                     return codigoLancamentoInserido;
                 }
                 else
@@ -75,8 +85,9 @@ namespace PB.Service
                     throw new Exception();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Log.write(Log.Nivel.ERROR, ex, "Codigo funcionario = " + lancamento.funcionario_codigo + " OUT ERROR");
                 _notificationContext.AddNotification("Não foi possivel inserir.");
             }
             return 0;
@@ -86,19 +97,24 @@ namespace PB.Service
         {
             try
             {
+                Log.write(Log.Nivel.INFO, "Codigo funcionario = " + lancamento.funcionario_codigo + ", codigo lancamento= " + lancamento.codigo + " IN");
+
                 Lancamento lancamentoValido = CheckInsertUpdate(lancamento);
 
                 if (lancamentoValido != null)
                 {
                     _repository.Update(lancamento);
+                    Log.write(Log.Nivel.INFO, "Codigo funcionario = " + lancamento.funcionario_codigo + ", codigo lancamento= " + lancamento.codigo + " OUT");
                 }
                 else
                 {
+                    Log.write(Log.Nivel.INFO, "Codigo funcionario = " + lancamento.funcionario_codigo + ", codigo lancamento= " + lancamento.codigo + " Lancamento nao é valido OUT");
                     throw new Exception();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Log.write(Log.Nivel.ERROR, ex, "Codigo funcionario = " + lancamento.funcionario_codigo + ", codigo lancamento= " + lancamento.codigo + " OUT ERROR");
                 _notificationContext.AddNotification("Não foi possivel alterar.");
             }
 
@@ -109,18 +125,22 @@ namespace PB.Service
         {
             try
             {
+                Log.write(Log.Nivel.INFO, "Codigo = " + codigo + " IN");
                 Lancamento lancamento = _repository.SelectById(codigo);
 
                 if (lancamento == null)
                 {
+                    Log.write(Log.Nivel.INFO, "Codigo = " + codigo + " Este cadastro não foi encontrado no banco de dados. OUT");
                     _notificationContext.AddNotification("Este cadastro não foi encontrado no banco de dados.");
                     return 0;
                 }
 
                 _repository.Delete(lancamento);
+                Log.write(Log.Nivel.INFO, "Codigo = " + codigo + " OUT");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Log.write(Log.Nivel.ERROR, ex, "Codigo = " + codigo + " OUT ERROR");
                 _notificationContext.AddNotification("Não foi possivel deletar.");
             }
 
