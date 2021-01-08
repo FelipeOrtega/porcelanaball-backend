@@ -11,12 +11,12 @@ using System.Net;
 namespace PB.WebApplication.Controllers
 {
     [Route("[controller]")]
-    public class ModalidadeFuncionarioController : ApiBase
+    public class PlanoAlunoController : ApiBase
     {
-        private readonly IModalidadeFuncionarioService _service;
-        private readonly IValidator<ModalidadeFuncionario> _validator;
+        private readonly IPlanoAlunoService _service;
+        private readonly IValidator<PlanoAluno> _validator;
 
-        public ModalidadeFuncionarioController(NotificationContext notificationContext, IModalidadeFuncionarioService service, IValidator<ModalidadeFuncionario> validator)
+        public PlanoAlunoController(NotificationContext notificationContext, IPlanoAlunoService service, IValidator<PlanoAluno> validator)
         {
             _notificationContext = notificationContext;
             _service = service;
@@ -39,30 +39,30 @@ namespace PB.WebApplication.Controllers
 
         [HttpPost]
         [Authorize(Roles = "manager")]
-        public JsonReturn Post([FromBody]ModalidadeFuncionario modalidadeFuncionario)
+        public JsonReturn Post([FromBody]PlanoAluno alunoPossuiPlano)
         {
-            if (modalidadeFuncionario == null)
+            if (alunoPossuiPlano == null)
                 return ReturnJson("Por favor, passe alguma informação.", (int)HttpStatusCode.BadRequest);
 
-            ValidationResult results = _validator.Validate(modalidadeFuncionario, options => options.IncludeRuleSets("insert"));
+            ValidationResult results = _validator.Validate(alunoPossuiPlano, options => options.IncludeRuleSets("insert"));
 
             if (results.IsValid)
-                return ReturnJson(_service.Insert(modalidadeFuncionario));
+                return ReturnJson(_service.Insert(alunoPossuiPlano));
             else
                 return ReturnJson(results.Errors, (int)HttpStatusCode.BadRequest);
         }
 
         [HttpPut]
         [Authorize(Roles = "manager")]
-        public JsonReturn Put([FromBody]ModalidadeFuncionario modalidadeFuncionario)
+        public JsonReturn Put([FromBody]PlanoAluno alunoPossuiPlano)
         {
-            if (modalidadeFuncionario == null)
+            if (alunoPossuiPlano == null)
                 return ReturnJson("Por favor, passe alguma informação.", (int)HttpStatusCode.BadRequest);
 
-            ValidationResult results = _validator.Validate(modalidadeFuncionario, options => options.IncludeRuleSets("update"));
+            ValidationResult results = _validator.Validate(alunoPossuiPlano, options => options.IncludeRuleSets("update"));
 
             if (results.IsValid)
-                return ReturnJson(_service.Update(modalidadeFuncionario));
+                return ReturnJson(_service.Update(alunoPossuiPlano));
             else
                 return ReturnJson(results.Errors, (int)HttpStatusCode.BadRequest);
         }

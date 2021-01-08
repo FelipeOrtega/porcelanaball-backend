@@ -70,18 +70,18 @@ namespace PB.InfraEstrutura.Data.db.config
                          ApplyConfiguration(new ModalidadeMap()).
                          ApplyConfiguration(new ProdutoCategoriaMap()).
                          ApplyConfiguration(new LancamentoMap()).
-                         ApplyConfiguration(new ModalidadeFuncionarioMap()).
+                         ApplyConfiguration(new FuncionarioModalidadeMap()).
                          ApplyConfiguration(new ProdutoCategoriaMap()).
                          ApplyConfiguration(new ModuloMap()).
-                         ApplyConfiguration(new ModalidadeFuncionarioMap()).
-                         ApplyConfiguration(new AlunoPossuiPlanoMap()).
+                         ApplyConfiguration(new FuncionarioModalidadeMap()).
+                         ApplyConfiguration(new PlanoAlunoMap()).
                          ApplyConfiguration(new FormaPagamentoMap()).
                          ApplyConfiguration(new LancamentoProdutoMap()).
                          ApplyConfiguration(new FuncionarioPermissaoMap()).
-                         ApplyConfiguration(new FuncionarioPossuiPlanoMap()).
+                         ApplyConfiguration(new PlanoFuncionarioMap()).
                          ApplyConfiguration(new UserMap()).
                          ApplyConfiguration(new EquipeMap()).
-                         ApplyConfiguration(new AlunoPossuiEquipeMap());
+                         ApplyConfiguration(new EquipeAlunoMap());
         }
     }
 }

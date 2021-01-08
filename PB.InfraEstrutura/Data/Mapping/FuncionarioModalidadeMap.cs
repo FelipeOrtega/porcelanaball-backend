@@ -4,13 +4,13 @@ using PB.Domain;
 
 namespace PB.InfraEstrutura.Data.Mapping
 {
-    public class ModalidadeFuncionarioMap : MapBase<ModalidadeFuncionario>
+    public class FuncionarioModalidadeMap : MapBase<FuncionarioModalidade>
     {
-        public override void Configure(EntityTypeBuilder<ModalidadeFuncionario> builder)
+        public override void Configure(EntityTypeBuilder<FuncionarioModalidade> builder)
         {
             builder.HasOne(mf => mf.funcionario).WithMany(f => f.modalidadeFuncionario).HasForeignKey(mf => mf.funcionario_codigo);
             base.Configure(builder);
-            builder.ToTable("modalidade_funcionario");
+            builder.ToTable("funcionario_modalidade");
         }
     }
 }

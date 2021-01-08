@@ -8,25 +8,25 @@ using PB.Utils;
 
 namespace PB.Service
 {
-    public class ModalidadeFuncionarioService : IModalidadeFuncionarioService
+    public class FuncionarioModalidadeService : IFuncionarioModalidadeService
     {
-        private readonly IModalidadeFuncionarioRepository _repository;
+        private readonly IFuncionarioModalidadeRepository _repository;
         private readonly NotificationContext _notificationContext;
         private readonly IFuncionarioRepository _repositoryFuncionario;
 
-        public ModalidadeFuncionarioService(IModalidadeFuncionarioRepository repository, NotificationContext notificationContext, IFuncionarioRepository repositoryFuncionario)
+        public FuncionarioModalidadeService(IFuncionarioModalidadeRepository repository, NotificationContext notificationContext, IFuncionarioRepository repositoryFuncionario)
         {
             _repository = repository;
             _notificationContext = notificationContext;
             _repositoryFuncionario = repositoryFuncionario;
         }
 
-        public List<ModalidadeFuncionario> Get()
+        public List<FuncionarioModalidade> Get()
         {
             try
             {
                 Log.write(Log.Nivel.INFO, "<List> IN");
-                List<ModalidadeFuncionario> modalidadesFuncionario = _repository.Get();
+                List<FuncionarioModalidade> modalidadesFuncionario = _repository.Get();
                 Log.write(Log.Nivel.INFO, "<List> OUT");
                 return modalidadesFuncionario;
             }
@@ -39,12 +39,12 @@ namespace PB.Service
             return null;
         }
 
-        public ModalidadeFuncionario Get(int codigo)
+        public FuncionarioModalidade Get(int codigo)
         {
             try
             {
                 Log.write(Log.Nivel.INFO, "Codigo = " + codigo + " IN");
-                ModalidadeFuncionario modalidadeFuncionario = _repository.SelectById(codigo);
+                FuncionarioModalidade modalidadeFuncionario = _repository.SelectById(codigo);
                 Log.write(Log.Nivel.INFO, "Codigo = " + codigo + " OUT");
                 return modalidadeFuncionario;
             }
@@ -57,7 +57,7 @@ namespace PB.Service
             return null;
         }
 
-        public int Insert(ModalidadeFuncionario modalidadeFuncionario)
+        public int Insert(FuncionarioModalidade modalidadeFuncionario)
         {
             try
             {
@@ -77,7 +77,7 @@ namespace PB.Service
             return 0;
         }
 
-        public int Update(ModalidadeFuncionario modalidadeFuncionario)
+        public int Update(FuncionarioModalidade modalidadeFuncionario)
         {
             try
             {
@@ -102,7 +102,7 @@ namespace PB.Service
             try
             {
                 Log.write(Log.Nivel.INFO, "Codigo = " + codigo + " IN");
-                ModalidadeFuncionario modalidadeFuncionario = _repository.SelectById(codigo);
+                FuncionarioModalidade modalidadeFuncionario = _repository.SelectById(codigo);
 
                 if (modalidadeFuncionario == null)
                 {
@@ -123,9 +123,9 @@ namespace PB.Service
             return 0;
         }
 
-        private bool CheckInsertUpdate(ModalidadeFuncionario modalidadeFuncionario)
+        private bool CheckInsertUpdate(FuncionarioModalidade modalidadeFuncionario)
         {
-            ModalidadeFuncionario modalidadeFuncionarioExiste = _repository.
+            FuncionarioModalidade modalidadeFuncionarioExiste = _repository.
                     ModalidadeFuncionarioExist(modalidadeFuncionario.funcionario_codigo, modalidadeFuncionario.modalidade_codigo);
 
             if (modalidadeFuncionarioExiste == null)

@@ -8,33 +8,33 @@ using PB.Utils;
 
 namespace PB.Service
 {
-    public class AlunoPossuiPlanoService : IAlunoPossuiPlanoService
+    public class EquipeAlunoService : IEquipeAlunoService
     {
-        private readonly IAlunoPossuiPlanoRepository _repository;
+        private readonly IEquipeAlunoRepository _repository;
         private readonly NotificationContext _notificationContext;
         private readonly IAlunoRepository _repositoryAluno;
-        private readonly IPlanoRepository _repositoryPlano;
+        private readonly IEquipeRepository _repositoryEquipe;
 
-        public AlunoPossuiPlanoService(
-            IAlunoPossuiPlanoRepository repository, 
+        public EquipeAlunoService(
+            IEquipeAlunoRepository repository, 
             NotificationContext notificationContext,
             IAlunoRepository repositoryAluno,
-            IPlanoRepository repositoryPlano)
+            IEquipeRepository repositoryEquipe)
         {
             _repository = repository;
             _notificationContext = notificationContext;
             _repositoryAluno = repositoryAluno;
-            _repositoryPlano = repositoryPlano;
+            _repositoryEquipe = repositoryEquipe;
         }
 
-        public List<AlunoPossuiPlano> Get()
+        public List<EquipeAluno> Get()
         {
             try
             {
                 Log.write(Log.Nivel.INFO, "<List> IN");
-                List<AlunoPossuiPlano> alunoPossuiPlanos = _repository.Get();
+                List<EquipeAluno> alunoPossuiEquipes = _repository.Get();
                 Log.write(Log.Nivel.INFO, "<List> OUT");
-                return alunoPossuiPlanos;
+                return alunoPossuiEquipes;
             }
             catch (Exception ex)
             {
@@ -45,14 +45,14 @@ namespace PB.Service
             return null;
         }
 
-        public AlunoPossuiPlano Get(int codigo)
+        public EquipeAluno Get(int codigo)
         {
             try
             {
                 Log.write(Log.Nivel.INFO, "Codigo = " + codigo + " IN");
-                AlunoPossuiPlano alunoPossuiPlano = _repository.SelectById(codigo);
+                EquipeAluno alunoPossuiEquipe = _repository.SelectById(codigo);
                 Log.write(Log.Nivel.INFO, "Codigo = " + codigo + " OUT");
-                return alunoPossuiPlano;
+                return alunoPossuiEquipe;
             }
             catch (Exception ex)
             {
@@ -63,21 +63,22 @@ namespace PB.Service
             return null;
         }
 
-        public int Insert(AlunoPossuiPlano alunoPossuiPlano)
+        public int Insert(EquipeAluno alunoPossuiEquipe)
         {
             try
             {
                 Log.write(Log.Nivel.INFO, "IN");
-                if (CheckInsertUpdate(alunoPossuiPlano))
+                if (CheckInsertUpdate(alunoPossuiEquipe))
                 {
-                    int codigoAlunoPossuiPlanoInserido = _repository.Insert(alunoPossuiPlano);
+                    int codigoAlunoPossuiEquipeInserido = _repository.Insert(alunoPossuiEquipe);
+
                     Log.write(Log.Nivel.INFO, "OUT");
-                    return codigoAlunoPossuiPlanoInserido;
+                    return codigoAlunoPossuiEquipeInserido;
                 }
                 else
                 {
-                    Log.write(Log.Nivel.INFO, "Aluno ou Plano inexistente(s) ou inativo(s) OUT");
-                    _notificationContext.AddNotification("Aluno ou Plano inexistente(s) ou inativo(s).");
+                    Log.write(Log.Nivel.INFO, "Aluno ou Equipe inexistente(s) ou inativo(s) OUT");
+                    _notificationContext.AddNotification("Aluno ou Equipe inexistente(s) ou inativo(s).");
                 }
             }
             catch (Exception ex)
@@ -88,20 +89,20 @@ namespace PB.Service
             return 0;
         }
 
-        public int Update(AlunoPossuiPlano alunoPossuiPlano)
+        public int Update(EquipeAluno alunoPossuiEquipe)
         {
             try
             {
                 Log.write(Log.Nivel.INFO, "IN");
-                if (CheckInsertUpdate(alunoPossuiPlano))
+                if (CheckInsertUpdate(alunoPossuiEquipe))
                 {
-                    _repository.Update(alunoPossuiPlano);
+                    _repository.Update(alunoPossuiEquipe);
                     Log.write(Log.Nivel.INFO, "OUT");
                 }
                 else
                 {
-                    Log.write(Log.Nivel.INFO, "Aluno ou Plano inexistente(s) ou inativo(s) OUT");
-                    _notificationContext.AddNotification("Aluno ou Plano inexistente(s) ou inativo(s).");
+                    Log.write(Log.Nivel.INFO, "Aluno ou Equipe inexistente(s) ou inativo(s) OUT");
+                    _notificationContext.AddNotification("Aluno ou Equipe inexistente(s) ou inativo(s).");
                 }
             }
             catch (Exception ex)
@@ -118,17 +119,17 @@ namespace PB.Service
             try
             {
                 Log.write(Log.Nivel.INFO, "Codigo  = " + codigo + " IN");
-                AlunoPossuiPlano alunoPossuiPlano = _repository.SelectById(codigo);
+                EquipeAluno alunoPossuiEquipe = _repository.SelectById(codigo);
 
-                if (alunoPossuiPlano == null)
+                if (alunoPossuiEquipe == null)
                 {
                     Log.write(Log.Nivel.INFO, "Codigo  = " + codigo + " nao encontrado OUT");
                     _notificationContext.AddNotification("Este cadastro não foi encontrado no banco de dados.");
                     return 0;
                 }
 
-                _repository.Delete(alunoPossuiPlano);
-                Log.write(Log.Nivel.INFO, "Codigo  = " + codigo + " OUT");
+                _repository.Delete(alunoPossuiEquipe);
+                Log.write(Log.Nivel.INFO, "OUT");
             }
             catch (Exception ex)
             {
@@ -139,14 +140,14 @@ namespace PB.Service
             return 0;
         }
 
-        private bool CheckInsertUpdate(AlunoPossuiPlano alunoPossuiPlano)
+        private bool CheckInsertUpdate(EquipeAluno alunoPossuiEquipe)
         {
             try
             {
-                Aluno alunoExiste = _repositoryAluno.SelectById(alunoPossuiPlano.aluno_codigo);
-                Plano planoExiste = _repositoryPlano.SelectById(alunoPossuiPlano.plano_codigo);
+                Aluno alunoExiste = _repositoryAluno.SelectById(alunoPossuiEquipe.aluno_codigo);
+                Equipe equipeExiste = _repositoryEquipe.SelectById(alunoPossuiEquipe.equipe_codigo);
 
-                return ((alunoExiste != null && alunoExiste.ativo) && (planoExiste != null && planoExiste.ativo));
+                return ((alunoExiste != null && alunoExiste.ativo) && (equipeExiste != null && equipeExiste.ativo));
             }
             catch (Exception)
             {

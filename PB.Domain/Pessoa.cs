@@ -11,7 +11,7 @@ namespace PB.Domain
         public String telefone_celular { get; set; }
         public String cpf { get; set; }
         public String rg { get; set; }
-        public String biometria { get; set; }
         public bool ativo { get; set; }
+        public String biometria { get; set; }
     }
 }

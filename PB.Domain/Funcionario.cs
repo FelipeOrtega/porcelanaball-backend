@@ -14,7 +14,7 @@ namespace PB.Domain
         public String senha { get; set; }
 
         public List<FuncionarioPermissao> funcionarioPermissao { get; set; }
-        public List<ModalidadeFuncionario> modalidadeFuncionario { get; set; }
-        public List<FuncionarioPossuiPlano> funcionarioPossuiPlano { get; set; }
+        public List<FuncionarioModalidade> modalidadeFuncionario { get; set; }
+        public List<PlanoFuncionario> funcionarioPossuiPlano { get; set; }
     }
 }

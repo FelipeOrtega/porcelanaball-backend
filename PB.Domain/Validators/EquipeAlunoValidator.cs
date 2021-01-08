@@ -2,9 +2,9 @@
 
 namespace PB.Domain.Validators
 {
-    public class AlunoPossuiEquipeValidator : AbstractValidator<AlunoPossuiEquipe>
+    public class EquipeAlunoValidator : AbstractValidator<EquipeAluno>
     {
-        public AlunoPossuiEquipeValidator()
+        public EquipeAlunoValidator()
         {
             RuleSet("insert", () =>
             {

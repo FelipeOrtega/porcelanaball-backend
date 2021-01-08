@@ -4,13 +4,13 @@ using PB.Domain;
 
 namespace PB.InfraEstrutura.Data.Mapping
 {
-    public class FuncionarioPossuiPlanoMap : MapBase<FuncionarioPossuiPlano>
+    public class PlanoFuncionarioMap : MapBase<PlanoFuncionario>
     {
-        public override void Configure(EntityTypeBuilder<FuncionarioPossuiPlano> builder)
+        public override void Configure(EntityTypeBuilder<PlanoFuncionario> builder)
         {
             builder.HasOne(fpp => fpp.funcionario).WithMany(a => a.funcionarioPossuiPlano).HasForeignKey(fpp => fpp.funcionario_codigo);
             base.Configure(builder);
-            builder.ToTable("funcionario_possui_plano");
+            builder.ToTable("plano_funcionario");
         }
     }
 }

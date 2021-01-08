@@ -2,9 +2,9 @@
 
 namespace PB.Domain.Validators
 {
-    public class ModalidadeFuncionarioValidator : AbstractValidator<ModalidadeFuncionario>
+    public class FuncionarioModalidadeValidator : AbstractValidator<FuncionarioModalidade>
     {
-        public ModalidadeFuncionarioValidator()
+        public FuncionarioModalidadeValidator()
         {
             RuleSet("insert", () =>
             {
