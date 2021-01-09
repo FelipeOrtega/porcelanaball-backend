@@ -32,7 +32,6 @@ namespace PB.InfraEstrutura.CrossCutting
             // Service
             services.AddScoped<IAlunoService, AlunoService>();
             services.AddScoped<IProdutoService, ProdutoService>();
-            services.AddScoped<IProdutoLoteService, ProdutoLoteService>();
             services.AddScoped<IFuncionarioService, FuncionarioService>();
             services.AddScoped<IPlanoService, PlanoService>();
             services.AddScoped<IModalidadeService, ModalidadeService>();
@@ -51,7 +50,6 @@ namespace PB.InfraEstrutura.CrossCutting
             services.AddScoped(typeof(IRepositoryBase<>), typeof(RepositoryBase<>));
             services.AddScoped<IAlunoRepository, AlunoRepository>();
             services.AddScoped<IProdutoRepository, ProdutoRepository>();
-            services.AddScoped<IProdutoLoteRepository,ProdutoLoteRepository>();
             services.AddScoped<IFuncionarioRepository, FuncionarioRepository>();
             services.AddScoped<IPlanoRepository, PlanoRepository>();
             services.AddScoped<IModalidadeRepository, ModalidadeRepository>();
@@ -66,6 +64,9 @@ namespace PB.InfraEstrutura.CrossCutting
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IEquipeRepository, EquipeRepository>();
             services.AddScoped<IEquipeAlunoRepository, EquipeAlunoRepository>();
+            services.AddScoped<ILancamentoTipoRepository, LancamentoTipoRepository>();
+            services.AddScoped<ILancamentoFormaPagamentoRepository, LancamentoFormaPagamentoRepository>();
+            services.AddScoped<ILancamentoAlunoRepository, LancamentoAlunoRepository>();
 
             services.AddScoped<NotificationContext>();
         }

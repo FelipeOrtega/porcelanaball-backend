@@ -151,9 +151,8 @@ namespace PB.Service
         {
             var existeSaldo = true;
             Funcionario funcionarioExiste = _repositoryFuncionario.SelectById(lancamento.funcionario_codigo.Value);
-            FormaPagamento formaPagamentoExiste = _repositoryFormaPagamento.SelectById(lancamento.forma_pagamento_codigo.Value);
 
-            if ((funcionarioExiste != null && funcionarioExiste.ativo) && formaPagamentoExiste != null)
+            if ((funcionarioExiste != null && funcionarioExiste.ativo) && lancamento.lancamentoFormaPagamento != null)
             {
                 if (lancamento.lancamentoProduto != null)
                 {

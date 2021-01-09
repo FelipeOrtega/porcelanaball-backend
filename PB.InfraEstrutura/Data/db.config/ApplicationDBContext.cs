@@ -65,7 +65,6 @@ namespace PB.InfraEstrutura.Data.db.config
                          ApplyConfiguration(new AlunoTreinoMap()).
                          ApplyConfiguration(new ProdutoMap()).
                          ApplyConfiguration(new FuncionarioMap()).
-                         ApplyConfiguration(new ProdutoLoteMap()).
                          ApplyConfiguration(new PlanoMap()).
                          ApplyConfiguration(new ModalidadeMap()).
                          ApplyConfiguration(new ProdutoCategoriaMap()).
@@ -81,7 +80,10 @@ namespace PB.InfraEstrutura.Data.db.config
                          ApplyConfiguration(new PlanoFuncionarioMap()).
                          ApplyConfiguration(new UserMap()).
                          ApplyConfiguration(new EquipeMap()).
-                         ApplyConfiguration(new EquipeAlunoMap());
+                         ApplyConfiguration(new EquipeAlunoMap()).
+                         ApplyConfiguration(new LancamentoTipoMap()).
+                         ApplyConfiguration(new LancamentoAlunoMap()).
+                         ApplyConfiguration(new LancamentoFormaPagamentoMap());
         }
     }
 }
