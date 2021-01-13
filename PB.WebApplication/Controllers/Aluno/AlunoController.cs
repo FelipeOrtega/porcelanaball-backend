@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using FluentValidation;
 using PB.Domain;
 using FluentValidation.Results;
+using X.PagedList;
 
 namespace PB.WebApplication.Controllers
 {
@@ -26,9 +27,9 @@ namespace PB.WebApplication.Controllers
 
         [HttpGet]
         [Authorize(Roles = "manager, employee")]
-        public JsonReturn Get()
+        public JsonReturn Get(int pagina, int itensPorPagina)
         {
-            return ReturnJson(_service.Get());
+            return ReturnJson(_service.Get().ToPagedList(pagina, itensPorPagina));
         }
 
         [HttpGet("{id}")]

@@ -7,6 +7,7 @@ using PB.Domain.Notifications;
 using PB.Service.Interface;
 using PB.WebApplication.Core;
 using System.Net;
+using X.PagedList;
 
 namespace PB.WebApplication.Controllers
 {
@@ -25,9 +26,9 @@ namespace PB.WebApplication.Controllers
 
         [HttpGet]
         [Authorize(Roles = "manager, employee")]
-        public JsonReturn Get()
+        public JsonReturn Get(int pagina, int itensPorPagina)
         {
-            return ReturnJson(_service.Get());
+            return ReturnJson(_service.Get().ToPagedList(pagina, itensPorPagina));
         }
 
         [HttpGet("{id}")]
