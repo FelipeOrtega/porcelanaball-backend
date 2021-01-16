@@ -27,7 +27,14 @@ namespace PB.WebApplication.Controllers
 
         [HttpGet]
         [Authorize(Roles = "manager, employee")]
-        public JsonReturn Get(int pagina, int itensPorPagina)
+        public JsonReturn Get()
+        {
+            return ReturnJson(_service.Get());
+        }
+
+        [HttpGet("byPage")]
+        [Authorize(Roles = "manager, employee")]
+        public JsonReturn GetByPage(int pagina, int itensPorPagina)
         {
             return ReturnJson(_service.Get().ToPagedList(pagina, itensPorPagina));
         }
