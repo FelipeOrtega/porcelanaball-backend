@@ -10,6 +10,5 @@ namespace PB.Domain
         public int modalidade_codigo { get; set; }
         public bool ativo { get; set; }
         public int modulo_codigo { get; set; }
-        public DateTime durabilidade { get; set; }
     }
 }
