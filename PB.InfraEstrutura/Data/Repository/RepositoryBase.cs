@@ -38,9 +38,11 @@ namespace PB.InfraEstrutura.Data.Repository
 
         public int Insert(TEntity entity)
         {
+
             context.InitTransaction();
-            var id = context.Set<TEntity>().Add(entity).Entity.codigo;
+            context.Set<TEntity>().Add(entity);
             context.SendChanges();
+            var id = entity.codigo;
             return id;
         }
 
