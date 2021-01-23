@@ -46,7 +46,7 @@ namespace PB.WebApplication.Controllers
             return ReturnJson(_service.Get(id));
         }
 
-        [HttpPost("EuipeAluno")]
+        [HttpPost]
         [Authorize(Roles = "manager")]
         public JsonReturn Post([FromBody]EquipeAluno equipeAluno)
         {
@@ -61,7 +61,7 @@ namespace PB.WebApplication.Controllers
                 return ReturnJson(results.Errors, (int)HttpStatusCode.BadRequest);
         }
 
-        [HttpPost("EuipeAluno")]
+        [HttpPost]
         [Authorize(Roles = "manager")]
         public JsonReturn Post([FromBody] List<EquipeAluno> equipeAlunos)
         {
