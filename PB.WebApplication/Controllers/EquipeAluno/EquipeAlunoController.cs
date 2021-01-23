@@ -6,6 +6,7 @@ using PB.Domain;
 using PB.Domain.Notifications;
 using PB.Service.Interface;
 using PB.WebApplication.Core;
+using System.Collections.Generic;
 using System.Net;
 using X.PagedList;
 
@@ -45,7 +46,7 @@ namespace PB.WebApplication.Controllers
             return ReturnJson(_service.Get(id));
         }
 
-        [HttpPost]
+        [HttpPost("EuipeAluno")]
         [Authorize(Roles = "manager")]
         public JsonReturn Post([FromBody]EquipeAluno equipeAluno)
         {
@@ -58,6 +59,26 @@ namespace PB.WebApplication.Controllers
                 return ReturnJson(_service.Insert(equipeAluno));
             else
                 return ReturnJson(results.Errors, (int)HttpStatusCode.BadRequest);
+        }
+
+        [HttpPost("EuipeAluno")]
+        [Authorize(Roles = "manager")]
+        public JsonReturn Post([FromBody] List<EquipeAluno> equipeAlunos)
+        {
+            if (equipeAlunos == null)
+                return ReturnJson("Por favor, passe alguma informação.", (int)HttpStatusCode.BadRequest);
+
+            foreach(EquipeAluno equipeAluno in equipeAlunos)
+            {
+                ValidationResult results = _validator.Validate(equipeAluno, options => options.IncludeRuleSets("insert"));
+
+                if (results.IsValid)
+                    return ReturnJson(_service.Insert(equipeAluno));
+                else
+                    return ReturnJson(results.Errors, (int)HttpStatusCode.BadRequest);
+            }
+
+            return ReturnJson(0, (int)HttpStatusCode.BadRequest);
         }
 
         [HttpPut]
