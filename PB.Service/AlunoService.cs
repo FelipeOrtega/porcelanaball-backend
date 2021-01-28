@@ -59,6 +59,11 @@ namespace PB.Service
         {
             try
             {
+                aluno.rg = Util.removeCaracteresEspeciais(aluno.rg);
+                aluno.cpf = Util.removeCaracteresEspeciais(aluno.cpf);
+                aluno.telefone_celular = Util.removeCaracteresEspeciais(aluno.telefone_celular);
+                aluno.telefone_residencial = Util.removeCaracteresEspeciais(aluno.telefone_residencial);
+
                 Log.write(Log.Nivel.INFO, "CPF = " + aluno.cpf + " IN");
                 Aluno alunoExiste = _repository.SearchCpf(aluno.cpf);
 

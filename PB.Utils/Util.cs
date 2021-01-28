@@ -10,5 +10,13 @@ namespace PB.Utils
             string json = inputModel.ToString();
             return JsonConvert.DeserializeObject<T>(json);
         }
+
+        public static String removeCaracteresEspeciais(String s)
+        {
+            if (s != null && !s.Equals(""))
+                return s.Replace(".", "").Replace("-", "").Replace("(", "").Replace(")", "").Replace(" ", "");
+            else
+                return "";
+        }
     }
 }
