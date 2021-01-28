@@ -55,7 +55,6 @@ namespace PB.WebApplication.Controllers
 
             ValidationResult results = _validator.Validate(aluno, options => options.IncludeRuleSets("insert"));
 
-
             if (results.IsValid)
                 return ReturnJson(_service.Insert(aluno));
             else

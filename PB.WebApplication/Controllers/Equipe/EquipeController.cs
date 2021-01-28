@@ -45,6 +45,13 @@ namespace PB.WebApplication.Controllers
             return ReturnJson(_service.Get(id));
         }
 
+        [HttpGet("GetEquipeProximosPagamentos/{id}")]
+        [Authorize(Roles = "manager, employee")]
+        public JsonReturn GetEquipeProximosPagamentos(int id)
+        {
+            return ReturnJson(_service.GetEquipeProximosPagamentos(id));
+        }
+
         [HttpPost]
         [Authorize(Roles = "manager")]
         public JsonReturn Post([FromBody]Equipe equipe)

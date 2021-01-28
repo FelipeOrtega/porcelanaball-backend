@@ -59,6 +59,37 @@ namespace PB.Service
             return null;
         }
 
+
+        public List<DateTime> GetEquipeProximosPagamentos(int codigo)
+        {
+            try
+            {
+                List<DateTime> datasDosProximosPagamentos = new List<DateTime>();
+
+                Log.write(Log.Nivel.INFO, "Codigo = " + codigo + " IN");
+                Equipe equipe = _repository.SelectById(codigo);
+                Log.write(Log.Nivel.INFO, "Codigo = " + codigo + " OUT");
+
+
+                while (equipe.quantidade_meses_a_pagar != 0)
+                {
+
+                    equipe.data_primeiro_jogo = equipe.data_primeiro_jogo.AddDays(28);
+                    datasDosProximosPagamentos.Add(equipe.data_primeiro_jogo);
+                    equipe.quantidade_meses_a_pagar--;
+                }
+
+                return datasDosProximosPagamentos;
+            }
+            catch (Exception ex)
+            {
+                Log.write(Log.Nivel.ERROR, ex, "Codigo = " + codigo + " OUT ERROR");
+                _notificationContext.AddNotification("Não foi possivel capturar as informações.");
+            }
+
+            return null;
+        }
+
         public int Insert(Equipe equipe)
         {
             try

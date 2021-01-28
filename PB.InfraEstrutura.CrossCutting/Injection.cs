@@ -28,6 +28,7 @@ namespace PB.InfraEstrutura.CrossCutting
             services.AddScoped<IValidator<User>, UserValidator>();
             services.AddScoped<IValidator<Equipe>, EquipeValidator>();
             services.AddScoped<IValidator<Modulo>, ModuloValidator>();
+            services.AddScoped<IValidator<EquipeAluno>, EquipeAlunoValidator>();
 
             // Service
             services.AddScoped<IAlunoService, AlunoService>();
