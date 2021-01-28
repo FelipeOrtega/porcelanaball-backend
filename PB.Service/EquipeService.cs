@@ -71,12 +71,12 @@ namespace PB.Service
                 Log.write(Log.Nivel.INFO, "Codigo = " + codigo + " OUT");
 
 
-                while (equipe.quantidade_meses_a_pagar != 0)
+                while (equipe.quantidade_parcelas_mensais != 0)
                 {
 
                     equipe.data_primeiro_jogo = equipe.data_primeiro_jogo.AddDays(28);
                     datasDosProximosPagamentos.Add(equipe.data_primeiro_jogo);
-                    equipe.quantidade_meses_a_pagar--;
+                    equipe.quantidade_parcelas_mensais--;
                 }
 
                 return datasDosProximosPagamentos;

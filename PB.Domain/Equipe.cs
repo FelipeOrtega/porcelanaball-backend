@@ -11,7 +11,7 @@ namespace PB.Domain
         public int modulo_codigo { get; set; }
         public Decimal valor { get; set; }
         public DateTime data_primeiro_jogo { get; set; }
-        public int quantidade_meses_a_pagar { get; set; }   
+        public int quantidade_parcelas_mensais { get; set; }   
 
     }
 }
