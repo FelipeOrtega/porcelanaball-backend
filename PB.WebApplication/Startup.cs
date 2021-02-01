@@ -49,7 +49,12 @@ namespace PB.WebApplication
 
             services.AddControllers();
 
-            services.AddCors();
+            services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
+            {
+                builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            }));
 
 
             Injection.Configure(services);
@@ -77,7 +82,9 @@ namespace PB.WebApplication
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
 
-            app.UseCors(option => option.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+            //  app.UseCors(option => option.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+
+            app.UseCors("MyPolicy");
 
             app.UseForwardedHeaders(new ForwardedHeadersOptions
             {
