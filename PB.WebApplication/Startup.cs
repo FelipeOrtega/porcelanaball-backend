@@ -49,6 +49,9 @@ namespace PB.WebApplication
 
             services.AddControllers();
 
+            services.AddCors();
+
+
             Injection.Configure(services);
 
             var key = Encoding.ASCII.GetBytes(Settings.secret);
@@ -98,6 +101,8 @@ namespace PB.WebApplication
             {
                 endpoints.MapControllers();
             });
+
+            app.UseCors(option => option.AllowAnyOrigin());
         }
     }
 }
