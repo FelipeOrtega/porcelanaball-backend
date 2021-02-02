@@ -49,14 +49,6 @@ namespace PB.WebApplication
 
             services.AddControllers();
 
-            services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
-            {
-                builder.AllowAnyOrigin()
-                       .AllowAnyMethod()
-                       .AllowAnyHeader();
-            }));
-
-
             Injection.Configure(services);
 
             var key = Encoding.ASCII.GetBytes(Settings.secret);
@@ -76,6 +68,20 @@ namespace PB.WebApplication
                             ValidateAudience = false
                         };
                     });
+
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll",
+                    builder =>
+                    {
+                        builder
+                        .AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .AllowCredentials();
+                    });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -83,8 +89,6 @@ namespace PB.WebApplication
         {
 
             //  app.UseCors(option => option.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
-
-            app.UseCors("MyPolicy");
 
             app.UseForwardedHeaders(new ForwardedHeadersOptions
             {
@@ -98,7 +102,7 @@ namespace PB.WebApplication
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
+           // app.UseHttpsRedirection();
 
             app.UseRouting();
 
@@ -109,7 +113,7 @@ namespace PB.WebApplication
                 endpoints.MapControllers();
             });
 
-            app.UseCors(option => option.AllowAnyOrigin());
+            app.UseCors("AllowAll");
         }
     }
 }

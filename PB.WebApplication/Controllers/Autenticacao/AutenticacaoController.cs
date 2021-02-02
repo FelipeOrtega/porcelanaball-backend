@@ -27,7 +27,7 @@ namespace PB.WebApplication.Controllers
 
         [HttpGet]
         [Authorize(Roles = "manager")]
-        [EnableCors("MyPolicy")]
+        [EnableCors("AllowAll")]
         public JsonReturn Get()
         {
             return ReturnJson(_service.Get());
@@ -35,7 +35,7 @@ namespace PB.WebApplication.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        [EnableCors("MyPolicy")]
+        [EnableCors("AllowAll")]
         public JsonReturn Post([FromBody] User user)
         {
             var userValidate = _service.Get(user);
@@ -54,7 +54,7 @@ namespace PB.WebApplication.Controllers
 
         [HttpPut]
         [Authorize(Roles = "manager")]
-        [EnableCors("MyPolicy")]
+        [EnableCors("AllowAll")]
         public JsonReturn Put([FromBody] User user)
         {
             if (user == null)
@@ -70,7 +70,7 @@ namespace PB.WebApplication.Controllers
 
         [HttpDelete("{id}")]
         [Authorize(Roles = "manager")]
-        [EnableCors("MyPolicy")]
+        [EnableCors("AllowAll")]
         public JsonReturn Delete(int id)
         {
             return ReturnJson(_service.Delete(id));
