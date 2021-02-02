@@ -52,6 +52,7 @@ namespace PB.WebApplication
             Injection.Configure(services);
 
             var key = Encoding.ASCII.GetBytes(Settings.secret);
+
             services.AddAuthentication(x =>
             {
                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -82,18 +83,20 @@ namespace PB.WebApplication
                         .AllowCredentials();
                     });
             });
+
+            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-
-            //  app.UseCors(option => option.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
-
             app.UseForwardedHeaders(new ForwardedHeadersOptions
             {
                 ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
             });
+
+
+            app.UseCors("AllowAll");
 
             app.UseAuthentication();
 
@@ -102,7 +105,7 @@ namespace PB.WebApplication
                 app.UseDeveloperExceptionPage();
             }
 
-           // app.UseHttpsRedirection();
+            app.UseHttpsRedirection();
 
             app.UseRouting();
 
@@ -112,8 +115,6 @@ namespace PB.WebApplication
             {
                 endpoints.MapControllers();
             });
-
-            app.UseCors("AllowAll");
         }
     }
 }
