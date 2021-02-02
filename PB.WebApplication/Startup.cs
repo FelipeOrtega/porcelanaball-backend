@@ -94,7 +94,7 @@ namespace PB.WebApplication
             });
 
 
-            app.UseCors("AllowAll");
+        
 
             app.UseAuthentication();
 
@@ -106,6 +106,8 @@ namespace PB.WebApplication
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors("AllowAll");
 
             app.UseAuthorization();
 
