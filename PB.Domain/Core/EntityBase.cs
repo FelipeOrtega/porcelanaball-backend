@@ -5,6 +5,7 @@ namespace PB.Domain.Core
 {
     public abstract class EntityBase
     {
+        [Column("CODIGO")]
         public int codigo { get; set; }
     }
 }
