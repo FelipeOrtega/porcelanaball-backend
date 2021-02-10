@@ -8,6 +8,7 @@ namespace PB.InfraEstrutura.Data.Mapping
     {
         public override void Configure(EntityTypeBuilder<User> builder)
         {
+            builder.ToTable("USER");
             base.Configure(builder);
         }
     }

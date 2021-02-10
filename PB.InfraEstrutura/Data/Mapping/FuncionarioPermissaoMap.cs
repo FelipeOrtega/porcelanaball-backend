@@ -12,8 +12,8 @@ namespace PB.InfraEstrutura.Data.Mapping
         public override void Configure(EntityTypeBuilder<FuncionarioPermissao> builder)
         {
             builder.HasOne(fp => fp.funcionario).WithMany(f => f.funcionarioPermissao).HasForeignKey(fp => fp.funcionario_codigo);
+            builder.ToTable("FUNCIONARIO_PERMISSAO");
             base.Configure(builder);
-            builder.ToTable("funcionario_permissao");
         }
     }
 }

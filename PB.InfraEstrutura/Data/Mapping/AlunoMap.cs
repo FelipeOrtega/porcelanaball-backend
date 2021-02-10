@@ -11,6 +11,7 @@ namespace PB.InfraEstrutura.Data.Mapping
             builder.HasMany(a => a.alunoTreinos).WithOne(at => at.aluno);
             builder.HasMany(a => a.alunoPossuiPlano).WithOne(app => app.aluno);
             builder.HasMany(a => a.alunoPossuiEquipe).WithOne(app => app.aluno);
+            builder.ToTable("ALUNO");
             base.Configure(builder);
         }
     }

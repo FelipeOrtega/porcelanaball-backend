@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using PB.Domain;
 
 namespace PB.InfraEstrutura.Data.Mapping
@@ -10,6 +11,7 @@ namespace PB.InfraEstrutura.Data.Mapping
             builder.HasMany(l => l.lancamentoAluno).WithOne(la => la.lancamento);
             builder.HasMany(l => l.lancamentoProduto).WithOne(lp => lp.lancamento);
             builder.HasMany(l => l.lancamentoFormaPagamento).WithOne(lfp => lfp.lancamento);
+            builder.ToTable("LANCAMENTO");
             base.Configure(builder);
         }
     }

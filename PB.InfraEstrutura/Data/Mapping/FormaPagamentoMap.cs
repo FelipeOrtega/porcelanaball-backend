@@ -8,8 +8,8 @@ namespace PB.InfraEstrutura.Data.Mapping
     {
         public override void Configure(EntityTypeBuilder<FormaPagamento> builder)
         {
+            builder.ToTable("FORMA_PAGAMENTO");
             base.Configure(builder);
-            builder.ToTable("forma_pagamento");
         }
     }
 }

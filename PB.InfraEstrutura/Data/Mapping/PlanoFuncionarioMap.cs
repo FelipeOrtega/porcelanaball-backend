@@ -9,8 +9,8 @@ namespace PB.InfraEstrutura.Data.Mapping
         public override void Configure(EntityTypeBuilder<PlanoFuncionario> builder)
         {
             builder.HasOne(fpp => fpp.funcionario).WithMany(a => a.funcionarioPossuiPlano).HasForeignKey(fpp => fpp.funcionario_codigo);
+            builder.ToTable("PLANO_FUNCIONARIO");
             base.Configure(builder);
-            builder.ToTable("plano_funcionario");
         }
     }
 }

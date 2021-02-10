@@ -8,8 +8,8 @@ namespace PB.InfraEstrutura.Data.Mapping
     {
         public override void Configure(EntityTypeBuilder<LancamentoFormaPagamento> builder)
         {
-            builder.ToTable("lancamento_forma_pagamento");
             builder.HasOne(lfp => lfp.lancamento).WithMany(l => l.lancamentoFormaPagamento).HasForeignKey(lt => lt.lancamento_codigo);
+            builder.ToTable("LANCAMENTO_FORMA_PAGAMENTO");
             base.Configure(builder);
         }
     }

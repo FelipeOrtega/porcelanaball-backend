@@ -8,8 +8,8 @@ namespace PB.InfraEstrutura.Data.Mapping
     {
         public override void Configure(EntityTypeBuilder<LancamentoCategoria> builder)
         {
+            builder.ToTable("LANCAMENTO_CATEGORIA");
             base.Configure(builder);
-            builder.ToTable("lancamento_categoria");
         }
     }
 }

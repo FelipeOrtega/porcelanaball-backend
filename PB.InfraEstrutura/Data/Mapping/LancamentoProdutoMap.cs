@@ -8,8 +8,8 @@ namespace PB.InfraEstrutura.Data.Mapping
     {
         public override void Configure(EntityTypeBuilder<LancamentoProduto> builder)
         {
-            builder.ToTable("lancamento_produto");
             builder.HasOne(lp => lp.lancamento).WithMany(l => l.lancamentoProduto).HasForeignKey(lt => lt.lancamento_codigo);
+            builder.ToTable("LANCAMENTO_PRODUTO");
             base.Configure(builder);
         }
     }

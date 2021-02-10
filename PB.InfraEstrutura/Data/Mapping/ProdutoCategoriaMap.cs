@@ -8,8 +8,8 @@ namespace PB.InfraEstrutura.Data.Mapping
     {
         public override void Configure(EntityTypeBuilder<ProdutoCategoria> builder)
         {
+            builder.ToTable("PRODUTO_CATEGORIA");
             base.Configure(builder);
-            builder.ToTable("produto_categoria");
         }
     }
 }

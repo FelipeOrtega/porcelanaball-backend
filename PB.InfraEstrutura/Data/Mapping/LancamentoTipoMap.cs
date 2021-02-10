@@ -9,7 +9,7 @@ namespace PB.InfraEstrutura.Data.Mapping
         public override void Configure(EntityTypeBuilder<LancamentoTipo> builder)
         {
             base.Configure(builder);
-            builder.ToTable("lancamento_tipo");
+            builder.ToTable("LANCAMENTO_TIPO");
         }
     }
 }
