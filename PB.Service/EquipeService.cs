@@ -60,7 +60,7 @@ namespace PB.Service
         }
 
 
-        public List<DateTime> GetEquipeProximosPagamentos(int codigo)
+     /*   public List<DateTime> GetEquipeProximosPagamentos(int codigo)
         {
             try
             {
@@ -88,7 +88,7 @@ namespace PB.Service
             }
 
             return null;
-        }
+        }*/
 
         public int Insert(Equipe equipe)
         {
