@@ -83,7 +83,8 @@ namespace PB.InfraEstrutura.Data.db.config
                          ApplyConfiguration(new EquipeAlunoMap()).
                          ApplyConfiguration(new LancamentoTipoMap()).
                          ApplyConfiguration(new LancamentoAlunoMap()).
-                         ApplyConfiguration(new LancamentoFormaPagamentoMap());
+                         ApplyConfiguration(new LancamentoFormaPagamentoMap()).
+                         ApplyConfiguration(new QuadraMap());
         }
     }
 }
