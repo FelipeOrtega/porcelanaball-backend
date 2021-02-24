@@ -10,8 +10,11 @@ namespace PB.Domain
         public bool ativo { get; set; }
         public int modulo_codigo { get; set; }
         public Decimal valor { get; set; }
-        public DateTime data_primeiro_jogo { get; set; }
-        public int quantidade_parcelas_mensais { get; set; }   
-
+        public int dia_vencimento { get; set; }
+        public bool adere_academia { get; set; }
+        public string jogo_dia_da_semana { get; set; }
+        public DateTime jogo_horario_inicial { get; set; }
+        public DateTime jogo_horario_final { get; set; }
+        public int quadra_codigo { get; set; }
     }
 }

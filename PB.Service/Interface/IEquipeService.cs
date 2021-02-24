@@ -8,7 +8,7 @@ namespace PB.Service.Interface
     {
         List<Equipe> Get();
         Equipe Get(int codigo);
-        List<DateTime> GetEquipeProximosPagamentos(int codigo);
+       // List<DateTime> GetEquipeProximosPagamentos(int codigo);
         int Insert(Equipe equipe);
         int Update(Equipe equipe);
         int Delete(int codigo);
