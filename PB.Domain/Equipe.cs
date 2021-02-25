@@ -13,8 +13,8 @@ namespace PB.Domain
         public int dia_vencimento { get; set; }
         public bool adere_academia { get; set; }
         public string jogo_dia_da_semana { get; set; }
-        public DateTime jogo_horario_inicial { get; set; }
-        public DateTime jogo_horario_final { get; set; }
+        public TimeSpan jogo_horario_inicial { get; set; }
+        public TimeSpan jogo_horario_final { get; set; }
         public int quadra_codigo { get; set; }
     }
 }
