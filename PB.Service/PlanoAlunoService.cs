@@ -32,9 +32,9 @@ namespace PB.Service
             try
             {
                 Log.write(Log.Nivel.INFO, "<List> IN");
-                List<PlanoAluno> alunoPossuiPlanos = _repository.Get();
+                List<PlanoAluno> alunoPlanos = _repository.Get();
                 Log.write(Log.Nivel.INFO, "<List> OUT");
-                return alunoPossuiPlanos;
+                return alunoPlanos;
             }
             catch (Exception ex)
             {
@@ -50,9 +50,9 @@ namespace PB.Service
             try
             {
                 Log.write(Log.Nivel.INFO, "Codigo = " + codigo + " IN");
-                PlanoAluno alunoPossuiPlano = _repository.SelectById(codigo);
+                PlanoAluno alunoPlano = _repository.SelectById(codigo);
                 Log.write(Log.Nivel.INFO, "Codigo = " + codigo + " OUT");
-                return alunoPossuiPlano;
+                return alunoPlano;
             }
             catch (Exception ex)
             {
@@ -63,14 +63,14 @@ namespace PB.Service
             return null;
         }
 
-        public int Insert(PlanoAluno alunoPossuiPlano)
+        public int Insert(PlanoAluno alunoPlano)
         {
             try
             {
                 Log.write(Log.Nivel.INFO, "IN");
-                if (CheckInsertUpdate(alunoPossuiPlano))
+                if (CheckInsertUpdate(alunoPlano))
                 {
-                    int codigoAlunoPossuiPlanoInserido = _repository.Insert(alunoPossuiPlano);
+                    int codigoAlunoPossuiPlanoInserido = _repository.Insert(alunoPlano);
                     Log.write(Log.Nivel.INFO, "OUT");
                     return codigoAlunoPossuiPlanoInserido;
                 }
@@ -88,14 +88,14 @@ namespace PB.Service
             return 0;
         }
 
-        public int Update(PlanoAluno alunoPossuiPlano)
+        public int Update(PlanoAluno alunoPlano)
         {
             try
             {
                 Log.write(Log.Nivel.INFO, "IN");
-                if (CheckInsertUpdate(alunoPossuiPlano))
+                if (CheckInsertUpdate(alunoPlano))
                 {
-                    _repository.Update(alunoPossuiPlano);
+                    _repository.Update(alunoPlano);
                     Log.write(Log.Nivel.INFO, "OUT");
                 }
                 else
@@ -118,16 +118,16 @@ namespace PB.Service
             try
             {
                 Log.write(Log.Nivel.INFO, "Codigo  = " + codigo + " IN");
-                PlanoAluno alunoPossuiPlano = _repository.SelectById(codigo);
+                PlanoAluno alunoPlano = _repository.SelectById(codigo);
 
-                if (alunoPossuiPlano == null)
+                if (alunoPlano == null)
                 {
                     Log.write(Log.Nivel.INFO, "Codigo  = " + codigo + " nao encontrado OUT");
                     _notificationContext.AddNotification("Este cadastro não foi encontrado no banco de dados.");
                     return 0;
                 }
 
-                _repository.Delete(alunoPossuiPlano);
+                _repository.Delete(alunoPlano);
                 Log.write(Log.Nivel.INFO, "Codigo  = " + codigo + " OUT");
             }
             catch (Exception ex)
@@ -139,12 +139,12 @@ namespace PB.Service
             return 0;
         }
 
-        private bool CheckInsertUpdate(PlanoAluno alunoPossuiPlano)
+        private bool CheckInsertUpdate(PlanoAluno alunoPlano)
         {
             try
             {
-                Aluno alunoExiste = _repositoryAluno.SelectById(alunoPossuiPlano.aluno_codigo);
-                Plano planoExiste = _repositoryPlano.SelectById(alunoPossuiPlano.plano_codigo);
+                Aluno alunoExiste = _repositoryAluno.SelectById(alunoPlano.aluno_codigo);
+                Plano planoExiste = _repositoryPlano.SelectById(alunoPlano.plano_codigo);
 
                 return ((alunoExiste != null && alunoExiste.ativo) && (planoExiste != null && planoExiste.ativo));
             }

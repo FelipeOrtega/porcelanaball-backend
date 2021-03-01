@@ -47,30 +47,30 @@ namespace PB.WebApplication.Controllers
 
         [HttpPost]
         [Authorize(Roles = "manager")]
-        public JsonReturn Post([FromBody]PlanoAluno alunoPossuiPlano)
+        public JsonReturn Post([FromBody]PlanoAluno alunoPlano)
         {
-            if (alunoPossuiPlano == null)
+            if (alunoPlano == null)
                 return ReturnJson("Por favor, passe alguma informação.", (int)HttpStatusCode.BadRequest);
 
-            ValidationResult results = _validator.Validate(alunoPossuiPlano, options => options.IncludeRuleSets("insert"));
+            ValidationResult results = _validator.Validate(alunoPlano, options => options.IncludeRuleSets("insert"));
 
             if (results.IsValid)
-                return ReturnJson(_service.Insert(alunoPossuiPlano));
+                return ReturnJson(_service.Insert(alunoPlano));
             else
                 return ReturnJson(results.Errors, (int)HttpStatusCode.BadRequest);
         }
 
         [HttpPut]
         [Authorize(Roles = "manager")]
-        public JsonReturn Put([FromBody]PlanoAluno alunoPossuiPlano)
+        public JsonReturn Put([FromBody]PlanoAluno alunoPlano)
         {
-            if (alunoPossuiPlano == null)
+            if (alunoPlano == null)
                 return ReturnJson("Por favor, passe alguma informação.", (int)HttpStatusCode.BadRequest);
 
-            ValidationResult results = _validator.Validate(alunoPossuiPlano, options => options.IncludeRuleSets("update"));
+            ValidationResult results = _validator.Validate(alunoPlano, options => options.IncludeRuleSets("update"));
 
             if (results.IsValid)
-                return ReturnJson(_service.Update(alunoPossuiPlano));
+                return ReturnJson(_service.Update(alunoPlano));
             else
                 return ReturnJson(results.Errors, (int)HttpStatusCode.BadRequest);
         }

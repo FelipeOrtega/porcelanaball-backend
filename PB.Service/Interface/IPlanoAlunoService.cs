@@ -7,8 +7,8 @@ namespace PB.Service.Interface
     {
         List<PlanoAluno> Get();
         PlanoAluno Get(int codigo);
-        int Insert(PlanoAluno alunoPossuiPlano);
-        int Update(PlanoAluno alunoPossuiPlano);
+        int Insert(PlanoAluno alunoPlano);
+        int Update(PlanoAluno alunoPlano);
         int Delete(int id);
     }
 }
