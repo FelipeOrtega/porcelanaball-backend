@@ -26,8 +26,8 @@ namespace PB.InfraEstrutura.Data.Repository
         {
             Aluno aluno_ = context.Set<Aluno>().Where(a => a.codigo == aluno.codigo)
                                                .Include(a => a.alunoTreinos)
-                                               .Include(app => app.alunoPlano)
-                                               .Include(app => app.alunoEquipe).Single();
+                                               .Include(app => app.planoAluno)
+                                               .Include(app => app.equipeAluno).Single();
             return aluno_;
         }
 
@@ -35,8 +35,8 @@ namespace PB.InfraEstrutura.Data.Repository
         public List<Aluno> FullList()
         {
             List<Aluno> alunos = context.Set<Aluno>().Include(a => a.alunoTreinos)
-                                                     .Include(app => app.alunoPlano)
-                                                     .Include(app => app.alunoEquipe).ToList();
+                                                     .Include(app => app.planoAluno)
+                                                     .Include(app => app.equipeAluno).ToList();
             return alunos;
         }
 

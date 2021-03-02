@@ -8,7 +8,9 @@ namespace PB.InfraEstrutura.Data.Mapping
     {
         public override void Configure(EntityTypeBuilder<EquipeAluno> builder)
         {
-            builder.HasOne(app => app.aluno).WithMany(a => a.alunoEquipe).HasForeignKey(app => app.aluno_codigo);
+            builder.HasKey(t => new { t.aluno_codigo, t.equipe_codigo});
+            builder.HasOne(pt => pt.aluno).WithMany(p => p.equipeAluno).HasForeignKey(pt => pt.aluno_codigo);
+            builder.HasOne(pt => pt.equipe).WithMany(p => p.equipeAluno).HasForeignKey(pt => pt.equipe_codigo);
             builder.ToTable("EQUIPE_ALUNO");
             base.Configure(builder);
         }

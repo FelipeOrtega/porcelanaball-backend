@@ -1,5 +1,6 @@
 ﻿using PB.Domain.Core;
 using System;
+using System.Collections.Generic;
 
 namespace PB.Domain
 {
@@ -16,5 +17,7 @@ namespace PB.Domain
         public TimeSpan jogo_horario_inicial { get; set; }
         public TimeSpan jogo_horario_final { get; set; }
         public int quadra_codigo { get; set; }
+        public List<EquipeAluno> equipeAluno { get; set; }
+
     }
 }
