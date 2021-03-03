@@ -1,6 +1,9 @@
-﻿using PB.Domain;
+﻿using Microsoft.EntityFrameworkCore;
+using PB.Domain;
 using PB.Domain.Interface.Repository;
 using PB.InfraEstrutura.Data.db.config;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace PB.InfraEstrutura.Data.Repository
 {
@@ -8,6 +11,13 @@ namespace PB.InfraEstrutura.Data.Repository
     {
         public PagamentoRepository(ApplicationDBContext context) : base(context)
         {
+        }
+
+        public List<Pagamento> SearchCodigo_Equipe(int codigoEquipe)
+        {
+            List<Pagamento> pagamentosByEquipe = context.Set<Pagamento>().Include(a => a.equipe_codigo).ToList();
+
+            return pagamentosByEquipe;
         }
     }
 }

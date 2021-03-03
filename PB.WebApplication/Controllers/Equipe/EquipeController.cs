@@ -45,12 +45,12 @@ namespace PB.WebApplication.Controllers
             return ReturnJson(_service.Get(id));
         }
 
-    /*    [HttpGet("GetEquipeProximosPagamentos/{id}")]
+        [HttpGet("GetHistoricoPagamento/{id}")]
         [Authorize(Roles = "manager, employee")]
-        public JsonReturn GetEquipeProximosPagamentos(int id)
+        public JsonReturn GetHistoricoPagamento(int codigoEquipe)
         {
-            return ReturnJson(_service.GetEquipeProximosPagamentos(id));
-        }*/
+            return ReturnJson(_service.GetHistoricoPagamento(codigoEquipe));
+        }
 
         [HttpPost]
         [Authorize(Roles = "manager")]

@@ -1,5 +1,5 @@
-﻿using PB.Domain;
-using System;
+﻿using PB.Domain.DTO;
+using PB.Domain;
 using System.Collections.Generic;
 
 namespace PB.Service.Interface
@@ -8,7 +8,7 @@ namespace PB.Service.Interface
     {
         List<Equipe> Get();
         Equipe Get(int codigo);
-       // List<DateTime> GetEquipeProximosPagamentos(int codigo);
+        EquipePagamentoDTO GetHistoricoPagamento(int codigo);
         int Insert(Equipe equipe);
         int Update(Equipe equipe);
         int Delete(int codigo);

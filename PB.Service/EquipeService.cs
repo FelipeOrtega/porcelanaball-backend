@@ -1,4 +1,5 @@
 ﻿using PB.Domain;
+using PB.Domain.DTO;
 using PB.Domain.Interface.Repository;
 using PB.Domain.Notifications;
 using PB.Service.Interface;
@@ -14,13 +15,16 @@ namespace PB.Service
         private readonly NotificationContext _notificationContext;
         private readonly IModalidadeRepository _repositoryModalidade;
         private readonly IModuloRepository _repositoryModulo;
+        private readonly IPagamentoRepository _repositoryPagamento;
 
-        public EquipeService(IEquipeRepository repository, NotificationContext notificationContext, IModalidadeRepository repositoryModalidade, IModuloRepository repositoryModulo)
+        public EquipeService(IEquipeRepository repository, NotificationContext notificationContext,
+            IModalidadeRepository repositoryModalidade, IModuloRepository repositoryModulo, IPagamentoRepository repositoryPagamento)
         {
             _repository = repository;
             _notificationContext = notificationContext;
             _repositoryModalidade = repositoryModalidade;
             _repositoryModulo = repositoryModulo;
+            _repositoryPagamento = repositoryPagamento;
         }
 
         public List<Equipe> Get()
@@ -60,26 +64,34 @@ namespace PB.Service
         }
 
 
-     /*   public List<DateTime> GetEquipeProximosPagamentos(int codigo)
+        public EquipePagamentoDTO GetHistoricoPagamento(int codigo)
         {
             try
             {
-                List<DateTime> datasDosProximosPagamentos = new List<DateTime>();
+                EquipePagamentoDTO equipePagamentoDTO = new EquipePagamentoDTO();
+                List<PagamentoDTO> pagamentosDTO = new List<PagamentoDTO>();
+                decimal valorTotalPago = 0;
 
                 Log.write(Log.Nivel.INFO, "Codigo = " + codigo + " IN");
-                Equipe equipe = _repository.SelectById(codigo);
-                Log.write(Log.Nivel.INFO, "Codigo = " + codigo + " OUT");
 
-
-                while (equipe.quantidade_parcelas_mensais != 0)
+                equipePagamentoDTO.equipe = _repository.SelectById(codigo);
+                List<Pagamento> pagamentos = _repositoryPagamento.SearchCodigo_Equipe(codigo);
+             
+                foreach (Pagamento pagamento in pagamentos)
                 {
-
-                    equipe.data_primeiro_jogo = equipe.data_primeiro_jogo.AddDays(28);
-                    datasDosProximosPagamentos.Add(equipe.data_primeiro_jogo);
-                    equipe.quantidade_parcelas_mensais--;
+                    PagamentoDTO pagamentoDTO = new PagamentoDTO();
+                    valorTotalPago = + pagamento.valor;
+                    pagamentoDTO.convertPagamentoToDTO(pagamento);
+                    pagamentosDTO.Add(pagamentoDTO);
                 }
 
-                return datasDosProximosPagamentos;
+                equipePagamentoDTO.pagamentos = pagamentosDTO;
+
+                if(valorTotalPago <= equipePagamentoDTO.equipe.valor)
+                    equipePagamentoDTO.valorRestante = equipePagamentoDTO.equipe.valor - valorTotalPago;
+
+                Log.write(Log.Nivel.INFO, "Codigo = " + codigo + " OUT");
+                return equipePagamentoDTO;
             }
             catch (Exception ex)
             {
@@ -88,7 +100,7 @@ namespace PB.Service
             }
 
             return null;
-        }*/
+        }
 
         public int Insert(Equipe equipe)
         {
