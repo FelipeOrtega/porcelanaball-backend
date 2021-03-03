@@ -18,6 +18,5 @@ namespace PB.Domain
         public TimeSpan jogo_horario_final { get; set; }
         public int quadra_codigo { get; set; }
         public List<EquipeAluno> equipeAluno { get; set; }
-
     }
 }

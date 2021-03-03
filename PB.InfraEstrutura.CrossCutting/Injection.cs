@@ -30,6 +30,7 @@ namespace PB.InfraEstrutura.CrossCutting
             services.AddScoped<IValidator<Modulo>, ModuloValidator>();
             services.AddScoped<IValidator<EquipeAluno>, EquipeAlunoValidator>();
             services.AddScoped<IValidator<Quadra>, QuadraValidator>();
+            services.AddScoped<IValidator<Pagamento>, PagamentoValidator>();
 
             // Service
             services.AddScoped<IAlunoService, AlunoService>();
@@ -48,6 +49,7 @@ namespace PB.InfraEstrutura.CrossCutting
             services.AddScoped<IModuloService, ModuloService>();
             services.AddScoped<IEquipeAlunoService, EquipeAlunoService>();
             services.AddScoped<IQuadraService, QuadraService>();
+            services.AddScoped<IPagamentoService, PagamentoService>();
 
             // Repository
             services.AddScoped(typeof(IRepositoryBase<>), typeof(RepositoryBase<>));
@@ -71,6 +73,7 @@ namespace PB.InfraEstrutura.CrossCutting
             services.AddScoped<ILancamentoFormaPagamentoRepository, LancamentoFormaPagamentoRepository>();
             services.AddScoped<ILancamentoAlunoRepository, LancamentoAlunoRepository>();
             services.AddScoped<IQuadraRepository, QuadraRepository>();
+            services.AddScoped<IPagamentoRepository, PagamentoRepository>();
 
             services.AddScoped<NotificationContext>();
         }

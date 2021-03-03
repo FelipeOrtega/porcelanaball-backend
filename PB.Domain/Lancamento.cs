@@ -16,7 +16,6 @@ namespace PB.Domain
         public String observacao { get; set; }
         public int? modulo_codigo { get; set; }
         public int? equipe_codigo { get; set; }
-
         public List<LancamentoAluno> lancamentoAluno { get; set; }
         public List<LancamentoFormaPagamento> lancamentoFormaPagamento { get; set; }
         public List<LancamentoProduto> lancamentoProduto { get; set; }

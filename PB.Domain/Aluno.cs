@@ -12,6 +12,5 @@ namespace PB.Domain
         public List<AlunoTreino> alunoTreinos { get; set; }
         public List<PlanoAluno> planoAluno { get; set; }
         public List<EquipeAluno> equipeAluno { get; set; }
-
     }
 }
