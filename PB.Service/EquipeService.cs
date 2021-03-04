@@ -6,6 +6,7 @@ using PB.Service.Interface;
 using System;
 using System.Collections.Generic;
 using PB.Utils;
+using System.Linq;
 
 namespace PB.Service
 {
@@ -16,15 +17,18 @@ namespace PB.Service
         private readonly IModalidadeRepository _repositoryModalidade;
         private readonly IModuloRepository _repositoryModulo;
         private readonly IPagamentoRepository _repositoryPagamento;
+        private readonly IEquipeAlunoRepository _repositoryEquipeAluno;
 
         public EquipeService(IEquipeRepository repository, NotificationContext notificationContext,
-            IModalidadeRepository repositoryModalidade, IModuloRepository repositoryModulo, IPagamentoRepository repositoryPagamento)
+            IModalidadeRepository repositoryModalidade, IModuloRepository repositoryModulo, IPagamentoRepository repositoryPagamento,
+            IEquipeAlunoRepository repositoryEquipeAluno)
         {
             _repository = repository;
             _notificationContext = notificationContext;
             _repositoryModalidade = repositoryModalidade;
             _repositoryModulo = repositoryModulo;
             _repositoryPagamento = repositoryPagamento;
+            _repositoryEquipeAluno = repositoryEquipeAluno;
         }
 
         public List<Equipe> Get()
@@ -126,13 +130,14 @@ namespace PB.Service
         {
             try
             {
-                Log.write(Log.Nivel.INFO, "Codigo = " + equipe.codigo + " IN");
-                if (CheckInsertUpdate(equipe))
+                Equipe equipeExiste = _repository.SelectById(equipe.codigo);
+                if (equipeExiste != null)
                 {
+                    deleteReleatedEntitesToUpdate(equipe);
+                    Log.write(Log.Nivel.INFO, "Codigo = " + equipe.codigo + " IN");
                     _repository.Update(equipe);
                     Log.write(Log.Nivel.INFO, "OK OUT");
                 }
-                
             }
             catch (Exception ex)
             {
@@ -141,6 +146,15 @@ namespace PB.Service
             }
 
             return 0;
+        }
+
+        private void deleteReleatedEntitesToUpdate(Equipe equipe)
+        {
+            var equipesAlunosNotInNewEquipeAluno = _repositoryEquipeAluno.GetByEquipeCodigo(equipe.codigo);
+            foreach (var equipeAlunoNotInNewEquipeAluno in equipesAlunosNotInNewEquipeAluno.ToList())
+            {
+                _repositoryEquipeAluno.Delete(equipeAlunoNotInNewEquipeAluno);
+            }
         }
 
         public int Delete(int codigo)

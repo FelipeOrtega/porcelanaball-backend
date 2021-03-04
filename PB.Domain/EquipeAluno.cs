@@ -10,5 +10,7 @@ namespace PB.Domain
         public Aluno aluno { get; set; }
         public int equipe_codigo { get; set; }
         public Equipe equipe { get; set; }
+        public bool responsavel { get; set; }
+
     }
 }

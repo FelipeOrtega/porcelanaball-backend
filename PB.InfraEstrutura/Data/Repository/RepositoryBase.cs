@@ -53,7 +53,9 @@ namespace PB.InfraEstrutura.Data.Repository
 
         public TEntity SelectById(int codigo)
         {
-            return context.Set<TEntity>().Find(codigo);
+            var entity = context.Set<TEntity>().Find(codigo);
+            context.Entry(entity).State = EntityState.Detached;
+            return entity;
         }
     }
 }
