@@ -54,7 +54,7 @@ namespace PB.Service
             try
             {
                 Log.write(Log.Nivel.INFO, "Codigo = " + codigo + " IN");
-                Equipe equipe = _repository.SelectById(codigo);
+                Equipe equipe = _repository.FullSearch(codigo);
                 Log.write(Log.Nivel.INFO, "Codigo = " + codigo + " OUT");
                 return equipe;
             }

@@ -3,5 +3,6 @@
     public interface IEquipeRepository : IRepositoryBase<Equipe>
     {
         public Equipe SearchByDescription(string descricao);
+        public Equipe FullSearch(int codigo);
     }
 }
