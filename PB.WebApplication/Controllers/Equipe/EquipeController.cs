@@ -45,7 +45,7 @@ namespace PB.WebApplication.Controllers
             return ReturnJson(_service.Get(id));
         }
 
-        [HttpGet("GetHistoricoPagamento/{id}")]
+        [HttpGet("HistoricoPagamento/{id}")]
         [Authorize(Roles = "manager, employee")]
         public JsonReturn GetHistoricoPagamento(int id)
         {

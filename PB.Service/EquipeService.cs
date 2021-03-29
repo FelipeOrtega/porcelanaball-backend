@@ -84,7 +84,7 @@ namespace PB.Service
                 foreach (Pagamento pagamento in pagamentos)
                 {
                     PagamentoDTO pagamentoDTO = new PagamentoDTO();
-                    valorTotalPago = + pagamento.valor;
+                    valorTotalPago += pagamento.valor;
                     pagamentoDTO.convertPagamentoToDTO(pagamento);
                     pagamentosDTO.Add(pagamentoDTO);
                 }

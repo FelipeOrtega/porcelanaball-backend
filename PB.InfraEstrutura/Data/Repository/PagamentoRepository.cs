@@ -15,8 +15,7 @@ namespace PB.InfraEstrutura.Data.Repository
 
         public List<Pagamento> SearchCodigo_Equipe(int codigoEquipe)
         {
-            List<Pagamento> pagamentosByEquipe = context.Set<Pagamento>().ToList();
-
+            List<Pagamento> pagamentosByEquipe = context.Set<Pagamento>().Where(p => p.equipe_codigo == codigoEquipe).ToList();
             return pagamentosByEquipe;
         }
     }
