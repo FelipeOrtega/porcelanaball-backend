@@ -9,7 +9,8 @@ namespace PB.Domain.DTO
     {
         public Equipe equipe { get; set; }
         public decimal valorRestante { get; set; }
-        public List<PagamentoDTO> pagamentos { get; set; }
+        public List<PagamentoDTO> pagamentosVigentes { get; set; }
+        public List<PagamentoDTO> pagamentosNaoVigentes { get; set; }
 
     }
 }

@@ -73,7 +73,8 @@ namespace PB.Service
             try
             {
                 EquipePagamentoDTO equipePagamentoDTO = new EquipePagamentoDTO();
-                List<PagamentoDTO> pagamentosDTO = new List<PagamentoDTO>();
+                List<PagamentoDTO> pagamentosDTOVigentes = new List<PagamentoDTO>();
+                List<PagamentoDTO> pagamentosDTONaoVigentes = new List<PagamentoDTO>();
                 decimal valorTotalPago = 0;
 
                 Log.write(Log.Nivel.INFO, "Codigo = " + codigo + " IN");
@@ -90,18 +91,27 @@ namespace PB.Service
              
                 foreach (Pagamento pagamento in pagamentos)
                 {
-                    if ( (pagamento.data >= MesVencimento) && (pagamento.data <= ProximoMes) )
+                    PagamentoDTO pagamentoDTO = new PagamentoDTO();
+
+                    valorTotalPago += pagamento.valor;
+
+                    if ((pagamento.data >= MesVencimento) && (pagamento.data <= ProximoMes))
                     {
-                        PagamentoDTO pagamentoDTO = new PagamentoDTO();
-                        valorTotalPago += pagamento.valor;
+
                         pagamentoDTO.convertPagamentoToDTO(pagamento);
-                        pagamentosDTO.Add(pagamentoDTO);
+                        pagamentosDTOVigentes.Add(pagamentoDTO);
+                    }
+                    else {
+
+                        pagamentoDTO.convertPagamentoToDTO(pagamento);
+                        pagamentosDTONaoVigentes.Add(pagamentoDTO);
                     }
                 }
 
-                equipePagamentoDTO.pagamentos = pagamentosDTO;
+                equipePagamentoDTO.pagamentosVigentes = pagamentosDTOVigentes;
+                equipePagamentoDTO.pagamentosNaoVigentes = pagamentosDTONaoVigentes;
 
-                if(valorTotalPago <= equipePagamentoDTO.equipe.valor)
+                if (valorTotalPago <= equipePagamentoDTO.equipe.valor)
                     equipePagamentoDTO.valorRestante = equipePagamentoDTO.equipe.valor - valorTotalPago;
 
                 Log.write(Log.Nivel.INFO, "Codigo = " + codigo + " OUT");
