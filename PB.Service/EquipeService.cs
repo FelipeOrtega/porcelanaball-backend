@@ -79,14 +79,24 @@ namespace PB.Service
                 Log.write(Log.Nivel.INFO, "Codigo = " + codigo + " IN");
 
                 equipePagamentoDTO.equipe = _repository.SelectById(codigo);
+
+
+                DateTime datanow = DateTime.Now;
+                DateTime MesVencimento = new DateTime(datanow.Year, datanow.Month, equipePagamentoDTO.equipe.dia_vencimento);
+                DateTime ProximoMes = new DateTime(datanow.Year, datanow.Month, equipePagamentoDTO.equipe.dia_vencimento);
+                ProximoMes = ProximoMes.AddMonths(1);
+
                 List<Pagamento> pagamentos = _repositoryPagamento.SearchCodigo_Equipe(codigo);
              
                 foreach (Pagamento pagamento in pagamentos)
                 {
-                    PagamentoDTO pagamentoDTO = new PagamentoDTO();
-                    valorTotalPago += pagamento.valor;
-                    pagamentoDTO.convertPagamentoToDTO(pagamento);
-                    pagamentosDTO.Add(pagamentoDTO);
+                    if ( (pagamento.data >= MesVencimento) && (pagamento.data <= ProximoMes) )
+                    {
+                        PagamentoDTO pagamentoDTO = new PagamentoDTO();
+                        valorTotalPago += pagamento.valor;
+                        pagamentoDTO.convertPagamentoToDTO(pagamento);
+                        pagamentosDTO.Add(pagamentoDTO);
+                    }
                 }
 
                 equipePagamentoDTO.pagamentos = pagamentosDTO;
