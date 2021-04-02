@@ -27,7 +27,8 @@ namespace PB.InfraEstrutura.Data.Repository
             Aluno aluno_ = context.Set<Aluno>().Where(a => a.codigo == aluno.codigo)
                                                .Include(a => a.alunoTreinos)
                                                .Include(app => app.planoAluno)
-                                               .Include(app => app.equipeAluno).Single();
+                                               .Include(app => app.equipeAluno)
+                                               .OrderBy(app => app.nome).Single();
             return aluno_;
         }
 
