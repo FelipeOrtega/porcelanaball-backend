@@ -84,25 +84,25 @@ namespace PB.Service
 
                 DateTime datanow = DateTime.Now;
                 DateTime MesVencimento = new DateTime(datanow.Year, datanow.Month, equipePagamentoDTO.equipe.dia_vencimento);
-                DateTime ProximoMes = new DateTime(datanow.Year, datanow.Month, equipePagamentoDTO.equipe.dia_vencimento);
-                ProximoMes = ProximoMes.AddMonths(1);
+                DateTime MesAnterior = new DateTime(datanow.Year, datanow.Month, equipePagamentoDTO.equipe.dia_vencimento);
+                MesAnterior = MesAnterior.AddMonths(-1);
 
                 List<Pagamento> pagamentos = _repositoryPagamento.SearchCodigo_Equipe(codigo);
-             
+
                 foreach (Pagamento pagamento in pagamentos)
                 {
                     PagamentoDTO pagamentoDTO = new PagamentoDTO();
 
                     valorTotalPago += pagamento.valor;
 
-                    if ((pagamento.data >= MesVencimento) && (pagamento.data <= ProximoMes))
+                    if ((pagamento.data > MesAnterior) && (pagamento.data <= MesVencimento))
                     {
 
                         pagamentoDTO.convertPagamentoToDTO(pagamento);
                         pagamentosDTOVigentes.Add(pagamentoDTO);
                     }
-                    else {
-
+                    else
+                    {
                         pagamentoDTO.convertPagamentoToDTO(pagamento);
                         pagamentosDTONaoVigentes.Add(pagamentoDTO);
                     }
