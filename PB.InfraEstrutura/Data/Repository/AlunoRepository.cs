@@ -28,7 +28,7 @@ namespace PB.InfraEstrutura.Data.Repository
                                                .Include(a => a.alunoTreinos)
                                                .Include(app => app.planoAluno)
                                                .Include(app => app.equipeAluno)
-                                               .OrderBy(app => app.nome).Single();
+                                               .Single();
             return aluno_;
         }
 
@@ -37,7 +37,8 @@ namespace PB.InfraEstrutura.Data.Repository
         {
             List<Aluno> alunos = context.Set<Aluno>().Include(a => a.alunoTreinos)
                                                      .Include(app => app.planoAluno)
-                                                     .Include(app => app.equipeAluno).ToList();
+                                                     .Include(app => app.equipeAluno)
+                                                     .OrderBy(a => a.nome).ToList();
             return alunos;
         }
 

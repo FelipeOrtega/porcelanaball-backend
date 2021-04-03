@@ -2,6 +2,7 @@
 using PB.Domain;
 using PB.Domain.Interface.Repository;
 using PB.InfraEstrutura.Data.db.config;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace PB.InfraEstrutura.Data.Repository
@@ -22,6 +23,11 @@ namespace PB.InfraEstrutura.Data.Repository
             Equipe equipe = context.Set<Equipe>().Where(e => e.codigo == codigo)
                                                  .Include(ee => ee.equipeAluno).Single();
             return equipe;
+        }
+
+        public List<Equipe> FullList()
+        {
+            return context.Set<Equipe>().OrderBy(e => e.descricao).ToList();
         }
     }
 }

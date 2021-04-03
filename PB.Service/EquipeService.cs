@@ -36,7 +36,7 @@ namespace PB.Service
             try
             {
                 Log.write(Log.Nivel.INFO, "<List> IN");
-                List<Equipe> equipes = _repository.Get();
+                List<Equipe> equipes = _repository.FullList();
                 Log.write(Log.Nivel.INFO, "<List> OUT");
                 return equipes;
             }
