@@ -81,11 +81,17 @@ namespace PB.Service
 
                 equipePagamentoDTO.equipe = _repository.SelectById(codigo);
 
-
                 DateTime datanow = DateTime.Now;
                 DateTime MesVencimento = new DateTime(datanow.Year, datanow.Month, equipePagamentoDTO.equipe.dia_vencimento);
                 DateTime MesAnterior = new DateTime(datanow.Year, datanow.Month, equipePagamentoDTO.equipe.dia_vencimento);
-                MesAnterior = MesAnterior.AddMonths(-1);
+                if(datanow.Day <= equipePagamentoDTO.equipe.dia_vencimento)
+                {
+                    MesAnterior = MesAnterior.AddMonths(-1);
+                }
+                else
+                {
+                    MesVencimento = MesVencimento.AddMonths(1);
+                }
 
                 List<Pagamento> pagamentos = _repositoryPagamento.SearchCodigo_Equipe(codigo);
 
@@ -93,13 +99,11 @@ namespace PB.Service
                 {
                     PagamentoDTO pagamentoDTO = new PagamentoDTO();
 
-                    valorTotalPago += pagamento.valor;
-
                     if ((pagamento.data > MesAnterior) && (pagamento.data <= MesVencimento))
                     {
-
                         pagamentoDTO.convertPagamentoToDTO(pagamento);
                         pagamentosDTOVigentes.Add(pagamentoDTO);
+                        valorTotalPago += pagamento.valor;
                     }
                     else
                     {
