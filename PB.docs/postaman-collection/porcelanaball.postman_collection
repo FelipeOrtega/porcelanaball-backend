@@ -1,0 +1,154 @@
+{
+	"info": {
+		"_postman_id": "9f77f9ab-11d5-460f-9f84-0f60133a05a9",
+		"name": "porcelanaball",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "aluno",
+			"item": [
+				{
+					"name": "GET - /Alunos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44319/Aluno",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44319",
+							"path": [
+								"Aluno"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST - /Alunos",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"peso\": 11.000,\r\n    \"altura\": 1.000,\r\n    \"nome\": \"ZUBUMAFUUUssU\",\r\n    \"data_nascimento\": \"1992-12-14T00:00:00\",\r\n    \"telefone_residencial\": \"1211212\",\r\n    \"telefone_celular\": \"1121221\",\r\n    \"cpf\": \"45545455\",\r\n    \"rg\": \"454545\",\r\n    \"biometria\": \"asjadsjkas111hdashjdas1biometria\",\r\n    \"ativo\": true,\r\n    \"alunoTreinos\":{\r\n        \"descricao\":\"testestes\",\r\n        \"treino\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44319/Aluno",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44319",
+							"path": [
+								"Aluno"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT - /Alunos",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"codigo\":1,\r\n    \"peso\": 11.000,\r\n    \"altura\": 1.000,\r\n    \"nome\": \"ZUBUMAFUUUssU\",\r\n    \"data_nascimento\": \"1992-12-14T00:00:00\",\r\n    \"telefone_residencial\": \"1211212\",\r\n    \"telefone_celular\": \"1121221\",\r\n    \"cpf\": \"45545455\",\r\n    \"rg\": \"454545\",\r\n    \"biometria\": \"asjadsjkas111hdashjdas1biometria\",\r\n    \"ativo\": true,\r\n    \"alunoTreinos\":[{\r\n        \"treino\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\r\n        \"aluno_codigo\":1\r\n    }]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44319/Aluno/1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44319",
+							"path": [
+								"Aluno",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "funcionario",
+			"item": [
+				{
+					"name": "POST - /Funcionario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"peso\": 11.000,\r\n    \"altura\": 1.000,\r\n    \"nome\": \"Felipe\",\r\n    \"data_nascimento\": \"1992-12-14T00:00:00\",\r\n    \"telefone_residencial\": \"1211212\",\r\n    \"telefone_celular\": \"1121221\",\r\n    \"cpf\": \"45545455\",\r\n    \"rg\": \"454545\",\r\n    \"biometria\": \"asjadsjkas111hdashjdas1biometria\",\r\n    \"ativo\": true,\r\n    \"codigo\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44319/Aluno",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44319",
+							"path": [
+								"Aluno"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET - /Funcionario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"peso\": 11.000,\r\n    \"altura\": 1.000,\r\n    \"nome\": \"Felipe\",\r\n    \"data_nascimento\": \"1992-12-14T00:00:00\",\r\n    \"telefone_residencial\": \"1211212\",\r\n    \"telefone_celular\": \"1121221\",\r\n    \"cpf\": \"45545455\",\r\n    \"rg\": \"454545\",\r\n    \"biometria\": \"asjadsjkas111hdashjdas1biometria\",\r\n    \"ativo\": true,\r\n    \"codigo\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44319/funcionario",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44319",
+							"path": [
+								"funcionario"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

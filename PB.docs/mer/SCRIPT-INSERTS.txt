@@ -1,0 +1,41 @@
+
+INSERT INTO `porcelanaball`.`FORMA_PAGAMENTO` (`DESCRICAO`) VALUES ('Cartão de Débito');
+INSERT INTO `porcelanaball`.`FORMA_PAGAMENTO` (`DESCRICAO`) VALUES ('Cartão de Crédito');
+INSERT INTO `porcelanaball`.`FORMA_PAGAMENTO` (`DESCRICAO`) VALUES ('Dinheiro');
+INSERT INTO `porcelanaball`.`FORMA_PAGAMENTO` (`DESCRICAO`) VALUES ('Cheque');
+
+INSERT INTO `porcelanaball`.`MODULO` (`DESCRICAO`) VALUES ('Academia');
+INSERT INTO `porcelanaball`.`MODULO` (`DESCRICAO`) VALUES ('Quadras');
+INSERT INTO `porcelanaball`.`MODULO` (`DESCRICAO`) VALUES ('Bar');
+
+INSERT INTO `porcelanaball`.`LANCAMENTO_TIPO` (`DESCRICAO`) VALUES ('Entrada');
+INSERT INTO `porcelanaball`.`LANCAMENTO_TIPO` (`DESCRICAO`) VALUES ('Saída');
+
+INSERT INTO `porcelanaball`.`USER` (`username`, `password`, `role`) VALUES ('batman', 'batman', 'manager');
+INSERT INTO `porcelanaball`.`USER` (`username`, `password`, `role`) VALUES ('daniel', 'daniel@123', 'manager');
+INSERT INTO `porcelanaball`.`USER` (`username`, `password`, `role`) VALUES ('alvinho', 'alvinho@123', 'manager');
+INSERT INTO `porcelanaball`.`USER` (`username`, `password`, `role`) VALUES ('robin', 'robin', 'employee');
+
+INSERT INTO `porcelanaball`.`MODALIDADE` (`CODIGO`, `DESCRICAO`) VALUES ('1', 'FUTEBOL');
+INSERT INTO `porcelanaball`.`MODALIDADE` (`CODIGO`, `DESCRICAO`) VALUES ('2', 'MUSCULAÇÃO');
+
+INSERT INTO `porcelanaball`.`QUADRA` (`CODIGO`, `DESCRICAO`) VALUES ('1', 'Q-01');
+INSERT INTO `porcelanaball`.`QUADRA` (`CODIGO`, `DESCRICAO`) VALUES ('2', 'Q-02');
+
+INSERT INTO `porcelanaball`.`EQUIPE` (`CODIGO`, `DESCRICAO`, `MODALIDADE_CODIGO`, `ATIVO`, `MODULO_CODIGO`,`VALOR`,`DIA_VENCIMENTO`,`ADERE_ACADEMIA`, `JOGO_DIA_DA_SEMANA`, `JOGO_HORARIO_INICIAL`, `JOGO_HORARIO_FINAL`, `QUADRA_CODIGO`) 
+VALUES ('1', 'TESTE', '1', TRUE, '1', '20.00', '30', FALSE, 'Segunda-feira', '21:00:00', '23:00:00', '1');
+
+INSERT INTO `porcelanaball`.`PAGAMENTO` (`CODIGO`, `VALOR`, `OBSERVACAO`, `DATA`, `EQUIPE_CODIGO` ,  `MODULO_CODIGO` , `MODALIDADE_CODIGO`) 
+VALUES ('2', 5.1, 'pago', '21/03/20', 1, 1, 1);
+
+INSERT INTO `porcelanaball`.`PAGAMENTO` (`CODIGO`, `VALOR`, `OBSERVACAO`, `DATA`, `EQUIPE_CODIGO` ,  `MODULO_CODIGO` , `MODALIDADE_CODIGO`) 
+VALUES ('3', 1.0, 'pago', '21/03/30', 1, 1, 1);
+
+INSERT INTO `porcelanaball`.`PAGAMENTO` (`CODIGO`, `VALOR`, `OBSERVACAO`, `DATA`, `EQUIPE_CODIGO` ,  `MODULO_CODIGO` , `MODALIDADE_CODIGO`) 
+VALUES ('4', 1.0, 'pago', '21/04/29', 1, 1, 1);
+
+INSERT INTO `porcelanaball`.`PAGAMENTO` (`CODIGO`, `VALOR`, `OBSERVACAO`, `DATA`, `EQUIPE_CODIGO` ,  `MODULO_CODIGO` , `MODALIDADE_CODIGO`) 
+VALUES ('5', 1.0, 'pago', '21/04/30', 1, 1, 1);
+
+INSERT INTO `porcelanaball`.`PAGAMENTO` (`CODIGO`, `VALOR`, `OBSERVACAO`, `DATA`, `EQUIPE_CODIGO` ,  `MODULO_CODIGO` , `MODALIDADE_CODIGO`) 
+VALUES ('6', 1.0, 'pago', '21/05/01', 1, 1, 1);
